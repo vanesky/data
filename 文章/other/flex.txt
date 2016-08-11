@@ -1,0 +1,36 @@
+
+http://huaban.com/boards/16412601/
+
+
+
+flex布局：
+
+flex-direction: row | row-reverse | column | column-reverse    定义主轴方向
+
+justify-content: flex-start | flex-end | center | space-between (两端) | space-around (两端留有间隙)  定义主轴的排版方向
+
+flex-wrap: nowrap | wrap | wrap-reverse  在轴向的换行方式默认为不换行
+
+简写形式 flex-flow : flex-direction || flex-wrap    例子： flex-flow : row wrap
+
+align-items : flex-start | flex-end | center | baseline | stretch（默认填充整个高）  定义项目在交叉轴对齐方式
+
+align-content : flex-start | flex-end | center | space-between | space-around | stretch  定义多轴对齐方式
+
+
+项目属性：
+
+order : 1    项目前后顺序
+
+flex-grow : 0    是否填充整个轴线
+
+flex-shrink : 1    如果空间不足是否缩小 默认为缩小
+
+align-self : auto | flex-start | flex-end | center | baseline | stretch    允许项目有不一样的对齐方式，覆盖align-items属性默认值为auto .
+
+
+
+
+
+
+

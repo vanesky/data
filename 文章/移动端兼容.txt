@@ -1,0 +1,86 @@
+
+----------------解决ios上去除微信点击蓝色边框 ---------------------------
+a:focus,
+input:focus,
+p:focus,
+div:focus{
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+-webkit-user-modify:read-write-plaintext-only; 
+}
+
+------------------------去除UC背景----------------------------
+
+body{ -webkit-tap-highlight-color:rgba(0,0,0,0); }
+
+--------------------------禁止UC滑动------------------------------
+ (function(){
+            var control = navigator.control || {};
+             if (control.gesture) {
+                    control.gesture(false);
+              }
+  })() 
+
+----------------------------CSS3点透--------------------------------
+pointer-events=true  
+
+--------------------------UC菜单内容不显示-------------------------
+
+层级Z-index
+
+--------------------retina图片兼容-----------------------
+
+retina下，图片高清问题
+这个问题上面已经介绍过解决方案了：两倍图片(@2x)，然后图片容器缩小50%。
+
+如：图片大小，400×600;
+
+1.img标签
+
+width: 200px;
+height: 300px;
+
+2.背景图片
+
+width: 200px;
+height: 300px;
+background-image: url(image@2x.jpg);
+background-size: 200px 300px; // 或者: background-size: contain;
+这样的缺点，很明显，普通屏幕下：
+
+同样下载了@2x的图片，造成资源浪费。
+图片由于downsampling，会失去了一些锐利度(或是色差)。
+所以最好的解决办法是：不同的dpr下，加载不同的尺寸的图片。
+
+不管是通过css媒体查询，还是通过javascript条件判断都是可以的。
+
+
+------------------------多行文本溢出--------------------------
+
+display:-webkit-box;
+overflow:hidden;
+text-overflow:ellipsis:
+word-break:break-all;
+-webkit-box-orient:vertical;
+-webkit-line-clamp:4;
+
+----------------------------ios弹性滚动---------------------
+body{overflow:scroll; -webkit-overflow-scrolling:touch;}
+
+iscroll
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+
+http://www.tuicool.com/articles/FJVNZf gulp
+http://www.w3cplus.com/workflow/glup-and-es6.html gulp
+https://segmentfault.com/a/1190000002698606 gulp
+http://www.ydcss.com/archives/18  gulp
+http://www.ydcss.com/archives/94  在路上gulp属性详解
+
+less的编译（gulp-less）
+自动添加css前缀（gulp-autoprefixer）
+压缩css（gulp-minify-css）
+js代码校验（gulp-jshint）
+合并js文件（gulp-concat）
+压缩js代码（gulp-uglify）
+压缩图片（gulp-imagemin）
+更改提醒（gulp-notify）
+添加版本（gulp-rev-append）
+监听事件（gulp-watch）
+
+自动刷新页面（gulp-livereload）
+图片缓存，只有图片替换了才压缩（gulp-cache）
+sass的编译（gulp-sass）
+npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-rename --save-dev 
+
+
+npm install -g 
+npm -v
+npm install cnpm -g --registry=https://registry.npm.taobao.org
+cnpm install -g gulp
+
+1 进入到项目文件位置
+2 建立项目配置Package.json文件 使用npm init  
+3 输入相关信息
+4 本地安装 cnpm install gulp --save-dev
+5 安装插件新建gulpfile.js文件
+-------------------------------基本写法------------------------------------------
+    var $ = require('gulp-load-plugins')();
+
+    var gulp = require('gulp');                     //本地安装gulp所用到的地方
+
+    var less = require('gulp-less');                //less编译
+
+    var csspre = require('gulp-autoprefixer');      //自动前缀
+
+    var jshint = require('gulp-jshint');            //语法检查
+
+
+    //编译并自动添加前缀
+    gulp.task('start_1', function () {
+
+        gulp.src('js/demo.less')
+
+            .pipe(less())
+
+            .pipe(csspre())
+
+            .pipe(gulp.dest('js1/'));
+
+    });
+
+
+    // 检查脚本
+    gulp.task('start_2', function() {
+
+        gulp.src('js/demo.js')
+
+            .pipe(jshint())
+
+            .pipe(jshint.reporter('default'));
+
+    });
+
+    gulp.task('default',['start_1']); //定义默认任务

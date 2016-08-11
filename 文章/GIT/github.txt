@@ -1,0 +1,96 @@
+
+
+----------------------------------------------------方法应用------------------------------------------------------------
+
+$ ssh-keygen -t rsa -C "youremail@example.com" 创建秘钥
+
+$ git config --global user.name "Your Name"
+
+$ git config --global user.email "email@example.com"  （--global参数 机器上所有的Git仓库都会使用这个配置）
+
+$ git init  命令把这个目录变成Git可以管理的仓库
+
+$ git add xx.txt  添加文件到仓库
+
+$ git commit -m '说明'
+
+$ git status 查看哪些被修改
+
+$ git diff 具体细节
+
+$ git log -----||---- $ git log --pretty=oneline 查看修改次数
+
+$ git reset --hard HEAD^  退回上一个版本   git reset --hard   版本号remo
+
+$ git reflog  记录敲击过的每一条命令
+
+$ git checkout -- readme.txt 撤销工作区修改
+
+$ git reset HEAD readme.txt 撤销暂存区修改
+
+$ ssh-keygen -t rsa -C "youremail@example.com"  秘钥生成
+
+$ git clone git@github.com:vanesky/xxx.git  克隆远程到本地
+
+
+$ git branch <name> 创建分支
+
+$ git checkout <name> 切换分支
+
+$ git checkout -b dev 创建分支并切换 
+
+$ git branch 查看当前分支
+
+$ git branch -r -a 查看远程分支/查看所有分支
+
+$ git merge dev 合并分支
+
+$ git branch -d dev  删除分支
+
+$ git branch –D 分支名  删除未合并的分支
+
+$ git stash 隐藏当前分支
+
+$ git stash list 查看隐藏分支   
+
+$ git stash pop 恢复分支
+
+
+$ git remote 远程仓库信息
+
+$ git remote add origin git@github.com:vanesky/xxx.git    关联远程
+
+$ git clone -o jQuery(指定其他主机名) https://github.com/jquery/jquery.git  克隆时候添加主机名
+
+$ git remote rm 主机名 删除远程主机
+
+$ git push origin master  推送分支到远程
+
+$ git push <远程主机名> <本地分支名>:<远程分支名>  本地分支的更新，推送到远程主机
+
+$ git pull <远程主机名> <远程分支名>:<本地分支名>  取回主机分支和本地合并
+
+$ git fetch origin master 取回更新
+
+$ git merge origin/master  远程分支合并本地Master分支
+
+$ git checkout -b xx origin/master  切换到远程更新分支并建立远程分支
+
+
+
+---------------------------------------------------------------------------------------------
+
+
+
+http://www.yiibai.com/git/git_create_operation.html
+
+http://www.jb51.net/article/70729.htm git教程
+
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+
+http://www.runoob.com/w3cnote/git-guide.html
+
+
+
+
+

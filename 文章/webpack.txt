@@ -1,0 +1,31 @@
+http://www.w2bc.com/Article/50764
+
+http://www.reqianduan.com/2083.html   深度
+
+https://github.com/wangning0/Autumn_Ning_Blog/blob/master/blogs/3-12/webpack.md	讲解
+
+https://segmentfault.com/a/1190000002552008 	入门之谜
+
+https://www.npmjs.com/package/gulp-webpack/#usage  gulp webpack配置
+
+https://zhuanlan.zhihu.com/p/20397902  技巧
+
+
+require('lodash') 	// 从模块目录查找
+require('./file') 	// 按相对路径查找
+
+-----------------------------------------安装及配置----------------------------------------------
+
+1 npm install webpack -g
+2 npm init   进入开发目录
+3 npm install webpack --save-dev
+4 新建配置webpack.config.js
+
+
+$ webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
+ 
+$ webpack --watch   //监听变动并自动打包
+ 
+$ webpack -p    //压缩混淆脚本，这个非常非常重要！
+ 
+$ webpack -d    //生成map映射文件，告知哪些模块被最终打包到哪里了

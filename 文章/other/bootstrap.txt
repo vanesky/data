@@ -1,0 +1,77 @@
+http://www.jikexueyuan.com/course/bootstrap/1-1-0/
+
+http://my.tv.sohu.com/us/118317517/57891263.shtml
+
+bootstrap 框架
+
+-------------------------引用类排版---------------------------
+按钮 btn  btn-primary  success  info  warning danger  link
+btn-xs sm
+btn-group-vertical
+
+文本对齐 text-left text-right text-center text-justify
+
+偏移 pull-right  pull-left
+
+隐藏显示 hide show 
+
+箭头 caret
+
+表单
+form-group  下边距
+form-control
+input-lg 文本输入大小
+input-sm
+input-group-addon
+input-group-btn
+
+control-label
+labe-primary
+radio-inline
+
+
+-------------------------栅格化布局--------------------------------------
+多种定义响应式  
+.col-lg-   
+.col-md-   
+.col-sm-   
+.col-xs-
+
+hidden-xs|md	特别小的设备隐藏
+visible-xs|md	特别小的设备可见
+
+偏移：
+col-md-offset-1
+
+推拉：
+col-md-push-3 
+col-md-pull-3
+
+
+@media(min-width:768px){
+  .container{
+    width:750px;
+  }
+}
+
+
+-----------------html4---------------------
+label
+
+fieldset 围绕表单的边框
+legend定义 fieldset 元素的标题。
+
+<cite> 标签通常表示它所包含的文本对某个参考文献的引用，比如书籍或者杂志的标题。
+按照惯例，引用的文本将以斜体显示。
+
+@media screen and (max-width : 640px) {              
+/* 样式写在这*/            
+}   
+
+
+
+
+
+
+
+

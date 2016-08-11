@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="base.css">
+    <style type="text/css">
+
+        .banner {
+            /*border:1px solid yellow;*/
+            position: relative;
+        }
+
+        .banner .ul-a{
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            /*height:20rem;*/
+        }
+        .banner .ul-a > li {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height:100%;
+            opacity: 0;
+        }
+        /*pc fade*/
+        .banner .ul-a > li:first-child{
+            opacity: 1;
+        }
+        .banner .ul-a > li > img {
+            display: block;
+            width: 100%;
+            height:100%;
+        }
+        .banner .ul-b {
+            position:absolute;
+            left:0;
+            right:0;
+            margin:auto;
+            top:100%;
+            margin-top:-50px;
+            text-align:center;
+            z-index: 10;
+        }
+        .banner .ul-b li {
+            border-radius:4px;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color:#ccc;
+        }
+
+        /*左右切换*/
+        .banner > div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top:45%;
+            text-align: center;
+            line-height: 70px;
+            z-index: 10;
+            background: red;
+            cursor: pointer;
+        }
+        .banner > div[name=left]{
+            left:5%;
+        }
+        .banner > div[name=right]{
+            left:95%;
+            margin-left:-60px;
+        }
+        .banner > div > img {
+            height: 100%;
+            opacity: 0.6;
+        }
+        .banner > div > img:hover {
+            opacity: 0.8;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="banner bs-b clearfix">
+
+        <ul class="ul-a">
+            <li>
+                <img src="banner1.jpg" alt="">
+            </li>
+            <li>
+                <img src="banner2.jpg" alt="">
+            </li>
+            <li>
+                <img src="banner3.jpg" alt="">
+            </li>
+        </ul>
+
+        <ul class="ul-b">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div name="left">sssss</div>
+        <div name="right">aaaaa</div>
+
+    </div>
+
+    <p style="text-align: center;">sfs</p>
+    <script type="text/javascript" src="jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="banner.js"></script>
+
+    <script type="text/javascript">
+
+        $(function(){
+
+            $('.banner').children('ul.ul-a').find('li').banner({
+
+                style:'fade',
+
+                speed:3000,
+
+                mspeed:400,
+
+                listColor:'#fff',
+
+                nowColor:'orange'
+
+            })
+
+            $('.banner').children('ul.ul-a').css('height',$(window).width()/3+'px')
+
+        })
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

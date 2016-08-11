@@ -1,0 +1,5 @@
+appcan用户名：wenh 密码：1234.com  192.168.115.210 80
+
+http://dashboard.appcan.cn/app
+
+%APPCAN_PATH%;%APPCAN_PATH%;   Home环境变量

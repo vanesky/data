@@ -1,0 +1,11 @@
+1、解决办法：
+
+     打开wamp的托盘图标(右下角)，找到"Config files"-->"httpd.conf"文件并打开。找到 "Allow from 127.0.0.1"信息，将其修改为"Allow from all"
+
+2、解决办法：
+
+     打开wamp的托盘图标(右下角)，找到"Alias directories"-->"http://localhost/phpmyadmin"-->"Edit alias"文件并打开。找到
+
+"Deny from all"信息，将其修改为"Allow from all"
+
+     完成上述两步，重启All Server 就可以了。

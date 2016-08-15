@@ -17,12 +17,15 @@ http://docs.emmet.io/cheat-sheet/ Element 工具快捷键
 
 http://www.cnblogs.com/igeneral/p/3641574.html //get post
 
+https://i5ting.github.io/oh-http/#640104 http讲解
+
 
 http://www.cnblogs.com/yexiaochai/p/4463420.html 前后端分离
 
 http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/ 前后端分离
 
 http://blog.jobbole.com/65534/ 前后端分离
+
 
 http://www.108js.com/
 

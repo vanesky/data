@@ -50,19 +50,6 @@ a{text-decoration:none;}
   float: right;
 }
 
-.pr {
-  position: relative;
-}
-.pa {
-  position: absolute;
-}
-.pf {
-  position: fixed;
-}
-.ps {
-  position: static;
-}
-
 .hide {
   display: none !important;
 }
@@ -75,9 +62,6 @@ a{text-decoration:none;}
 
 /*-----------------字体文本样式-------------------*/
 
-.auto {
-  margin:0 auto;
-}
 .tl {
   text-align: left;
 }
@@ -303,23 +287,30 @@ sub {
   html{font-size:10px;}
 }
 
-/*=============featsky全局样式===============*/
+/*=============全局样式===============*/
 
-.ul-row{
-  text-align: center;
-  position: relative;
+@cf:#fff;@cf2:#f2f2f2;@ceb:#ebebeb;
+@cdb:#dbdbdb;@cc:#ccc;@c3:#333;
+@c6:#666;@c9:#999;@c10:#101010;
+
+body{
+  font-size: 1.2rem;
+  color:@c10;
 }
-.ul-row > li{
-  display: inline-block;
-}
-//容器布局 main:90% border
+h1{font-size:2rem;}
+h2{font-size: 1.8rem;}
+h3{font-size: 1.6rem;}
+h4{font-size: 1.4rem;}
 //主题颜色
-//常用字体大小 h1 h2
+//容器骨架布局 main:90%
+//公共通用模块
+
 //常用按钮
-//多使用类
 //1px边框
 //按钮圆角
 //透明背景
+//头像大小
+//图片大小
 //flex顶部对齐
 /******************PC端*********************/
 
@@ -730,20 +721,11 @@ sub {
 .fr12 {
   font-size: 1.2rem;
 }
-.fr13 {
-  font-size: 1.3rem;
-}
 .fr14 {
   font-size: 1.4rem;
 }
-.fr15 {
-  font-size: 1.5rem;
-}
 .fr16 {
   font-size: 1.6rem;
-}
-.fr17{
-  font-size: 1.7rem;
 }
 .fr18 {
   font-size: 1.8rem;

@@ -63,6 +63,13 @@ word-break:break-all;
 -webkit-box-orient:vertical;
 -webkit-line-clamp:4;
 
+.clamp{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 ----------------------------iosµ¯ÐÔ¹ö¶¯---------------------
 body{overflow:scroll; -webkit-overflow-scrolling:touch;}
 

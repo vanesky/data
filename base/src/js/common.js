@@ -2,13 +2,13 @@
 
     "use strict";
 
-    window.alls = {};
+    window.bom = {};
 
     (function(){
 
         this.device = function(){                          //种植设备信息
 
-            if(window.localStorage.device){return false}
+            //if(window.localStorage.device){return false}
 
             var bom1 = navigator.userAgent,send = {};
 
@@ -76,12 +76,20 @@
 
         };
 
+        this.page = function(){
 
-    }).apply(alls);
+            var foot = '<footer><p>Copyright &copy;http://www.featsky.com</p><p>Email 641151096qq.com</p></footer>';
 
-    alls.device();
+            $('.container').append(foot);
+
+        }
 
 
+    }).apply(bom);
+
+    //bom.device();
+
+    //bom.page();
 
 
 }(window);

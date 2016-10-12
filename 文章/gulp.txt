@@ -5,16 +5,25 @@ https://segmentfault.com/a/1190000002698606 gulp
 http://www.ydcss.com/archives/18  gulp
 http://www.ydcss.com/archives/94  在路上gulp属性详解
 
-less的编译（gulp-less）
-自动添加css前缀（gulp-autoprefixer）
-压缩css（gulp-minify-css）
-js代码校验（gulp-jshint）
-合并js文件（gulp-concat）
-压缩js代码（gulp-uglify）
-压缩图片（gulp-imagemin）
-更改提醒（gulp-notify）
-添加版本（gulp-rev-append）
-监听事件（gulp-watch）
+ gulp = require('gulp'),                             //本地安装gulp所用到的地方
+    less = require('gulp-less'),                        //less编译
+    autoprefixer = require('gulp-autoprefixer'),        //自动前缀
+    minify = require('gulp-minify-css'),                //css压缩
+    jshint = require('gulp-jshint'),                    //语法检查
+    uglify = require('gulp-uglify'),                    //js压缩
+    concat = require('gulp-concat'),                    //js合并
+    notify = require('gulp-notify'),                    //编译提示
+    watch = require('gulp-watch'),                      //变动监听
+    imagemin = require('gulp-imagemin'),                //图片压缩
+    pngquant = require('imagemin-pngquant'),            //png图片
+    cache = require('gulp-cache'),                      //图片缓存压缩
+    rename = require('gulp-rename'),                    //更改名称
+    append = require('gulp-rev-append'),                //增加版本号
+
+    /*****gulp-webpack配置*****/
+    _webpack = require('webpack'),                      //载入webpack jq全局自动依赖
+    webpack = require('gulp-webpack'),                  //gulp-webpack  模块建立打包
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 自动刷新页面（gulp-livereload）
 图片缓存，只有图片替换了才压缩（gulp-cache）
@@ -33,7 +42,7 @@ cnpm install -g gulp
 4 本地安装 cnpm install gulp --save-dev
 5 安装插件新建gulpfile.js文件
 -------------------------------基本写法------------------------------------------
-    var $ = require('gulp-load-plugins')();
+    var $ = require('gulp-load-pluginsn
 
     var gulp = require('gulp');                     //本地安装gulp所用到的地方
 

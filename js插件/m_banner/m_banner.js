@@ -106,14 +106,14 @@
 
                     var difference = new Date().getTime() - startTime;
 
-                    if(difference<250&&movexIng-movex<0){
+                    if(difference<250&&movexIng&&movexIng-movex<0){
 
                         //console.log('left')
 
                         banner.slideRun('left');
 
                     }
-                    else if(difference<250&&movexIng-movex>0){
+                    else if(difference<250&&movexIng&&movexIng-movex>0){
 
                         //console.log('right');
 

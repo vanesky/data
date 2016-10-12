@@ -30,6 +30,8 @@ http://www.zhihu.com/question/19886806   CSS优化
 
 http://www.cnblogs.com/pifoo/archive/2011/05/22/webkit-touch-event-3.html  多点触控
 
+http://wnworld.com/archives/170.html transform兼容
+
 http://www.108js.com/
 
 

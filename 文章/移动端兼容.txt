@@ -4,10 +4,20 @@ a:focus,
 input:focus,
 p:focus,
 div:focus{
--webkit-tap-highlight-color:rgba(0,0,0,0);
--webkit-user-modify:read-write-plaintext-only; 
+-webkit-tap-highlight-color:rgba(0,0,0,0); 
 }
 
+来控制用户能否对页面文本进行编辑与标签的contentEditable属性类似。
+
+
+-webkit-user-modify: read-only | read-write | read-write-plaintext-only 
+
+
+read-only 内容只读。
+
+read-write	内容可读写。
+
+read-write-plaintext-only 内容可读写，但粘贴内容中的富文本格式（如文本的颜色、大小，图片等）会丢失。内容类似于以纯文本显示。
 ------------------------去除UC背景----------------------------
 
 body{ -webkit-tap-highlight-color:rgba(0,0,0,0); }

@@ -10,6 +10,8 @@ https://www.npmjs.com/package/gulp-webpack/#usage  gulp webpack配置
 
 https://zhuanlan.zhihu.com/p/20397902  技巧
 
+https://llp0574.github.io/2016/11/29/getting-started-with-webpack2/  教程
+
 
 require('lodash') 	// 从模块目录查找
 require('./file') 	// 按相对路径查找

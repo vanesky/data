@@ -10,3 +10,5 @@ https://vuefe.cn/vuex/  vuex中文文档
 http://www.jianshu.com/p/1d57a4d24b96 vue多页面开发示例
 http://www.cnblogs.com/keepfool/p/5690366.html 
 https://aotu.io/notes/2016/10/13/vue2
+
+https://github.com/lzxb/vue2-demo 目录结构

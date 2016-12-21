@@ -12,3 +12,5 @@ http://www.cnblogs.com/keepfool/p/5690366.html
 https://aotu.io/notes/2016/10/13/vue2
 
 https://github.com/lzxb/vue2-demo 目录结构
+
+http://codepen.io/zhaojun/post/vue-update2-0 //生命周期

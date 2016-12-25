@@ -1,0 +1,292 @@
+@charset "utf-8";
+
+/*Reset*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: 100;
+  background: transparent;
+}
+
+body,input,button,textarea{
+  font-family:'微软雅黑',Arial, Helvetica, sans-serif;
+}
+
+:focus { outline: 0;}
+
+ul,ol{list-style:none;}
+
+a{text-decoration:none;}
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix {zoom:1;}
+
+.v-center:after{
+  display:inline-block;
+  width:1px;
+  height:100%;
+  vertical-align:middle;
+  content:"";
+}
+::-webkit-input-placeholder{font-size: 1rem;}
+*:focus{
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+*{
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+/*----------------CSS全局属性-----------------*/
+
+//CSS容器样式
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.dp-ib{
+  display: inline-block;
+}
+
+/*-----------------字体文本样式-------------------*/
+
+.tl {
+  text-align: left;
+}
+.tc {
+  text-align: center;
+}
+.tr {
+  text-align: right;
+}
+.fw{
+  font-weight: bold;
+}
+
+.cf {
+  color: #fff;
+}
+.cf2 {
+  color:#f2f2f2;
+}
+.ceb {
+  color: #EBEBEB;
+}
+.cdb {
+  color: #dbdbdb;
+}
+.cc {
+  color: #ccc;
+}
+.c9 {
+  color: #999;
+}
+.c6 {
+  color: #666;
+}
+.c3 {
+  color: #333;
+}
+.c10{
+  color: #101010;
+}
+
+.bc-f{
+  background-color:#fff;
+}
+.bc-f9{
+  background-color:#f9f9f9;
+}
+.bc-f5{
+  background-color:#f5f5f5;
+}
+.bc-f2 {
+  background-color:#f2f2f2;
+}
+.bc-eb {
+  background-color: #EBEBEB;
+}
+.bc-db {
+  background-color: #dbdbdb;
+}
+.bc-c {
+  background-color: #ccc;
+}
+.bc-9{
+  background-color:#999;
+}
+
+
+/*----------------flex布局---------------*/
+
+.fx-row-c{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-row-a{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-row-b{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-row-s{
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-row-e{
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  align-items:center;
+  flex-wrap: wrap;
+}
+/*------------主轴竖向排列---------------*/
+.fx-col-c{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-col-a{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-col-b{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.fx-col-e{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:center;
+  flex-wrap: wrap;
+}
+/*------------------项目属性-----------------*/
+.fx-sf-c{
+  align-self :center;
+}
+.fx-sf-s{
+  align-self :flex-start;
+}
+.fx-sf-e{
+  align-self :flex-end;
+}
+.fx-sf-b{
+  align-self :baseline;
+}
+.fx-sf-se{
+  align-self: stretch;
+}
+.fx-g{
+  flex-grow: 1;
+}
+/*-----------------其他样式-----------------*/
+
+button,input[type="button"], input[type="submit"] {
+  cursor: pointer;
+}
+button[disabled], html input[disabled] {
+  cursor: default;
+}
+textarea {
+  resize: none;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+.bs-r{
+  border: 1px solid red;
+}
+.bs-b{
+  border:1px solid blue;
+}
+.ofh {
+  overflow: hidden;
+}
+.ofa{
+  overflow:auto;
+}
+.ls1 {
+  letter-spacing:1px;
+}
+.va-t {
+  vertical-align:text-top
+}
+.va-c {
+  vertical-align:middle
+}
+.va-b {
+  vertical-align:text-bottom
+}
+.rz180 {
+  transform:rotateZ(180deg);
+}
+.rz90{
+  transform:rotateZ(90deg);
+}
+.rz-90{
+  transform:rotateZ(-90deg);
+}
+.sxy05{
+  transform: scale(0.5);
+}
+.sx05{
+  transform: scaleX(0.5);
+}
+.sy05{
+  transform: scaleY(0.5);
+}
+.bg-fill{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}

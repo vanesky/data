@@ -1,3 +1,5 @@
+http://vuex.vuejs.org/zh-cn/   vuex2.0中文文档
+
 http://www.omwteam.com/archives/10.html
 
 http://www.tuicool.com/articles/veIRziU
@@ -20,3 +22,5 @@ https://www.zhihu.com/question/37833194/answer/91812053  check
 https://jsfiddle.net/Simga/b6nhh3t9/1/ check
 
 https://segmentfault.com/a/1190000007575302 表单
+
+https://segmentfault.com/a/1190000005168085 单文件组件

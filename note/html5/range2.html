@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script>
+        function delRangeText(){
+
+            var div = document.getElementById('myDiv');
+
+            var textNode = div.firstChild;
+
+            var rangeObj = document.createRange();
+
+                rangeObj.setStart(textNode,1);
+
+                rangeObj.setEnd(textNode,4);
+
+                rangeObj.deleteContents();
+
+        }
+    </script>
+</head>
+<body>
+
+    <div id="myDiv" style="background: pink" contenteditable="true">
+        删除一段为啥文字
+    </div>
+
+    <input type="button" onclick="delRangeText()" value="删除文字">
+
+</body>

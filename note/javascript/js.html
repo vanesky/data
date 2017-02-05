@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+<script>
+
+    window.onload = function(){
+
+        /*********************dom&ajax***********************/
+
+        function insertAfter(Newnode,Targetnode){                   //向同级之后插入节点
+
+            Targetnode.parentNode.insertBefore(Newnode,Targetnode.nextSibling);
+
+        }
+
+        function myFunction(){                                      //clone
+
+            var itm=document.getElementById("myList2").lastChild;
+
+            var cln=itm.cloneNode(true);
+
+            document.getElementById("myList1").appendChild(cln);
+
+        }
+
+
+        function initscript(){                                      //动态添加js
+
+            var label = document.createElement('script');
+
+            label.type = 'text/javascript';
+
+            label.src = 'www.baidu.com';
+
+            var k1 = document.getElementsByTagName('script')[0];
+
+            k1.parentNode.insertBefore(label,k1.nextSibling)
+
+        }
+
+
+        function forinput(){                                        //原生选取页面input
+
+            var input = document.getElementsByTagName('input');
+
+            for(var i=0;i<nice.length;i++){
+
+                if(nice[i].getAttribute('type')=='checkbox'){
+
+                    nice[i].setAttribute('checked','checked')
+
+                }
+
+            }
+        }
+
+        (function(){                                                //文档兼容获取IE六怪异和兼容模式
+
+            var bodywidth = innerWidth;
+
+            var bodyheight = innerHeight;
+
+            if(typeof bodywidth!="number"){
+
+                if(document.compatMode=="CSS1compat"){
+
+                    bodywidth = document.documentElement.clientWidth;
+
+                    bodyheight = document.documentElement.clientHeight;
+
+                }else{
+
+                    bodywidth = document.body.clientWidth;
+
+                    bodyheight = document.body.clientHeight;
+
+                }
+
+            }
+
+            //alert(bodywidth)
+
+        })();
+
+
+        function sourceajax(){                          //ajax基本
+
+            document.body.onclick = function(){
+
+                var aj = new XMLHttpRequest();
+
+                aj.open('get','demo.php',true);
+
+                aj.send();
+
+                var land = document.getElementById('demo');
+
+                aj.onreadystatechange = function(){
+
+                    if(aj.readyState==4&&aj.status==200){
+
+                        var box = JSON.parse(aj.response);
+
+                        for(var i=0;i<box.length;i++){
+
+                            var nodeimg = document.createElement('img');
+
+                            nodeimg.src = box[i];
+
+                            land.appendChild(nodeimg);
+
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+
+
+        /*********************cookie***********************/
+
+        function setCookie(name,value,expday){
+
+            var expdate = new Date();
+
+            expdate.setTime(expdate.getTime()+expday*60*1000);
+
+            document.cookie = name+'='+encodeURIComponent(value)+';expires='+expdate.toUTCString()+";path=/";
+
+        }
+
+        function getCookie(c_name){
+
+            if(document.cookie.length>0){
+
+                var arrstr = document.cookie.split("; ");
+
+                for(var i = 0;i<arrstr.length;i++){
+
+                    var temp = arrstr[i].split("=");
+
+                    if(temp[0] == c_name) {return decodeURIComponent(temp[1])};
+                }
+
+            }
+
+        }
+
+        function setlocal(key,val){
+
+            var curTime = new Date().getTime();
+
+            localStorage.setItem(key,JSON.stringify({data:val,time:curTime}));
+
+        }
+
+        function getlocal(key,exp){
+
+            if(exp==''||typeof exp=='undefined'){console.log('请输入过期时间');return;}
+
+            var data = localStorage.getItem(key);
+
+            var dataObj = JSON.parse(data);
+
+            if(new Date().getTime - dataObj.time > exp){
+
+                console.log('expires')
+
+            }else{
+
+                console.log('data='+dataObj.data);
+
+            }
+
+        }
+
+        /*********************原生兼容***********************/
+
+
+        function Bomcompat(){                               //简单的判断浏览器              ！插件
+
+            var bom1 = navigator.userAgent;
+
+            var bom2 = navigator.appName;
+
+            var send;
+
+            if(bom1.match(/(Android|iPhone|iPad)/g)){
+
+                send = RegExp["$1"];
+
+            }else if(bom2.match(/Netscape/g)){
+
+                send = "Netscape";
+
+            }else if(bom1.match(/MSIE/g)){
+
+                send = bom1.match(/MSIE\s[^\;]+/)
+
+            }
+
+            return send;
+
+        }
+
+        //document.write(navigator.appName+"<br/>");
+        //document.write(navigator.appVersion+"<br/>");
+        //document.write(navigator.userAgent+"<br/>")
+
+
+        (function(idName){                                           //原生拖曳
+
+            var drag = document.getElementById(idName);
+
+            drag.onmousedown = function(e){
+
+                var _this = this;
+
+                var e = e||window.event;
+
+                var clix = e.clientX - _this.offsetLeft;
+
+                var cliy = e.clientY - _this.offsetTop;
+
+                document.onmousemove = function(e){
+
+                    var e = e||window.event;
+
+                    _this.style.left = e.clientX-clix+"px";
+
+                    _this.style.top = e.clientY-cliy+"px";
+
+                }
+
+                document.onmouseup = function(){
+
+                    this.onmousemove = null;
+
+                    this.onmouseup = null;
+
+                }
+
+            }
+
+        })("demo");
+
+
+        function loadImage(arr){                                  //图片预加载
+
+            var repeat = [];
+
+            var arr = (typeof arr!='object')? [arr] : arr;
+
+            for(var i=0;i<arr.length;i++){
+
+                repeat[i] = new Image();
+
+                repeat[i].src = arr[i];
+
+            }
+
+        }
+
+        //loadImage(["meimages/1.jpg","meimages/2.jpg"])
+
+
+        function getStyle(obj,attr){                    //非行间获取样式
+
+            if(obj.currentStyle){
+
+                return obj.currentStyle[attr]
+
+            }else{
+
+                return getComputedStyle(obj,false)[attr];
+
+            }
+
+        }
+
+        function addEvent(obj,type,fn){                 //跨浏览器添加事件
+
+            if(obj.addEventListener){
+
+                obj.addEventListener(type,fn,false);
+
+            }else if(obj.attachEvent){
+
+                obj.attachEvent('on'+type,fn);
+
+            }
+
+
+        }
+
+
+        function setTarget(evt){                     //跨浏览器获取目标事件
+
+            if(evt.target){
+
+                return evt.target;
+
+            }else if(window.event.srcElement){
+
+                return window.event.srcElement;
+
+            }
+
+        }
+
+
+        function removeEvent(obj,type,fn){                //跨浏览器移除事件
+
+            if(obj.removeEventListener){
+
+                obj.removeEventListener(type,fn,false)
+
+            }else if(obj.detachEvent){
+
+                obj.detachEvent('on'+type,fn);
+
+            }
+
+        }
+
+        function setButton(evt){                          //返回鼠标哪个键
+
+            var e = evt||window.event;
+
+            if(typeof evt=='object'){
+
+                return evt.button;
+
+            }else if(window.event){
+
+                switch(e.button){
+
+                    case 1:
+                        return 0;
+                    case 4:
+                        return 1;
+                    case 2:
+                        return 2;
+                    case 0:
+                        return 2;
+
+                }
+            }
+        }
+
+
+        document.onmousewheel = function(evt){                      //判断滚轮上下
+
+            var e = evt || window.event;
+
+            //alert(e.wheelDelta)
+
+        };
+
+        document.addEventListener("DOMMouseScroll",function(evt){
+
+            //alert(-40*evt.detail)
+
+        });
+
+
+
+        document.onclick = function(evt){                           //阻止事件冒泡
+
+            var e = evt||window.event;
+
+            alert("document")
+
+
+        };
+
+        document.body.onclick = function(evt){
+
+            var e = evt||window.event;
+
+            alert("body");
+
+            (typeof e.stopPropagation!='undefined')?e.stopPropagation():e.cancelBubble = true;
+
+        };
+
+
+        //var p3 = document.getElementsByTagName("body")[0];      //事件委托js
+
+        p3.onclick = function (evt){
+
+            var e = evt||window.event;
+
+            var tag = e.target|| e.srcElement;
+
+            alert(tag.tagName)
+
+        };
+
+        //var box = document.styleSheets[0];                //跨浏览器获取样式表属性
+
+        //var rules = box.cssRules||box.rules;              //styleFloat与cssFloat js获取浮动问题
+
+        //alert(rules[2].style.color);
+
+
+        function counter(){                                 //倒计时
+            var date = new Date();
+
+            var year = date.getFullYear();
+
+            var date2 = new Date(year,11,31,23,59,59);
+
+            var time = (date2-date)/1000;
+
+            var day = Math.floor(time/(24*60*60));//Math.floor 向下取整， Math.ceil() 向上取整
+
+            var hour = Math.floor(time%(24*60*60)/(60*60));
+
+            var minute = Math.floor(time%(24*60*60)%(60*60)/60);
+
+            var second = Math.floor(time%(24*60*60)%(60*60)%60);
+
+            var str = year+"年还剩"+day+"天"+hour+'时'+minute+"分"+second+"秒";
+
+            document.getElementById("input").value = str;
+        }
+        //window.setInterval("counter()",1000);
+
+
+
+        /*********************语法基本***********************/
+
+        window.color = "red";                       //call可实现在不同作用域下对象的冒充使用
+
+        var box={ color:"pink" };
+
+        function result(){ alert(this.color)}
+
+        //result.call(box);
+
+
+        function k1(a,b){ alert(a+b) }
+
+        function k2(c,d){ k1.apply(this,[c,d] ) }
+
+        //k2(4,3);
+
+
+
+        function Box(name,age){                     //原型和构造模式解决了传参和方法共享的组合继承
+
+            this.name = name;
+
+            this.age = age;
+
+        }
+
+        Box.prototype.arr = function(){
+
+            alert(this.name + this.age)
+
+        };
+
+
+        function Desk(name,age){
+
+            Box.call(this,name,age)
+
+        }
+
+        Desk.prototype = new Box();
+
+        var nice = new Desk("jack",18);
+
+        //nice.arr()
+
+
+
+        (function(){
+
+            var pattern=/like/ig;                   //匹配并返回数组
+
+            var str="you like me or like him";
+
+            //alert(str.match(pattern)[0]);
+
+
+            var pattern1=/like(.+)like/;            //静态替换
+
+            var str1="you likefdflike her";
+
+            document.write(str1.replace(pattern1,"<div style='background-color:red;width:50px;height:50px;'>$1</div>"));
+
+
+
+            var pattern2=/[a-z]+?/g;                //+?是惰性模式
+
+            var str2="abcd";
+
+            alert(str2.replace(pattern2,2));
+
+
+
+            var pattern3 = /a[0-9]+a/;              //惰性可用非字符
+
+            var str3 = "a888a a888a a888a";
+
+            document.write(str3.replace(pattern3,"like"));
+
+
+
+            var pattern4=/([a-z]+)\s([0-9]{4})/;    //使用分组返回 捕获型分组
+
+            var str4 = "google 2012";
+
+            alert(pattern4.exec(str4)[0]);
+            alert(pattern4.exec(str4)[1]);
+            alert(pattern4.exec(str4)[2]);
+
+
+
+            var pattern5=/goo(?=gle)/;              //前瞻性捕获，返回goo;
+
+            var str5 = "google";
+
+            alert(pattern5.exec(str5))
+
+
+
+            var pattern6 = /^\s+/;                  //可用捕获性来去首尾
+
+            var str6 = "    microsoft      ";
+
+            var result = str6.replace(pattern6,"");
+
+            var paattern7=/\s+$/;
+
+            alert(result.replace(paattern7,""));
+
+        })()
+
+
+
+
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

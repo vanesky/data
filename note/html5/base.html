@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+
+        html{font-size:11px;}
+
+    </style>
+</head>
+<body>
+
+    <p>车市的125</p>
+    <header>
+        <nav>dsfsdf</nav>
+    </header>
+
+    <div class="container">
+
+        <section>
+
+            主题块
+
+        </section>
+
+        <article>
+
+            <header>
+                文章头部
+            </header>
+
+            <section>
+                文章区块
+                <progress></progress>
+                <meter value="12" min="10" max="100" low="60"></meter>
+            </section>
+
+            <footer>
+                文章脚
+            </footer>
+
+        </article>
+
+        <aside>
+            文章侧边
+        </aside>
+
+
+
+    </div>
+
+    <footer>
+        <address>联系信息</address>
+    </footer>
+
+</body>
+
+    <script>
+
+        var box = [];
+
+        function setlocal(key,val){
+
+            var curTime = new Date().getTime();
+
+            localStorage.setItem(key,JSON.stringify({data:val,time:curTime}));
+
+        }
+
+
+        function getlocal(key,exp){
+
+            if(exp==''||typeof exp=='undefined'){console.log('请输入过期时间');return;}
+
+            var data = localStorage.getItem(key);
+
+            var dataObj = JSON.parse(data);
+
+            if(new Date().getTime - dataObj.time > exp){
+
+                console.log('expires')
+
+                console.log(box[i])
+
+            }else{
+
+                console.log('data='+dataObj.data);
+
+            }
+
+        }
+
+
+
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+

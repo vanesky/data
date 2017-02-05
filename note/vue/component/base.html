@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <my-1></my-1>
+        <my-2></my-2>
+    </div>
+
+    <script>
+
+        //创建全局组建(父级-子级通讯)
+        Vue.component('my-1', {
+
+            template: '<div>{{mes}}</div><my-child :child-mes="message"><h1>this is h1</h1></my-child>',
+
+            data:function(){
+
+                return {
+                    mes:'我是父级组件',
+                    message:'我是子组件'
+                }
+            },
+            components:{
+
+                'my-child': {
+
+                    props: ['childMes'],
+
+                    template: '<p>{{childMes}}</p>'
+                }
+
+            }
+
+        });
+
+
+        //创建局部组件异步加载*******************************
+        var a = {
+
+            template:'<div>{{message}}</div>',
+
+            data:function(){
+
+                return {
+                    message:'局部组件'
+                }
+            }
+        }
+
+        var vm = new Vue({
+
+            el: '#app',
+
+            components:{
+
+                'my-2':function(resolve,reject){
+
+                    setTimeout(function () {
+
+                        resolve(a)
+
+                    },2000)
+                }
+            }
+        })
+
+        //Vue实例中间发送消息
+        vm.$on('test', function (msg) {
+            console.log(msg)
+        })
+        vm.$emit('test', 'hi')
+
+    </script>
+</body>
+</html>

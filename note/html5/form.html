@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin-top:10px;}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <form id="one" method="get" action="http://www.baidu.com">
+            <!--正则-->
+            <input type="text" pattern="010">
+            用户名：
+            <input name="text" type="text">
+            <input type="hidden" name="hide" value="隐藏">
+            <!--上传-->
+            上传：<input type="file" accept="image/png">
+        </form>
+
+        <!--分组\label-->
+        <fieldset style="border:1px dashed gray;">
+            <legend>分组标签</legend>
+            <label for="a1">电子邮件：</label><input id="a1" name="email" type="email" form="one">
+            <input type="url" name="url" form="one">
+        </fieldset>
+
+        <!--列表-->
+        <select name="" id="">
+            <option value="1">one</option>
+            <option value="2">two</option>
+        </select>
+        <!--数据列表-->
+        <input type="text" list="abc"/>
+        <datalist id="abc">
+            <option value="1">one</option>
+            <option value="22">two</option>
+            <option value="33" label="three">
+        </datalist>
+
+        <!--数字/活动杆-->
+        <form action="">
+            <input type="number">
+            <input type="range">
+            <button>提交</button>
+        </form>
+
+
+        <!--日期时间/取色-->
+        <input type="date">
+        <input type="month">
+        <input type="time">
+        <input type="color">
+        <input type="image">
+        <input type="text">
+
+        <!--单选框复选框-->
+        第一<input type="checkbox" value="1">
+        第二<input type="checkbox" value="2">
+        <br/>
+        男：<input name="dna" type="radio" value="男">女：<input name="dna" type="radio" value="女">
+
+        <!--分组-->
+        <select name="" id="">
+            <optgroup label="Swedish Cars">
+                <option value ="volvo">Volvo</option>
+                <option value ="saab">Saab</option>
+            </optgroup>
+            <optgroup label="Swedish Cars">
+                <option value ="volvo">Volvo</option>
+                <option value ="saab">Saab</option>
+            </optgroup>
+        </select>
+
+        <!--输入记事本-->
+        <textarea name="" id="" cols="30" rows="10" placeholder="啦啦啦啦"></textarea>
+
+
+
+        <!--重置提交路径-->
+        <br/><br/><br/>
+        <button form="one" type="reset">重置</button>
+        <button form="one" formaction="">提交</button>
+        
+
+    </div>
+</body>
+
+    <script>
+
+
+        onload = function(){
+
+            window.onclick = function(){
+
+                var str = document.getElementsByTagName('input')[0].value;
+
+                var str1 = document.getElementsByName('dna')[0].value
+
+                //console.log(str);
+
+                console.log(str1);
+
+            }
+
+        }
+
+        function alert(){
+
+            console.log('sss')
+
+        }
+
+        //alert();
+
+    </script>
+</html>

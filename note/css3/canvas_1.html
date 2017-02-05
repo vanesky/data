@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .main{
+            position: relative;
+            margin:auto;
+            width:500px;
+        }
+        .a{
+            width:500px;
+            height:500px;
+            display: block;
+            margin:auto;
+            -webkit-filter:blur(5px);
+            position:absolute;
+            left:0px;
+            top:0px;
+        }
+        #canvas{
+            display: block;
+            margin:0 auto;
+            position: absolute;
+            left:0px;
+            top:0px;
+            z-index: 3;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main">
+
+        <canvas id="canvas"></canvas>
+
+        <img class="a" src="img/justin.jpg" alt="">
+
+    </div>
+
+    <script>
+
+        var canvas = document.getElementById('canvas');
+
+        var context = canvas.getContext('2d');
+
+        var circle = {x:200,y:200,r:40};
+
+        canvas.height = 500;
+
+        canvas.width = 500;
+
+        var image = new Image();
+
+            image.src = 'img/justin.jpg';
+
+            image.onload = function(){
+
+                initCanvas();
+
+            }
+
+        function initCanvas(){
+
+            context.clearRect(0,0,canvas.width,canvas.height);
+
+            context.beginPath();
+
+            context.arc(circle.x,circle.y,circle.r,0,Math.PI*2,false);
+
+            context.clip();
+
+            context.drawImage(image,0,0,500,500);
+
+
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

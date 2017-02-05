@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src=""></script>
+</head>
+<script type="text/javascript">
+
+
+		var img = new Image();
+		
+			img.src = "img/rot1.jpg";
+
+			img.id = 'b';
+
+		var snow_time,snow = {sx:[],sy:[],sr:[],sv:[],sl:[],num:15,scale:7,col:'#ccc'}; // 数量 大小 颜色;
+
+		function snowInit(obj,snow){
+
+			var o_w = obj.width(),o_h = obj.width()/4;
+
+			if(bom.compat()=='MSIE 8.0'){return};
+
+			obj.css('height',o_h+'px');
+
+			var canvas = document.getElementById('canvas');
+
+			var context = canvas.getContext('2d');
+
+			canvas.width = o_w;
+
+			canvas.height = o_h;
+
+			snow_time = setInterval(function(){drawSnow(context,snow,o_w,o_h)},50);
+
+		}
+
+		function drawSnow(context,snow,w,h){
+
+			context.clearRect(0,0,w,h)
+
+			context.shadowColor = '#333';
+
+			context.shadowBlur = 40;
+
+			for(var i=0;i<snow.num;i++){                   //随机大小
+
+				if(typeof snow.sr[i] == 'undefined'){
+
+					snow.sr[i] = Math.ceil(Math.random()*10+snow.scale);
+
+				}
+
+				if(typeof snow.sx[i] == 'undefined'||snow.sx[i] == ''){         //画布宽度随机显示
+
+					snow.sx[i] = Math.random()*(w-100);
+
+				}
+
+				if(typeof snow.sy[i] == 'undefined'||snow.sy[i] == ''){         //随机高度
+
+					snow.sy[i] = Math.random();
+
+				};
+
+				if(typeof snow.sv[i] == 'undefined'||snow.sv[i] == ''){          //随机高度速度
+
+					snow.sv[i] = Math.random()*2+0.8;
+
+				}
+
+				if(typeof snow.sl[i] == 'undefined'||snow.sl[i] == ''){               //左右随机方向
+
+					snow.sl[i] = Math.random();
+
+				}
+
+				/*------绘制开始------*/
+
+				context.beginPath();
+
+				context.arc(snow.sx[i]+snow.sl[i],snow.sy[i]-(snow.scale+1),snow.sr[i],0,2*Math.PI);
+
+				//context.drawImage(img,snow.sx[i]+snow.sl[i],snow.sy[i]-(snow.scale+1),snow.sr[i],snow.sr[i])
+
+				context.fillStyle = snow.col;
+
+				context.fill();
+
+				snow.sy[i] = snow.sy[i] + snow.sv[i];
+
+				snow.sl[i] = snow.sl[i] > 0.4 ? snow.sl[i]+0.5 : snow.sl[i]-0.5;
+
+				if(snow.sy[i]>(h+(snow.scale+10)*2)){
+
+					snow.sx[i] = snow.sy[i] = snow.sv[i] = snow.sl[i] = '';
+				}
+
+			}
+
+		}
+
+		//snowInit(document.getElementById('box'),snow);
+
+
+
+</script>
+<body>
+
+	<canvas id="canvas" width="1920" height="400"; style="border:1px solid black;margin:0 auto;display:block;"></canvas>
+	<div id="box"></div>
+
+</body>
+</html>

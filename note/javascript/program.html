@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+
+    <script>
+
+
+        (function(){
+            //4.1.4==================================
+
+            function setName(obj) {
+                obj.name = "Nicholas";
+                obj = new Object();
+                obj.name = "Greg";
+            }
+            var person = new Object();
+            setName(person);
+            //alert(person.name); //"Nicholas"
+
+
+            //4.1.5===================================
+            //确定一个值是哪种基本类型可以使用typeof 操作符，而确定一个值是哪种引用类型可以使用instanceof 操作符。
+            //Array.isArray([])
+            var a = new Object()
+            alert(a instanceof Array)
+
+        });
+
+
+        (function(){
+            //5.0.0 对象是某个引用类型的实例===============================
+
+            var colors = ["green", "blue"];
+
+            removed = colors.splice(1, 0, "yellow", "orange");
+
+            //5.2.8 Array迭代方法====================================
+
+            //every()：对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true。
+            //filter()：对数组中的每一项运行给定函数，返回该函数会返回true 的项组成的数组。
+            //forEach()：对数组中的每一项运行给定函数。这个方法没有返回值。
+            //map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+            //some()：对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true。
+
+            //5.2.9 归并====================================
+            //前一个值、当前值、项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项
+            /*var values = [1,2,3,4,5];
+            var sum = values.reduce(function(prev, cur, index, array){
+                return prev + cur;
+            });*/
+
+        });
+
+        (function(){
+
+            //5.5 Function==================================
+            /*function sum(num1, num2){
+                return num1 + num2;
+            }
+
+            alert(sum(10,10)); //20
+
+            var anotherSum = sum;
+
+            alert(anotherSum(10,10)); //20
+
+            sum = null;
+
+            alert(anotherSum(10,10));*/ //20
+
+        });
+
+        (function(){
+
+            function createPerson(name, age, job){
+                var o = new Object();
+                o.name = name;
+                o.age = age;
+                o.job = job;
+                o.sayName = function(){
+                    alert(this.name);
+                };
+                return o;
+            }
+            var person1 = createPerson("Nicholas", 29, "Software Engineer");
+
+            console.log(person1.constructor)
+
+
+        })()
+
+
+    </script>
+
+</body>
+</html>

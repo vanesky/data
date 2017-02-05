@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+
+    window.onload = function(){
+
+
+        /********************基础算法*********************/
+
+        function sortpopo(arr){                   //冒泡排序
+
+            var a;
+
+            for(var i=0;i<arr.length;i++){
+
+                for(var j=0;j<arr.length-i;j++){
+
+                    if(arr[j]>arr[j+1]){
+
+                        a = arr[j];
+
+                        arr[j] = arr[j+1];
+
+                        arr[j+1] = a;
+
+                    }
+                }
+            }
+            return arr;
+        }
+
+
+        function kuai(arr){                                //快速排序
+
+            if(arr.length<=1){return arr;}
+
+            var arrindex = Math.floor(arr.length/2);
+
+            var ki = arr.splice(arrindex,1)[0];
+
+            var left = [];
+
+            var right = [];
+
+            for(var i=0;i<arr.length;i++){
+
+                if(arr[i]<ki){
+
+                    left.push(arr[i]);
+
+                }else{
+
+                    right.push(arr[i]);
+
+                }
+            }
+            return kuai(left).concat(ki,kuai(right));
+        }
+
+
+
+        function arrRepeat(arr){                             //数组去重
+
+            var arrtemp = [],
+
+                arrobj = {};
+
+            for(var i=0;i<arr.length;i++){
+
+                if(!arrobj[arr[i]]){
+
+                    arrtemp.push(arr[i]);
+
+                    arrobj[arr[i]] = 1;
+                }
+            }
+            return arrtemp;
+        }
+
+
+        //var box = {name:'lisa',age:18}
+
+        //var nice = [1,2];
+
+        function copy(arr){                                         //深度clone
+
+            var save,temp = arr.constructor === Array ? []:{};
+
+            if(typeof arr !=='object'){
+
+                return;
+
+            }else if(window.JSON){
+
+                save = JSON.stringify(arr);
+
+                temp = JSON.parse(save);
+
+            }else{
+
+                for(var i in arr){
+
+                    temp[i] = typeof arr[i] !=='object'? arr[i] : copy(arr[i]);
+
+                }
+
+            }
+        }
+
+
+        function char(a){                          //编写一个方法 求一个字符串的字节长度
+
+            if(arguments.length==0){return}
+
+            if(a==''){return}
+
+            var box = 0;
+
+            for(var i=0;i<a.length;i++){
+
+                if(a.charCodeAt(a[i])>255){
+
+                    box = box+2;
+
+                }else{box++;}
+
+            }
+            return box;
+        }
+
+
+        (function(){                                //求取最多出现的字符
+
+            var str ='qsdfsdfjinnttttttttmekkkkkmfww88888888';
+
+            var box = {};
+
+            var shou2 = 0;
+
+            var bi = '';
+
+            for(var i=0;i<str.length;i++){
+
+                if(!box[str[i]]){
+
+                    box[str[i]]=1;
+
+                }else{
+
+                    box[str[i]] = box[str[i]]+1;
+
+                }
+
+            }
+
+            for(var i in box){
+
+                if(box[i]>shou2){
+
+                    shou2 = box[i];
+
+                    bi = i;
+
+                }
+
+            }
+
+            //alert(bi)
+
+        })();
+
+
+        function strsplice(){                       //截取值
+
+            var url = "http://witmax.cn/index.php?key0=0&key1=1&key2=2";
+
+            var n1 = url.split('?')[1].split('&');
+
+            var kiss = {};
+
+            //alert(n1)
+
+            for(var i=0;i<n1.length;i++){
+
+                kiss[n1[i].split('=')[0]] = n1[i].split('=')[1]
+
+            }
+
+            for(var i in kiss){
+
+                alert(kiss[i])
+
+            }
+
+        }
+
+
+
+
+
+
+}
+
+</script>
+
+</body>
+</html>

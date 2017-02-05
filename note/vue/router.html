@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <router-link to="/h2">Go to h2</router-link>
+            <router-link to="/h3">Go to h3</router-link>
+        </p>
+
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const h2 = {
+
+            template:'<h2>{{message}}</h2>',
+
+            data:function(){
+
+                return {
+                    message:'h2组件'
+                }
+            }
+
+        };
+
+        const h3 = {
+
+            template:'<h3>{{message}}</h3>',
+
+            data:function(){
+
+                return {
+                    message:'h3组件'
+                }
+            }
+        };
+
+        const router = new VueRouter({
+
+            routes:[
+                {
+                    path: '/h2',
+
+                    component: h2
+
+                },
+                {
+                    path: '/h3',
+
+                    component: h3
+                }
+            ]
+
+        });
+
+        const app = new Vue({
+
+            el:'#app',
+
+            router:router,
+
+            methods:{
+
+            },
+
+            created:function(){
+                router.push('/h2');
+            }
+
+        })
+
+
+
+    </script>
+</body>
+</html>

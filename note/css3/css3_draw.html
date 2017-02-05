@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+
+        .main{
+            width:1000px;
+            margin:0 auto;
+        }
+
+        div{
+            margin-bottom: 50px;
+        }
+
+        .square{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        /*border-top-left-radius:*/
+
+        .square_tuo{
+            width: 200px;
+            height: 100px;
+            background: red;
+            border-radius: 100px / 50px;
+        }
+
+
+        .triangle-down {
+            width:0px;
+            height:0px;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 100px solid pink;
+        }
+
+        .div_button{
+            width:200px;
+            height:50px;
+            background-color:#1b6d85;
+        }
+        .div_button:after{
+            content: '';
+            top:50%;
+            width:0px;
+            height:0px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid pink;
+            z-index: 2;
+            position: relative;
+        }
+
+
+        .left-down {
+            width:0px;
+            height:0px;
+            border-right: 50px solid transparent;
+            border-top: 100px solid pink;
+        }
+
+        .skew{
+            width: 150px;
+            height: 100px;
+            margin-left:20px;
+            -webkit-transform: skew(20deg);
+            background: red;
+        }
+
+
+        .ti{
+            border-bottom: 50px solid red;
+            border-left: 50px solid blue;
+            border-right: 50px solid pink;
+            height: 0;
+            width: 100px;
+        }
+
+
+        .star-six {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid red;
+            position: relative;
+        }
+        .star-six:after {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 100px solid red;
+            position: absolute;
+            content: "";
+            left: -50px;
+            top:25px;
+        }
+
+        .star_five {
+            top: 40px;
+            position: relative;
+            width: 54px;
+            border-width: 50px 18px 0px;
+            border-style: solid;
+            border-color: blue transparent;
+        }
+        .star_five:before {
+            content: "";
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -85px;
+            left: -18px;
+            border-width: 0 45px 35px;
+            border-style: solid;
+            border-color: transparent transparent red;
+        }
+
+
+        .heart{
+            width:160px;
+            height:200px;
+            position:relative;
+            background-color:red;
+        }
+        .heart:before{
+            content:"";
+            width:80px;
+            height:120px;
+            background: pink;
+            position:absolute;
+            border-top-left-radius:40px;
+            border-top-right-radius:40px;
+            transform:rotate(-45deg);
+        }
+
+        .heart:after{
+            content:"";
+            width:80px;
+            height:120px;
+            background:blue;
+            position:absolute;
+            border-top-left-radius:40px;
+            border-top-right-radius:40px;
+            transform:rotate(45deg);
+            left:29px;
+        }
+
+        .yin-yang {
+            width: 96px;
+            height: 48px;
+            background: #eee;
+            border-color: red;
+            border-style: solid;
+            border-width: 2px 2px 50px 2px;
+            border-radius: 100%;
+            position: relative;
+        }
+        .yin-yang:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: #eee;
+            border: 18px solid red;
+
+            width: 12px;
+            height: 12px;
+        }
+        .yin-yang:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: red;
+            border: 18px solid #eee;
+            border-radius:100%;
+            width: 12px;
+            height: 12px;
+        }
+
+        .tail-lefttop{
+            border: 0 solid transparent;
+            border-top:30px solid #669;
+            border-radius:100px 0 0 0;
+            width:100px;
+            height:100px;
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+
+
+    <div class="square"></div>
+
+    <div class="square_tuo"></div>
+
+    <div class="triangle-down"></div>
+
+    <div class="div_button"></div>             <!--按钮箭头-->
+
+    <div class="left-down"></div>
+
+    <div class="skew"></div>
+
+    <div class="ti"></div>
+
+    <div class="star-six"></div>
+
+    <div class="star_five"></div>
+
+    <div class="heart"></div>
+
+    <div class="yin-yang"></div>
+
+    <div class="tail-lefttop"></div>
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #canvas{
+            display: block;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+<script>
+
+
+    var canw = 800;
+
+    var canh = 800;
+
+    var startTime = 0;
+
+    var lastWidth = -1;
+
+    var canvas = document.getElementById('canvas');
+
+    var context = canvas.getContext('2d');
+
+    canvas.height = canvas.width = 800;
+
+    function drawBg(){
+
+        context.beginPath();
+
+        context.moveTo(3,3);
+
+        context.lineTo(canw-3,3);
+
+        context.lineTo(canw-3,canh-3);
+
+        context.lineTo(3,canh-3);
+
+        context.closePath();
+
+        context.lineWidth = 6;
+
+        context.stroke();
+
+            //内部
+
+        context.beginPath();
+
+        context.moveTo(0,0);
+
+        context.lineTo(canw,canh);
+
+        context.moveTo(canw,0);
+
+        context.lineTo(0,canh);
+
+        context.moveTo(canw/2,0);
+
+        context.lineTo(canw/2,canh);
+
+        context.moveTo(0,canw/2);
+
+        context.lineTo(canw,canh/2);
+
+        context.closePath();
+
+        context.lineWidth = 1;
+
+        context.stroke();
+
+    }
+
+    drawBg();
+
+    var isDown = false;
+
+    var lastxy = {x:0,y:0};
+
+    canvas.onmousedown = function(e){
+
+        isDown = true;
+
+        lastxy = getclient(e.clientX,e.clientY);
+
+        startTime = new Date().getTime();
+
+    };
+
+
+    canvas.onmousemove = function(e){
+
+        if(isDown){
+
+            var xying = getclient(e.clientX,e.clientY);
+
+
+            var lastTime = new Date().getTime();
+
+            var s = tance(xying,lastxy);
+
+            var t = lastTime - startTime;
+
+            var lineIng = creatLine(t,s);
+
+
+            context.beginPath();
+
+            context.moveTo(lastxy.x,lastxy.y);
+
+            context.lineTo(xying.x,xying.y);
+
+            context.lineWidth = lineIng;
+
+            context.lineCap = 'round';
+
+            context.join = 'round';
+
+            context.strokeStyle = 'pink';
+
+            context.stroke();
+
+
+            lastxy.x = xying.x;
+
+            lastxy.y = xying.y;
+
+            startTime = lastTime;
+
+            lastWidth = lineIng;
+
+
+        }
+
+    }
+
+    function creatLine(t,s){
+
+        var v = s / t;
+
+        var vt = 0;
+
+        if(v < 0.1){
+
+            vt = 30;
+
+        }else if(v >= 10 ){
+
+            vt = 1;
+
+        }else {
+
+            vt = 30 - (v-0.1)/(10-0.1)*(30-1);
+
+        }
+
+        if(lastWidth == -1){return vt}else{
+
+            return lastWidth*2/3 + vt/3;
+
+        }
+
+    }
+
+    function getclient(x,y){
+
+        var boxclient = canvas.getBoundingClientRect();
+
+        return {
+
+            x:Math.round(x-boxclient.left),
+
+            y:Math.round(y-boxclient.top)
+
+        }
+
+    }
+
+    function tance(loc1,loc2){
+
+        return Math.sqrt((loc1.x-loc2.x)*(loc1.x-loc2.x)+(loc1.y-loc2.y)*(loc1.y-loc2.y));
+
+    }
+
+
+    canvas.onmouseup = function(e){
+
+        isDown = false;
+
+    }
+
+    canvas.onmouseout = function(e){
+
+        isDown = false;
+
+    }
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.indexedDB = window.indexedDB
+
+        function creatData(){
+
+            var dbName = 'indexdbOne';
+
+            var dbVersion = 5;
+
+            var idb;
+
+            var dbConnect = indexedDB.open(dbName,dbVersion);
+
+                dbConnect.onsuccess = function(e){
+
+                    idb = e.target.result
+
+                    alert('yes')
+
+                }
+
+                dbConnect.onerror = function(){
+
+                    alert('失败的连接')
+
+                }
+
+                dbConnect.onupgradeneeded = function(e){
+
+                    idb = e.target.result;
+
+                    var oldv = e.oldVersion;
+
+                    var newv = e.newVersion;
+
+                    //alert(oldv + '  '+ newv)
+
+                    //数据库对象
+                    var name = 'user01';
+
+                    var optionalParameters = {
+
+                        keyPath:'userid',
+
+                        autoIncrement:false
+
+                    }
+
+                    var store = idb.createObjectStore(name,optionalParameters);
+
+                    alert('hahahah')
+
+                }
+
+        }
+
+
+
+    </script>
+</head>
+<body>
+<input type="button" onclick="creatData()" value="创建数据库">
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        //单例模式
+        ;(function(){
+
+            var xiaowang = (function(){
+
+                var xiaowangjia = function(message){
+
+                    this.menling = message;
+                }
+                var men = {};
+
+                return  {
+
+                    sendMessage : function(message) {
+
+                        /*if (!men) {
+
+                            return new xiaowangjia(message)
+
+                        } else {
+
+                            return men;
+                        }*/
+
+                        men.menling = message;
+
+                        return men;
+
+                    }
+                };
+
+            })()
+
+            var xiaoli = {
+
+                callxiaowang:function(mes){
+
+                    var _xw = xiaowang.sendMessage(mes)
+
+                    console.log(_xw)
+
+                }
+            }
+
+            xiaoli.callxiaowang('hahaha')
+
+        })
+
+        //构造模式
+        ;(function(){
+
+            function zaomen(){
+
+                if(!(this instanceof zaomen)){
+
+                    return new zaomen();
+
+                }
+
+                this.suo = '普通';
+
+                this.huawen = '普通';
+
+                this.create = function(){
+
+                    return '锁子：' + this.suo + '  ' + '花纹：' + this.huawen
+
+                }
+
+            }
+
+            var xiaozhang = zaomen();
+
+            alert(xiaozhang.create())
+
+        })
+
+        //代理模式
+        ;(function(){
+
+            function maijia(argument){
+
+                this.name = '小明'
+
+            }
+            function zhongjie(){
+
+            }
+            zhongjie.prototype.maifang = function(){
+
+                new fangdong(new maijia()).maifang('20万')
+
+            }
+
+            function fangdong(obj){
+
+                this.maijia_name = obj.name;
+
+                this.maifang = function (money){
+
+                    alert('收到了来自' + this.maijia_name + ' ' +money )
+
+                }
+
+            }
+
+            (new zhongjie).maifang()
+
+        })
+        //建造者模式
+        ;(function(){
+
+            function Fangzi(){
+
+                this.keting = '';
+
+                this.chufang  = '';
+
+                this.woshi = '';
+
+            }
+
+            function Baogongtou(){
+
+                this.gaifangzi = function(gongren){
+
+                    gongren.jian_woshi();
+
+                    gongren.jian_keting();
+
+                    gongren.jian_chufang()
+
+                }
+
+            }
+
+            function Gongren(){
+
+                this.jian_woshi = function(){
+
+                    alert('卧室')
+
+                }
+                this.jian_keting = function(){
+
+                    alert('客厅')
+                }
+                this.jian_chufang = function(){
+
+                    alert('厨房')
+                }
+                this.jiaogong = function(){
+
+                    var fang =  new Fangzi();
+
+                        fang.keting = 'ok';
+
+                        fang.woshi = 'ok';
+
+                        fang.chufang = 'ok';
+
+                    return fang;
+                }
+            }
+
+            var gongren = new Gongren();
+
+            var baogongtou = new Baogongtou()
+
+                baogongtou.gaifangzi(gongren);
+
+            var myfangzi = gongren.jiaogong()
+
+                console.log(myfangzi)
+
+        })
+
+        //命令模式
+        ;(function(){
+
+            var lian = {};
+
+                lian.pao = function(pao_num){
+
+                    alert(pao_num + '炮')
+
+                }
+
+                lian.bubing = function(bubing_num){
+
+                    alert(bubing_num + '步兵')
+                }
+
+                lian.lianzhang = function(obj){
+
+                    lian[obj.type](obj.num)
+
+                }
+
+                lian.lianzhang({
+
+                    type:'pao',
+
+                    num:1000
+
+                })
+
+        });
+
+        //观察者模式
+        /*;(function(){
+
+            var o = $({});
+
+            $.watchs = function(){
+
+                o.on.apply(o,arguments)
+
+            }
+
+            $.fabu = function(){
+
+                o.trigger.apply(o,arguments)
+
+            }
+
+            $.qingchu = function(){
+
+                o.off.apply(o,arguments);
+            }
+
+
+            $.watchs('/test/ls',function(e,a,b,c){
+
+                alert(a + '' +b+'' + c)
+            })
+
+            $.fabu('/test/ls',[1,2,3])
+
+        })*/
+
+        //适配器模式
+        (function(){
+
+            function pp(){
+
+                this.test = function(){
+
+                    alert('test')
+                }
+            }
+            pp.prototype.gogo = function(){
+
+                alert('gogo')
+            }
+
+            function shipeiqi(){
+
+                var s = new pp();
+
+                var aa = {
+
+                    test:function(){
+                        s.test()
+                    },
+
+                    go:function(){
+
+                        s.gogo()
+                    }
+
+                }
+                return aa;
+            }
+
+            var aa = shipeiqi();
+
+        });
+
+        //迭代器模式
+        (function(){
+
+            var arr = [1,2,3]
+
+            var die = (function(){
+
+                var length = arr.length;
+
+                var index = 0;
+
+                return {
+
+                    hasNext:function(){
+
+                        return index < length;
+
+                    },
+
+                    next:function(){
+
+                        var data = arr[index];
+
+                        index = index + 1;
+
+                        return data;
+
+                    }
+
+                }
+
+            })();
+
+            while(die.hasNext()){
+
+                console.log(die.next())
+
+            }
+
+        });
+
+        //中介者模式
+        (function(){
+
+            function feiji(name){
+
+                this.name = name
+
+            }
+
+            feiji.prototype.send = function(msg,to){
+
+                console.log(this.name + '发送了信息');
+
+                tatai.sends(msg,to);
+
+            }
+            feiji.prototype.jieshou = function(msg){
+
+                console.log(this.name + '接收到' + msg)
+
+            }
+
+            var tatai = {
+
+                all:{},
+
+                zhuce:function(obj){
+
+                    this.all[obj.name] = obj;
+                },
+
+                sends:function(msg,to){
+
+                    this.all[to.name].jieshou(msg);
+                }
+
+            }
+
+            var feiji1 = new feiji('feiji1');
+
+            var feiji2 = new feiji('feiji2');
+
+            tatai.zhuce(feiji1);
+
+            tatai.zhuce(feiji2);
+
+            feiji1.send('我是第一',feiji2)
+
+
+        });
+
+        //模板模式
+        (function(){
+
+            function liucheng(){
+
+            }
+
+            liucheng.prototype.start = function(){
+
+                console.log('游戏开始')
+            }
+            liucheng.prototype.loading = function(){
+
+                console.log('游戏加载')
+            }
+            liucheng.prototype.out = function(){
+
+                console.log('游戏结束')
+            }
+
+            function xiaoji(){
+
+            }
+            xiaoji.prototype = new liucheng()
+
+            xiaoji.start();
+
+        });
+
+        //装饰着模式
+        (function(){
+
+            var fangzi = function(){}
+
+            fangzi.prototype.kongjian = function(){
+
+                console.log('我是空房子')
+            }
+
+            var zhuangshi = function(fangzi){
+
+                this.zfz = fangzi
+
+            }
+
+            zhuangshi.prototype.kongjian = function(){
+
+                this.zfz.kongjian();
+
+                console.log('我添加了一个家具')
+            }
+
+            var _fangzi = new fangzi();
+
+            var _zhuangshi = new zhuangshi(_fangzi);
+
+                _zhuangshi.kongjian();
+
+
+        })()
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin-top:10px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+
+        <input id="file" type="file" multiple>
+        <br/><br/>
+        文件大小：
+        <input id="size" type="text"><br/>
+        文件类型：
+        <input id="type" type="text">
+
+        <!--
+            readAsBinaryString
+            readAsText
+            readArrayBuffer
+            abort
+            readAsDataURL
+
+            onabort
+            onerror
+            onloadstart
+            onprogress
+            onload
+
+        -->
+
+        <p>
+            <input id="f1" type="file">
+            <input type="button" value="读取图像" onclick="fileLoad()"/>
+            <br/>
+            <input type="button" value="读取二进制" onclick=""/>
+            <br/>
+            <input type="button" value="读取文本文件" onclick=""/>
+        </p>
+
+        <div id="result">
+
+        </div>
+
+    </div>
+</body>
+
+<script>
+    //window.onload = function(){
+
+        function fileUpload(){
+
+            var file;
+
+            file = document.getElementById('file').files[0];
+
+            document.getElementById('size').value = file.size;
+
+            document.getElementById('type').value = file.type;
+
+        }
+
+        //上传显示
+
+        //var bitch = document.getElementById('result');
+
+
+        function fileLoad(){
+
+            var file = document.getElementById('f1').files[0];
+
+            var reader = new FileReader();
+
+                reader.readAsDataURL(file);
+
+                reader.onload = function(){
+
+                    var resultImg = document.getElementById('result');
+
+                        resultImg.innerHTML = "<img src='"+this.result+"'>";
+
+                }
+
+        }
+
+        window.onclick = function(){
+
+            //fileUpload();
+
+        }
+
+
+
+    //}
+</script>
+</html>

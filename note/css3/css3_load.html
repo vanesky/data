@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+
+        .main{
+            width:500px;
+            height:500px;
+            margin:0 auto;
+            background-color:indianred;
+            padding:50px;
+        }
+
+        .main ul{
+            height:100px;
+        }
+
+        div{
+            margin-bottom:60px;
+        }
+
+
+
+        @keyframes ball-pulse-sync {
+            33% {
+                -webkit-transform: translateY(10px);
+                transform: translateY(10px); }
+
+            66% {
+                -webkit-transform: translateY(-10px);
+                transform: translateY(-10px); }
+
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0); }
+        }
+
+
+        .demo1 {
+            background-color: #fff;
+            width: 15px;
+            height: 15px;
+            border-radius:100%;
+            margin:0px;
+            animation-fill-mode: both;
+            display: inline-block;
+        }
+
+        .a1 > div:nth-child(0) {
+
+            animation: ball-pulse-sync 0.6s 0s infinite ease-in-out; }
+        .a1  > div:nth-child(1) {
+
+            animation: ball-pulse-sync 0.6s 0.05s infinite ease-in-out; }
+        .a1  > div:nth-child(2) {
+
+            animation: ball-pulse-sync 0.6s 0.1s infinite ease-in-out; }
+        .a1  > div:nth-child(3) {
+            animation: ball-pulse-sync 0.6s 0.15s infinite ease-in-out; }
+
+/*--------------------------------------------------------------*/
+
+        .demo2 {
+            background-color: #fff;
+            width: 15px;
+            height:15px;
+            border-radius:100%;
+            margin:0px;
+            animation-fill-mode: both;
+            float: left;
+        }
+
+        @keyframes demo2 {
+            33% {
+                transform: translateY(-25px) translateX(15px);
+            }
+
+            66% {
+                transform: translateY(0px) translateX(30px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+        @keyframes demo2-a{
+            33% {
+                transform: translateY(25px) translateX(15px);
+            }
+
+            66% {
+                transform: translateY(25px) translateX(-15px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+        @keyframes demo2-b{
+            33% {
+                transform: translateY(0px) translateX(-30px);
+            }
+
+            66% {
+                transform: translateY(-25px) translateX(-15px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        .a2  > div:nth-child(1) {
+
+            animation: demo2 2s infinite ease-in-out;
+        }
+        .a2  > div:nth-child(2) {
+            margin-top:-25px;
+            animation: demo2-a 2s infinite ease-in-out;
+        }
+        .a2  > div:nth-child(3) {
+            margin-left:15px;
+            animation: demo2-b 2s infinite ease-in-out;
+        }
+
+        /*--------------------------------------------------------------*/
+
+        .a3{
+            position: relative;
+            top:50px;
+        }
+
+        .demo3 {
+            background-color: #fff;
+            width: 15px;
+            height:15px;
+            border-radius:100%;
+            margin-left:2px;
+            animation-fill-mode: both;
+            float: left;
+        }
+
+
+        @keyframes demo3 {
+            50% {
+                transform:scale(0.5)
+            }
+
+            100% {
+                transform:scale(1)
+            }
+        }
+
+        .a3  > div:nth-child(1) {
+
+            animation: demo3 1s infinite ease-in-out;
+        }
+        .a3  > div:nth-child(2) {
+
+            animation: demo3 1s 0.2s infinite ease-in-out;
+        }
+        .a3  > div:nth-child(3) {
+
+            animation: demo3 1s 0.4s infinite ease-in-out;
+        }
+
+        /*--------------------------------------------------------------*/
+
+        .a4{
+            position:relative;
+            top:100px;
+        }
+
+        .demo4 {
+            background-color: #fff;
+            width: 3px;
+            height:20px;
+            margin-left:-5px;
+            animation-fill-mode: both;
+            border-radius:1px;
+            display: inline-block;
+        }
+
+
+        @keyframes demo4 {
+            50% {
+                transform:scaleY(0.5)
+            }
+
+            100% {
+                transform:scaleY(1)
+            }
+        }
+
+        .a4  > div:nth-child(1) {
+
+            animation: demo4 1s infinite ease-in-out;
+        }
+        .a4  > div:nth-child(2) {
+
+            animation: demo4 1s 0.4s infinite ease-in-out;
+        }
+        .a4  > div:nth-child(3) {
+
+            animation: demo4 1s 0.2s infinite ease-in-out;
+        }
+        .a4  > div:nth-child(4) {
+
+            animation: demo4 1s 0.6s infinite ease-in-out;
+        }
+
+        /*--------------------------------------------------------------*/
+
+
+        .a5{
+            position:relative;
+        }
+
+        @keyframes demo5 {
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+        .demo5{
+            position:absolute;
+            background-color: #fff;
+            width: 4px;
+            height:12px;
+            margin-left:-5px;
+            animation-fill-mode: both;
+            border-radius:2px;
+        }
+
+        .a5  > div:nth-child(1) {
+            animation: demo5 0.9s 0.1s infinite ease-in-out;
+        }
+        .a5  > div:nth-child(2) {
+            transform:rotate(45deg);
+            left:12px;
+            top:5px;
+            animation: demo5 0.9s 0.2s infinite ease-in-out;
+        }
+        .a5  > div:nth-child(3) {
+            transform:rotate(90deg);
+            left:15px;
+            top:15px;
+            animation: demo5 0.9s 0.3s infinite ease-in-out;
+        }
+        .a5  > div:nth-child(4) {
+            transform:rotate(135deg);
+            left:12px;
+            top:26px;
+            animation: demo5 0.9s 0.4s infinite ease-in-out;
+        }
+
+        .a5  > div:nth-child(5) {
+            top:31px;
+            animation: demo5 0.9s 0.5s infinite ease-in-out ;
+        }
+        .a5  > div:nth-child(6) {
+            transform:rotate(-45deg);
+            left:-12px;
+            top:5px;
+            animation: demo5 0.9s 0.8s infinite ease-in-out ;
+        }
+        .a5  > div:nth-child(7) {
+            transform:rotate(-90deg);
+            left:-15px;
+            top:15px;
+            animation: demo5 0.9s 0.7s infinite ease-in-out ;
+        }
+        .a5  > div:nth-child(8) {
+            transform:rotate(-135deg);
+            left:-12px;
+            top:26px;
+            animation: demo5 0.9s 0.6s infinite ease-in-out ;
+        }
+
+
+        /*----------------------------------------------------------- alternate---*/
+        .a6{
+            position:relative;
+        }
+
+        @keyframes demo6{
+
+            100% {
+                transform:rotate(360deg);
+            }
+
+        }
+
+        .demo6{
+            position:relative;
+            top:50px;
+            height:30px;
+            width: 30px;
+            border:2px solid #fff;
+            border-radius:50%;
+            border-top-color:transparent;
+            border-bottom-color:transparent;
+            animation-fill-mode: both;
+            animation: demo6 0.7s infinite linear;
+        }
+
+        .demo6 .demo6_b{
+            position:relative;
+            height:12px;
+            width: 12px;
+            left:7px;
+            top:7px;
+            transform:rotate(90deg);
+            border:2px solid #fff;
+            border-radius:100%;
+            border-top-color:transparent;
+            border-bottom-color:transparent;
+            animation-fill-mode: both;
+        }
+
+        /*----------------------------------------------------------- alternate---*/
+
+        .a7{
+            position:relative;
+        }
+
+        @keyframes demo7{
+
+            100% {
+                transform:rotate(360deg);
+            }
+
+        }
+
+        .demo7{
+            position:relative;
+            top:50px;
+            height:30px;
+            width: 30px;
+            border:2px solid #fff;
+            border-radius:100%;
+            border-top-color:transparent;
+            animation:demo7 1s infinite linear;
+        }
+
+        .demo7:after{
+            position: absolute;
+            content:'';
+            width:0px;
+            height:0px;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 7px solid #fff;
+            transform:rotate(-140deg);
+            top:-2px;
+            left:2px;
+        }
+
+        /*----------------------------------------------------------- alternate---*/
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="main">
+
+    <div class="a1">
+        <div class="demo1"></div>
+        <div class="demo1"></div>
+        <div class="demo1"></div>
+    </div>
+
+    <div class="a2">
+        <div class="demo2"></div>
+        <div class="demo2"></div>
+        <div class="demo2"></div>
+    </div>
+
+    <div class="a3">
+        <div class="demo3"></div>
+        <div class="demo3"></div>
+        <div class="demo3"></div>
+    </div>
+
+    <div class="a4">
+        <div class="demo4"></div>
+        <div class="demo4"></div>
+        <div class="demo4"></div>
+        <div class="demo4"></div>
+    </div>
+
+    <div class="a5">
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+        <div class="demo5"></div>
+    </div>
+
+    <div class="a6">
+        <div class="demo6">
+            <div class="demo6_b"></div>
+        </div>
+    </div>
+
+    <div class="a7">
+        <div class="demo7"></div>
+    </div>
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

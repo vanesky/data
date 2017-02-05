@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //数据结构Set map
+
+        (function(){
+
+            //let set = new Set([1, 2, 3, 4, 4]);
+
+            //console.log([...set])
+
+            //let items = new Set([1, 2, 3, 4, 5, 5, 5, 5]);
+
+            //items.add(1)
+
+            //items.size
+            //items.has(1)
+
+            //entries == key - val
+
+            /*for(let val of items.entries()){
+
+                console.log(val)
+            }*/
+
+        });
+        (function(){
+
+            //map
+
+            var m = new Map();
+            var o = {p: 'Hello World'};
+
+            m.set(o, 'content')
+            m.get(o) // "content"
+
+            m.delete(o)
+
+
+        });
+
+
+        //类class
+
+        (function(){
+
+            class Point {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    //return Object.create(null)
+                }
+
+                toString() {
+                    return '(' + this.x + ', ' + this.y + ')';
+                }
+
+                nice() {
+                    alert('this is')
+                }
+            }
+            //Object.keys(Point.prototype) 不可枚举
+            //Object.assign 添加原型方法
+            //实例的__proto__指向(构造函数/Class)的prototype对象 而此对象的constructor又指向(构造函数/Class)
+
+
+            //var box = new Point();
+
+            //box.nice()
+
+
+            //立即执行建立实例
+            /*let shit = new class {
+
+                constructor(name){
+
+                    this.name = name;
+                };
+
+                shit1(){alert(this.name)}
+
+
+
+            }('jack')
+
+            shit.shit1();*/
+
+
+            //Object.getPrototypeOf方法可以用来从子类上获取父类
+
+            class MyClass {
+
+                //static myStaticProp = 42;
+
+                constructor() {
+                    console.log(this.myProp); // 42
+                }
+                fun1(){alert('one')}
+            }
+
+            let kiss = new MyClass()
+
+            kiss.fun1()
+
+        });
+
+        //module
+        import {featsky} from 'es6'
+
+        alert(featsky)
+        (function(){
+
+
+
+        })
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

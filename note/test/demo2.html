@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/base.css">
+    <script src="lib/jquery.js"></script>
+    <style>
+        body{text-align: center;}
+
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="demo"></div>
+    <script>
+
+        function demo(str){
+
+            var a = {},b = 0,c = '';
+
+            for(var i=0;i<str.length;i++){
+
+                if(!a[str[i]]){
+
+                    a[str[i]] = 1;
+
+                }else{
+
+                    a[str[i]] = a[str[i]]+1;
+
+                }
+
+            }
+            for(var j in a){
+
+                if(a[j]>b){
+
+                    b = a[j];
+
+                    c = j;
+
+                }
+            }
+
+            return c;
+        }
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../h5_css3/a/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="ce.js"></script>
+    <title>Title</title>
+
+    <style type="text/css">
+
+        html,body{
+            margin:0;
+            padding:0;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+
+
+        function position(type,index){
+
+            var box,box1,box2,temp;
+
+            if(type=='pc'){
+
+                box = 20;
+
+                box1 = 200;
+
+                if(index>5){
+
+                    box2 = Math.ceil(index/5);
+
+                }else if(index<=5){
+
+                    box2 = 1;
+
+                }
+
+                if(index/5>1){
+
+                    index = index%5;
+
+                }
+
+            }else{
+
+                box = 10;
+
+                box1 = 100;
+
+                if(index/3>1){
+
+                    index = index%3;
+
+                }
+
+
+                box2 = Math.ceil(index/5);
+
+            }
+
+            temp = index*(box+box1);
+
+            return temp;
+
+        }
+
+        //===============================
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

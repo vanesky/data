@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        function test(){
+
+            var html;
+
+            var showRangeDiv = document.getElementById('show');
+
+            var selection = document.getSelection();
+
+            if(selection.rangeCount > 0){
+
+                html = '您选取了' + selection.rangeCount + '内容<br/>';
+
+                for(var i=0;i<selection.rangeCount;i++){
+
+                    //i 为选取的区域
+                    var range = selection.getRangeAt(i);
+
+                    html+= '第' + (i+1) + '段内容为：' + range + "<br/>";
+
+                }
+
+                showRangeDiv.innerHTML = html;
+
+            }
+
+        }
+
+
+        /*===============================*/
+
+        function delRangeContent(only){
+
+            var div = document.getElementById('div');
+
+            var rangeObj = document.createRange();
+
+            if(only){
+
+                rangeObj.selectNodeContents(div);
+
+                rangeObj.deleteContents();
+
+            }else{
+
+                //选择当前节点
+                rangeObj.selectNode(div)
+                //删除当前节点
+                rangeObj.deleteContents();
+
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+    <p>你是一个是升级到付款哈哈哈哈</p>
+
+    <input type="button" onclick="test()" value="点击我">
+
+    <div id="show"></div>
+
+    <br/><br/>
+
+    <div id="div" style="width:100px;height:100px;background:pink;">
+        元素中的内容
+    </div>
+
+    <input type="button" value="删除内容" onclick="delRangeContent(true)">
+    <input type="button" value="删除元素" onclick="delRangeContent(false)">
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" context="width=device-width,user-scalable=no" />
+	<script type='text/javascript' src='a/canvas.js'></script>
+	<title>html5</title>
+	<link rel="stylesheet" href=""/>
+	<style type='text/css'>
+
+		html,body{
+			margin:0;
+			padding:0;
+			margin-bottom:;
+		}
+
+
+
+	</style>
+
+	<script>
+
+//分割------------------------------------------------------------------------------
+
+
+
+		/*(function(){
+
+			window.onload = function(){
+
+				var canvas = document.getElementById('canvas');
+
+				var context = canvas.getContext('2d');
+
+				//context.save();
+
+				context.fillStyle = 'pink';
+
+				context.beginPath();
+
+				context.fillRect(100,100,400,210)
+
+				//context.restore();
+
+
+
+
+
+
+				//context.save();
+
+				context.beginPath();                 //画布上下
+
+				context.fillStyle = 'blue';
+
+				context.globalCompositeOperation="destination-over";
+
+				context.fillRect(100,100,410,200)
+
+
+				//context.restore();
+
+				context.clearRect(0,0,600,600)
+
+
+
+
+				context.strokeStyle = 'red';	         //arc
+
+				context.beginPath();
+
+				context.moveTo(100,300);
+
+				context.arcTo(500,100,500,300,400);		
+
+				context.stroke();
+
+				context.clearRect(0,0,1000,800);
+
+
+
+
+				/!*setInterval(function(){
+
+					
+					bezi(context,be.m_x,be.m_y,be.c_x,be.c_y,be.b_x,be.b_y);
+
+					beziMove();
+
+					draw_bottom(context);
+
+
+				},20);*!/
+
+
+			}
+
+				function bezi(context,m_x,m_y,c_x,c_y,b_x,b_y){
+
+					context.clearRect(0,0,1920,920)
+
+					context.beginPath();						//贝塞尔
+
+					context.strokeStyle = 'red'
+
+					context.moveTo(m_x,m_y);
+
+					context.quadraticCurveTo(c_x,c_y,b_x,b_y);
+
+					context.stroke();
+
+				}
+
+				var be = {m_x:300,m_y:300,c_x:400,c_y:200,b_x:500,b_y:300,line:299}
+
+				function beziMove(){
+
+					be.m_x = be.m_x+2;
+
+					be.c_x = be.c_x+2;
+
+					be.b_x = be.b_x+2;
+
+					be.line = be.line+2;
+
+				}
+
+				function draw_bottom(context){
+
+					//context.globalCompositeOperation="source-over";
+
+					context.beginPath();
+
+					//context.lineWidth = 1;
+
+					context.moveTo(100,300);
+
+					context.lineTo(1920,300);
+
+					context.stroke();
+
+					context.clearRect(be.line,299,198,10)
+
+
+
+				}
+
+
+
+
+
+		})*/
+
+
+		;(function(){
+
+			var img = new Image();
+			
+				img.src = "img/justin.jpg";
+
+				img.id = 'b';
+
+			window.onload = function(){
+
+				var canvas = document.getElementById('canvas');
+
+				var context = canvas.getContext('2d');
+
+				context.beginPath();
+
+				//context.rotate(-20*Math.PI/180);
+
+				context.arc(300,300,200,0,2*Math.PI,true);
+
+				//context.arc(300,300,100,0,2*Math.PI,false);
+
+				context.shadowColor = 'gray';
+
+				context.shadowOffsetX = 10;
+
+				context.shadowOffsetY = 10;
+
+				context.shadowBlur = 5;
+
+				context.fillStyle = 'red';
+
+				//context.fillRect(300,300,300,100)
+
+				context.fill();
+
+				context.beginPath();
+
+				context.arc(600,300,100,0,2*Math.PI,false);
+
+				context.fill()
+
+				context.drawImage(img,1,1,100,100);
+
+
+			}
+
+
+
+
+
+
+		})();
+
+
+
+
+
+	</script>
+
+
+</head>
+
+<body>
+
+<canvas id="canvas" width="1920" height="920"; style="border:1px solid black;margin:0 auto;display:block;"></canvas>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+
+        /*左侧一级导航*/
+        .main-nav{
+            position: fixed;
+            top:0;
+            left:0;
+            width:85px;
+            height:100%;
+            background-color: #2e4250;
+            z-index: 2;
+        }
+        /*右侧导航*/
+        .common-nav{
+            position: fixed;
+            width:100%;
+            top:0;
+            left:0;
+            height: 60px;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        /*右侧主页面*/
+        .container{
+            position: relative;
+            left:0px;
+            padding-left: 85px;
+            margin-top: 60px;
+            min-width: 1300px;
+            z-index: 1;
+            background-color: #ebebeb;
+        }
+        .container .main{
+            margin-top: 60px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--左侧导航-->
+    <div class="main-nav"></div>
+    <!--右侧二级导航-->
+    <div class="common-nav"></div>
+
+    <!--右侧主-->
+    <div class="container">
+
+        <div class="main">
+            <span>456123</span>
+            <div>456545454ll</div>
+        </div>
+
+    </div>
+</body>
+</html>

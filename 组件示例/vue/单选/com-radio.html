@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+        #app{
+            width:500px;
+            margin:50px auto;
+        }
+
+        .boxAdd{
+            background-color: #714f52;
+        }
+
+        .com-label,.com-radio-box{
+            position: relative;
+        }
+        .com-radio{
+            position: absolute;
+            left:0;
+            opacity: 0;
+        }
+        .com-radio-box{
+            width:1rem;
+            height:1rem;
+            border-radius: 1rem;
+            border: 2px solid #666;
+            display: inline-block;
+        }
+    </style>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <div>
+        <!--<label v-for="item in list" class="ml10">
+            <input type="radio" v-model="checked" :value="item.name" class="hide">
+            <span class="box" :class="{'boxAdd':checked == item.name}"></span>
+            <span>{{item.name}}</span>
+        </label>-->
+
+        <radio-demo v-model="checked" :label="1">{{1}}</radio-demo>
+        <radio-demo v-model="checked" :label="2">{{2}}</radio-demo>
+    </div>
+
+    <div class="mt10">选择：{{checked}}</div>
+
+
+</div>
+</body>
+<script>
+
+    let radio = {
+
+        template:'\
+        <label class="com-label ml20">\
+          <input\
+            class="com-radio"\
+            type="radio"\
+            v-bind:value="label"\
+            v-on:focus="updateValue($event.target.value)"\
+            v-model="model"\
+          >\
+          <span class="com-radio-box" :class="{boxAdd:value == label}"></span>\
+          <slot></slot>\
+        </label>\
+        ',
+
+        props: ['value','label'],
+
+        methods:{
+            updateValue:function(value){
+
+                this.$emit('input',value)
+
+            }
+        },
+        computed:{
+            model:function(){
+                return this.value;
+            }
+        }
+    }
+
+
+    Vue.component('radio-demo',radio);
+
+
+    var _list = [
+        {
+            id:1,
+            name:'小明',
+            age:12
+        },
+        {
+            id:2,
+            name:'小李',
+            age:11
+        },
+        {
+            id:3,
+            name:'小红',
+            age:11
+        }
+    ]
+
+
+    var app = new Vue({
+
+        el:'#app',
+
+        data:{
+
+            checked:'',
+
+            list:_list,
+        },
+        computed:{
+
+
+        },
+        methods:{
+
+            checkFun:function(){
+                console.log()
+            },
+        }
+
+    })
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

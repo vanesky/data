@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+        #app{
+            width:500px;
+            margin: 50px auto;
+        }
+
+        .check-box{
+            position: relative;
+            display: inline-block;
+            width:1rem;
+            height:1rem;
+            border-radius:2px;
+            border: 1px solid pink;
+        }
+        .check-box:after{
+            position: absolute;
+            left: .3rem;
+            top:.1rem;
+            content: "";
+            display: block;
+            width: .2rem;
+            height: .5rem;
+            border: .15rem solid #ffffff;
+            border-top: 0;
+            border-left:0;
+            transform: rotateZ(45deg);
+            transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+            transform-origin: center;
+        }
+    </style>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <label class="ml20">
+        <span>全选</span>
+        <input type="checkbox" v-model="allChecked" class="hide">
+        <span class="check-box" :class="{'bc-c':checked.length == list.length}"></span>
+    </label>
+
+    <div class="mt10">
+        <label v-for="item in list" class="ml20">
+            <span>{{item.name}}</span>
+            <input type="checkbox" :value="item.name" v-model="checked" class="hide">
+            <span class="check-box" :class="{'bc-c': checked.indexOf(item.name)>=0}"></span>
+        </label>
+    </div>
+
+    <input type="button" @click="clickList" value="点击我">
+
+</div>
+</body>
+<script>
+
+    var _list = [
+        {
+            name:'小明',
+            age:12
+        },
+        {
+            name:'小李',
+            age:11
+        },
+        {
+            name:'小红',
+            age:11
+        }
+    ]
+
+    var app = new Vue({
+
+        el:'#app',
+
+        data:{
+            list : _list,
+            checked:[]
+        },
+        computed:{
+
+            allChecked:{
+                get:function(){
+                    if(this.checked.length == this.list.length){
+                        return true;
+                    }
+                },
+                set:function(value){
+                    if(value){
+
+                        this.checked = this.list.map(function(val,index){
+
+                            return val.name;
+                        })
+                    }else{
+
+                        this.checked = [];
+                    }
+                }
+            },
+
+
+        },
+        methods:{
+            clickList:function(){
+                console.log(this.checked)
+            },
+        }
+
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

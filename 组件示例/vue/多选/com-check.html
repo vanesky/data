@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <style>
+        #app{
+            width:500px;
+            margin: 50px auto;
+        }
+
+        .check-box{
+            position: relative;
+            display: inline-block;
+            width:1rem;
+            height:1rem;
+            border-radius:2px;
+            border: 1px solid pink;
+        }
+        .check-box:after{
+            position: absolute;
+            left: .3rem;
+            top:.1rem;
+            content: "";
+            display: block;
+            width: .2rem;
+            height: .5rem;
+            border: .15rem solid #ffffff;
+            border-top: 0;
+            border-left:0;
+            transform: rotateZ(45deg);
+            transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+            transform-origin: center;
+        }
+    </style>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <label class="ml20">
+        <span>全选</span>
+        <input type="checkbox" v-model="allChecked" class="hide">
+        <span class="check-box" :class="{'bc-c':model.length == list.length}"></span>
+    </label>
+
+
+    <com-prent v-model="model">
+        <com-check v-for="item in list" :child="item"></com-check>
+    </com-prent>
+
+
+    <div class="mt30">{{model}}</div>
+
+</div>
+</body>
+<script>
+
+    var com = {
+        template:
+        '<label class="ml20">\
+            <span>{{child.name}}</span>\
+            <input type="checkbox" :value="child.name" v-model="sel" @click.stop="" class="hide">\
+            <span class="check-box" :class="{&quot;bc-c&quot; : sel }"></span>\
+        </label>\
+        ',
+        data:function(){
+            return {
+
+            }
+        },
+        props:['child'],
+
+        created:function(){
+
+        },
+
+        computed:{
+
+            sel:{
+
+                get:function(){
+
+                    let _this = this;
+
+                    let temp = false;
+
+                    this.$parent.value.forEach(function(item,index){
+
+                        if(item == _this.child.name){
+                            temp = true;
+                            return false;
+                        }
+                    })
+
+                    return temp;
+                },
+
+                set:function(val){
+
+                    let _this = this;
+
+                    if(val){
+
+                        this.$parent.value.push(this.child.name)
+
+                        return true;
+                    }else{
+
+                        this.$parent.value.forEach(function(item,index,self){
+
+                            if(item == _this.child.name){
+
+                                self.splice(index,1)
+                            }
+                        })
+                    }
+                }
+            }
+
+        },
+
+        methods:{
+
+            updateSelVal:function(val){
+
+                if(this.checked){
+
+                    this.$parent.arr.push(val)
+                }else{
+
+                    this.$parent.arr.forEach(function(item,index,self){
+                        if(item == val){
+                            self.splice(index,1)
+                        }
+                    })
+                }
+            }
+
+        }
+    }
+
+
+
+    //父级
+    var prent = {
+        template:
+                '<div class="ml20 bc-eb"><slot></slot></div>\
+                ',
+        data:function(){
+            return {
+
+            }
+        },
+        props:['value'],
+    }
+
+
+
+    var _list = [
+        {
+            name:'小明',
+            age:12
+        },
+        {
+            name:'小李',
+            age:11
+        },
+        {
+            name:'小红',
+            age:11
+        }
+    ]
+
+    var app = new Vue({
+
+        el:'#app',
+
+        data:{
+            list : _list,
+
+            model:[],
+        },
+        computed:{
+
+            allChecked:{
+                get:function(){
+                    if(this.model.length == this.list.length){
+                        return true;
+                    }
+                },
+                set:function(value){
+                    if(value){
+
+                        this.model = this.list.map(function(val,index){
+
+                            return val.name;
+                        })
+                    }else{
+
+                        this.model = [];
+                    }
+                }
+            },
+
+
+        },
+        methods:{
+            clickList:function(){
+                console.log(this.checked)
+            },
+        },
+
+        components:{
+            'com-prent':prent,
+            'com-check':com
+        }
+
+    })
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

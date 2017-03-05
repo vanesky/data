@@ -4,6 +4,8 @@ http://www.w3cplus.com/workflow/glup-and-es6.html gulp
 https://segmentfault.com/a/1190000002698606 gulp
 http://www.ydcss.com/archives/18  gulp
 http://www.ydcss.com/archives/94  在路上gulp属性详解
+http://www.cnblogs.com/2050/p/4198792.html
+http://w3cc.cc/2016/05/27/gulp-how-to-read-file-name/
 
  gulp = require('gulp'),                             //本地安装gulp所用到的地方
     less = require('gulp-less'),                        //less编译

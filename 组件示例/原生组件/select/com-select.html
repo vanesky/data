@@ -4,46 +4,24 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="../lib/reset.css">
-    <script src="../lib/jquery-1.12.0.min.js"></script>
-    <script src="select.js"></script>
+    <link rel="stylesheet" href="com-select.css">
+    <script src="../lib/jquery.js"></script>
+    <script src="com-select.js"></script>
     <style>
         .main{
             width:600px;
             margin:0 auto;
+            padding-top:100px;
             border: 1px solid transparent;
-        }
-
-
-        .sel-component{
-            width:100px;
-        }
-
-        .sel-head{
-            width:100%;
-            height:30px;
             text-align: center;
-            border: 1px solid #333;
-            cursor: pointer;
-        }
-        .sel-content{
-            position: relative;
-            text-align: left;
-        }
-        .sel-content .sel-list{
-            height:30px;
-            line-height: 30px;
-            cursor: pointer;
-        }
-        .sel-content .sel-list:hover{
-            background-color: #999;
         }
     </style>
 </head>
 <body>
 
-    <div class="main">
+    <div class="main clearfix">
 
-        <section id="sel-com1" class="sel-component fl">
+        <section id="select-1" class="com-select fl">
             <input data-val="" class="sel-head" value="" readonly placeholder="请选择"/>
             <ul class="sel-content hide">
                 <li data-val="1" class="sel-list">fsdf</li>
@@ -52,7 +30,7 @@
             </ul>
         </section>
 
-        <section id="sel-com2" class="sel-component fl ml20">
+        <section id="select-2" class="com-select fr">
             <input data-val="" class="sel-head" value="" readonly placeholder="请选择"/>
             <ul class="sel-content hide">
                 <li data-val="1" class="sel-list">fsdf</li>
@@ -77,9 +55,9 @@
         ]
 
 
-        $('#sel-com1').sel({init:'init'})
+        $('#select-1').comSelect({init:true})
 
-        $('#sel-com2').sel({init:'init'})
+        $('#select-2').comSelect({init:true})
     </script>
 </body>
 </html>

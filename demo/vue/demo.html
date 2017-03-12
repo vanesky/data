@@ -14,6 +14,14 @@
 
     {{message}}
 
+    <div v-for="item in list">
+        {{item.name}}
+        <span v-if="item.age">12345789</span>
+    </div>
+
+
+    <input type="button" value="点击我" @click="a1">
+
 </div>
 
 
@@ -25,12 +33,33 @@
         el: '#app',
 
         data: {
-            message: 'Hello Vue!'
+            message: 'Hello Vue!',
+
+            list:[
+                {
+                    name:'jack'
+                },
+                {
+                    name:'lisa'
+                }
+            ]
+
         },
         created:function(){
           this.cartView()
         },
         methods:{
+
+            a1:function(){
+
+
+                this.list[0].age = 29;
+                //this.$set(this.list[0],'age',12);
+
+                console.log(this.list)
+
+            },
+
             cartView:function(){
                 this.$http.get('lib/data.json').then(function(res){
                     console.log(res.body)

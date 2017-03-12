@@ -1,0 +1,73 @@
+
+.com-load{
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 99;
+
+  .load-main{
+    position: relative;
+    width: 120px;
+    height: 44px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+
+    .animate{
+      position:absolute;
+      top: 14px;
+      left:14px;
+      width:30px;
+      height:18px;
+      //竖线列表
+      .animate-list {
+        position: relative;;
+        background-color: #f2f2f2;
+        width: 2px;
+        height:18px;
+        margin-left:2px;
+        animation-fill-mode: both;
+        border-radius:1px;
+        float: left;
+      }
+    }
+    @keyframes animate-list {
+      50% {
+        transform:scaleY(0.6)
+      }
+      100% {
+        transform:scaleY(1)
+      }
+    }
+    .animate  > div:nth-child(1) {
+      animation: animate-list 1s infinite ease-in-out;
+    }
+    .animate  > div:nth-child(2) {
+      animation: animate-list 1s 0.5s infinite ease-in-out;
+    }
+    .animate  > div:nth-child(3) {
+      animation: animate-list 1s 0.2s infinite ease-in-out;
+    }
+    .animate  > div:nth-child(4) {
+      animation: animate-list 1s 0.8s infinite ease-in-out;
+    }
+
+    //==================//
+    .animate-text{
+      position: absolute;
+      top:16px;
+      left:38px;
+      font-size: 13px;
+    }
+
+  }
+
+}

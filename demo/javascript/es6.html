@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="lib/jquery.js"></script>
 </head>
 <body>
     <script>
@@ -112,15 +113,47 @@
 
         });
 
-        //module
-        import {featsky} from 'es6'
 
-        alert(featsky)
+        //异步编程
         (function(){
 
+            /*function a2(param,fun){
+
+                return fun && fun(param)
+            }
+
+            a2(1,function(data){
+
+                console.log(data)
+
+            })*/
 
 
-        })
+            let temp = '1';
+
+            //异步执行
+            let p = new Promise(function(resolve,reject){
+
+                let data = '';
+
+                data = 'ok';
+
+                resolve(data);
+            })
+
+
+            //当前页面脚本执行完毕后
+            p.then(function(val){
+
+                console.log(val)
+            })
+
+            console.log(temp);
+
+        });
+
+
+
 
     </script>
 </body>

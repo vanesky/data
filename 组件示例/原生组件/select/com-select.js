@@ -1,9 +1,9 @@
 
-$.fn.sel = function(obj){
+$.fn.comSelect = function(obj){
 
-    let _this = $(this);
+    var _this = $(this);
 
-    if(obj.init == 'init'){
+    if(obj.init){
 
         let headObj = _this.find('.sel-head');
 
@@ -17,9 +17,9 @@ $.fn.sel = function(obj){
         //绑定事件
         _this.on('click','.sel-list',function(){
 
-            let dataVal = $(this).attr('data-val');
+            var dataVal = $(this).attr('data-val');
 
-            let text = $(this).text();
+            var text = $(this).text();
 
             headObj.attr('data-val',dataVal).val(text);
 

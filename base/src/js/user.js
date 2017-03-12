@@ -75,6 +75,45 @@ window.user = {
 
         }
 
+    },
+
+    formatDate:function (strTime,sel) {
+
+        var date = new Date(strTime);
+
+        var y = date.getFullYear();
+
+        var m = date.getMonth()+1;
+
+        var d = date.getDate();
+
+        var h = date.getHours();
+
+        var f = date.getMinutes();
+
+        var s = date.getSeconds();
+
+        var arr = [m,d,h,f,s];
+
+        arr.forEach(function(val,index,self){
+
+            if(val.toString().length<=1){
+
+                self[index] = '0' + val;
+            }
+
+        })
+        //var str = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+        if(sel =='date'){
+
+            return y+"-"+arr[0]+"-"+arr[1];
+
+        }else{
+
+            return y+"-"+arr[0]+"-"+arr[1]+" "+arr[2]+":"+arr[3]+":"+arr[4]
+        }
     }
+
+
 }
 

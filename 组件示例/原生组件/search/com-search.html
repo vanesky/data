@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="com-search.css">
+    <script src="../lib/jquery.js"></script>
+    <script src="com-search.js"></script>
+    <style>
+        .main{
+            width:600px;
+            margin:0 auto;
+            padding-top:100px;
+            border: 1px solid transparent;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main clearfix">
+
+    <span id="search-1" class="com-search">
+        <input type="text">
+        <img name="img" class="searchImg va-c fr" src="search2.png">
+    </span>
+
+    <span id="search-2" class="com-search">
+        <input type="text">
+        <img name="img" class="searchImg va-c fr" src="search2.png">
+    </span>
+
+
+</div>
+<script>
+
+    $('#search-1').comSearch({
+
+        init:true,
+
+        fun:function(val){
+
+            console.log(val)
+        }
+    })
+
+    $('#search-2').comSearch({
+
+        init:true,
+
+        fun:function(val){
+
+            console.log(val)
+        }
+    })
+
+</script>
+</body>
+</html>

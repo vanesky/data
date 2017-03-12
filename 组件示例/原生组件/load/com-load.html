@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="com-load.css">
+    <script src="../lib/jquery.js"></script>
+    <script src="com-load.js"></script>
+    <style>
+        .main{
+            width:600px;
+            margin:0 auto;
+            padding-top:100px;
+            border: 1px solid transparent;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main clearfix">
+
+
+    <input type="button" value="点击我" onclick="a1()" style="position: absolute;z-index:100;">
+
+    <input class="ml30" type="button" value="点击我2" onclick="a2()" style="position: absolute;z-index:100;">
+
+</div>
+<script>
+
+    function a1(){
+
+        $.load()
+    }
+    function a2(){
+
+        $('#load').hide()
+
+    }
+
+</script>
+</body>
+</html>

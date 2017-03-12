@@ -1,104 +1,194 @@
-!function(window){
 
-    "use strict";
+window.app = {};
 
-    window.bom = {};
+(function(){
 
-    (function(){
+    var path = '';
 
-        this.device = function(){                          //种植设备信息
+    var workName = 'm-featsky';
 
-            //if(window.localStorage.device){return false}
+    var version = '0.0.1';
 
-            var bom1 = navigator.userAgent,send = {};
+    var base = '';
 
-            //var bom2 = navigator.appName;
+    this.ajax = function(type,url,obj,sucCallback,errCallback,loadObj){
 
-            if(bom1.match(/iPhone|iPad/i)){
+        $.ajax({
 
-                send.version = Number(bom1.match(/OS\s([5-9])_/)[1]);
+            type:type,
 
-                send.name = bom1.match(/(iPhone|iPad)/i)[1];
+            url:url,
 
-            }else if(bom1.match(/Android/i)){
+            data:obj,
 
-                send.version = Number(bom1.match(/Android\s(\d\.\d)/)[1]);
+            success:function(data,status){
 
-                send.name = 'Android';
+                sucCallback(JSON.parse(data),status)
 
-            }else if(bom1.match(/Firefox|Chrome/i)){
+            },
 
-                send.version = Number(bom1.match(/(Firefox|Chrome)\/(\d+)\./)[2]);
+            error:function(xhr,err,msg){
 
-                send.name = bom1.match(/Firefox|Chrome/i)[0];
+                if(errCallback){
 
-            }else if(bom1.match(/MSIE/)){
+                    errCallback(xhr,err,msg);
 
-                send.version = Number(bom1.match(/MSIE\s(\d+)\./)[1]);
+                }else{
 
-                send.name = 'ie';
+                    com.prompt(0,'网络错误');
+                }
+            },
 
+            timeout:4000,
+
+            beforeSend:function(){
+
+                if(window.com&&com.load){ com.load(loadObj);}
+
+            },
+
+            complete:function(){
+
+                if(window.com&&com.load){ $('#load').remove();}
             }
 
-            send.h = window.screen.height;
+        })
 
-            send.w = window.screen.width;
+    },
 
-            localStorage.device = JSON.stringify(send);
+    this.url = function(url){
 
-        };
+        if(path == 'develop'){
 
-        this.supportCss3 = function(attr){                          //是否支持Css3
+            base = "http://192.168.0.102/m-featsky/api/";
 
-            var box = ['-webkit-','-os-','-ms-','-moz-'];
+        }else if(path == 'test'){
 
-            var defaultStyle = document.documentElement.style;
+            base = "http://test.featsky.com/api/";
 
-            if(attr in defaultStyle){
+        }else{ base = "http://www.featsky.com/m-featsky/api/" }
 
-                return true;
+        return base + url + "?workName=" + workName + "&date=" + new Date().getTime();
 
-            }else{
+    },
 
-                for(var i=0;i<box.length;i++){
+    this.imgUrl = function(url){
 
-                    if(box[i]+attr in defaultStyle){
+        if(path == 'develop'){
 
-                        return true;
+            base = "http://192.168.0.102/m-featsky/img/";
 
-                    }
+        }else if(path == 'test'){
+
+            base = "http://test.featsky.com/img/";
+
+        }else{ base = "http://www.featsky.com/m-featsky/img/" }
+
+        return base + url;
+
+
+    }
+
+
+    /**********common**********/
+
+    this.device = function(){                          //种植设备信息
+
+        //if(window.localStorage.device){return false}
+
+        var bom1 = navigator.userAgent,send = {};
+
+        //var bom2 = navigator.appName;
+
+        if(bom1.match(/iPhone|iPad/i)){
+
+            send.version = Number(bom1.match(/OS\s([5-9])_/)[1]);
+
+            send.name = bom1.match(/(iPhone|iPad)/i)[1];
+
+        }else if(bom1.match(/Android/i)){
+
+            send.version = Number(bom1.match(/Android\s(\d\.\d)/)[1]);
+
+            send.name = 'Android';
+
+        }else if(bom1.match(/Firefox|Chrome/i)){
+
+            send.version = Number(bom1.match(/(Firefox|Chrome)\/(\d+)\./)[2]);
+
+            send.name = bom1.match(/Firefox|Chrome/i)[0];
+
+        }else if(bom1.match(/MSIE/)){
+
+            send.version = Number(bom1.match(/MSIE\s(\d+)\./)[1]);
+
+            send.name = 'ie';
+
+        }
+
+        send.h = window.screen.height;
+
+        send.w = window.screen.width;
+
+        localStorage.device = JSON.stringify(send);
+
+    };
+
+    this.supportCss3 = function(attr){                          //是否支持Css3
+
+        var box = ['-webkit-','-os-','-ms-','-moz-'];
+
+        var defaultStyle = document.documentElement.style;
+
+        if(attr in defaultStyle){
+
+            return true;
+
+        }else{
+
+            for(var i=0;i<box.length;i++){
+
+                if(box[i]+attr in defaultStyle){
+
+                    return true;
 
                 }
 
             }
 
-            return false;
-
-        };
-
-        this.page = function(){
-
-            var foot = '<footer><p>Copyright &copy;http://www.featsky.com</p><p>Email 641151096qq.com</p></footer>';
-
-            $('.container').append(foot);
-
         }
 
+        return false;
 
-    }).apply(bom);
+    };
 
-    //bom.device();
+    this.validateMethod = function(validate){
 
-    //bom.page();
+        var str = [];
+
+        $.each(validate.rules,function(attrName,attrObj){
+
+            var value = $("[name='"+attrName+"']").val();
+
+            if(!value){  value = $("[name='"+attrName+"']").text() }
+
+            $.each(attrObj,function(ruleName,ruleParam){
+
+                if(!window.validateRule[ruleName](value)){
+
+                    str.push(validate.prompt[attrName][ruleName]);
+                }
+            })
+        });
+
+        if(str.length>0){
+
+            com.prompt(0,str[0]);
+
+            return false;
+        }
+        return true;
+    };
 
 
-}(window);
-
-
-
-
-
-
-
-
-
+}).apply(app);

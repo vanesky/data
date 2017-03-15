@@ -1,5 +1,5 @@
 
-$.extend({
+$.extend($,{
 
     alert:function(text,fun){
 
@@ -7,7 +7,7 @@ $.extend({
             '<section class="com-prompt"><div class="prompt-main">' +
                 '<h5 class="prompt-tit">提示</h5>' +
                 '<div class="prompt-text"></div>' +
-                '<ul class="prompt-item"> <li class="prompt-button bc-db c6">取消</li> <li class="prompt-button bc-c cf">确定</li> </ul> ' +
+                '<ul class="prompt-item"> <li class="prompt-button bc-db c6">取消</li> <li class="prompt-button c-ba cf">确定</li> </ul> ' +
             '</div></section>';
 
         var strObj = $(str);
@@ -19,6 +19,7 @@ $.extend({
                 if(fun && $(this).index() == 1){fun()};
 
                 strObj.remove();
+
             })
 
         $('body').append(strObj);

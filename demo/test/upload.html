@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/base.css">
+    <script src="lib/jquery.js"></script>
+    <style>
+        .demo{
+            width:400px;
+            height:300px;
+            background-color:#666;
+            margin:0 auto;
+        }
+        .btn{
+            display: inline-block;
+            width: 100px;
+            height:30px;
+            border-radius: 5px;
+            background-color: #1fb394;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="demo">
+        <label>
+            <span class="btn">点击上传</span>
+            <input id="file" name="upFile" type="file" accept="image/jpg,image/jpeg,image/png" class="hide" multiple="multiple">
+        </label>
+    </div>
+
+
+
+<script>
+
+    //选择照片更改后执行
+    $("#file").on('change',function(){
+
+        readFileRule(function(file){
+
+            //上传图片
+            for(var i=0;i<file.length;i++){
+
+                upLoadImg(file,i);
+            }
+
+        });
+    })
+
+    //校验图片格式
+    function readFileRule(fun){
+
+        var file = document.getElementById("file").files;
+
+        for(var i = 0;i<file.length;i++){
+
+            if((file[i].size/1000)>500){
+
+                //提示组件
+                console.log('过大')
+                file = '';
+                return;
+
+            }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
+
+                //提示组件
+                console.log('格式不正确')
+                return;
+            }
+        }
+
+        if(fun){ fun(file) }
+    }
+
+
+    function upLoadImg(file,index){
+
+        var fd = new FormData();
+
+        fd.append('imgName',file[index])
+
+        fd.append("para",JSON.stringify({name:'小明',age:12}));
+
+        $.ajax({
+            type : 'post',
+            url : 'http://192.168.0.100/demo.php',
+            data : fd,
+            cache : false,
+            processData : false,
+            contentType : false,
+            success : function(){
+                console.log('ok')
+            },
+            error : function(){
+                console.log('err')
+            }
+        })
+    }
+
+
+</script>
+
+</body>
+</html>
+
+
+<script>
+
+
+    //图片读取
+    /*for(var i = 0 ;i<file.length;i++){
+
+     //console.log(file[i].name)
+
+     var reader = new FileReader();
+
+     reader.readAsDataURL(file[i]);
+
+     reader.onload = function(){
+
+     }
+     //console.log(reader)
+     }*/
+
+
+    /*function upLoadImg(file,index){
+
+        var fd = new FormData();
+
+        fd.append('imgName',file[index])
+
+        fd.append("para",JSON.stringify({name:'小明',age:12}));
+
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function(){
+
+            if(xhr.readyState==1){
+
+                console.log('准备发送')
+
+            }
+
+            if (xhr.readyState==4){
+
+                if (xhr.status==200){
+
+                    if(xhr.responseText == 1){
+
+                        console.log('ok')
+
+                    }else{
+
+                        alert('服务错误')
+                    }
+
+                }else{}
+            }
+        }
+
+        xhr.open("POST",'http://192.168.0.100/demo.php');
+
+        xhr.send(fd);
+
+        //xhr.upload.addEventListener("progress", uploadProgress, false);
+
+    }*/
+
+</script>

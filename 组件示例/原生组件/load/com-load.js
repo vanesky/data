@@ -3,7 +3,9 @@ $.extend({
 
     load:function(obj){
 
-        var str = '<section id="load" class="com-load"><div class="load-main"><div class="animate">' +
+        var pos = 'absolute';
+
+        var str = '<section style="position:'+pos+'" id="load" class="com-load"><div class="load-main"><div class="animate">' +
             '<div class="animate-list"></div>' +
             '<div class="animate-list"></div>' +
             '<div class="animate-list"></div>' +
@@ -13,7 +15,16 @@ $.extend({
 
         if(typeof loadObj == 'undefined'){
 
-            obj ? obj.append(str) : $('body').append(str);
+            if(obj){
+
+                obj.append(str);
+
+            }else{
+
+                pos = 'fixed';
+
+                $('body').append(str)
+            }
 
         }else if(loadObj == 'none'){
 

@@ -66,16 +66,8 @@
             <span class="check-box" :class="{&quot;bc-c&quot; : sel }"></span>\
         </label>\
         ',
-        data:function(){
-            return {
 
-            }
-        },
         props:['child'],
-
-        created:function(){
-
-        },
 
         computed:{
 
@@ -122,23 +114,13 @@
 
         },
 
-        methods:{
+        created:function(){
 
-            updateSelVal:function(val){
+        },
+        data:function(){
+            return {
 
-                if(this.checked){
-
-                    this.$parent.arr.push(val)
-                }else{
-
-                    this.$parent.arr.forEach(function(item,index,self){
-                        if(item == val){
-                            self.splice(index,1)
-                        }
-                    })
-                }
             }
-
         }
     }
 

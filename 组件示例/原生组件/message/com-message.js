@@ -32,6 +32,8 @@ $.extend({
         //添加关闭事件
         strObj.find('.close').on('click',function(){
 
+            if(obj.back){ obj.back() }
+
             strObj.remove()
         })
 
@@ -43,13 +45,23 @@ $.extend({
 
                 'opacity':1,
 
-                'transform':"translate(-50%,20px)"
+                'transform':(function(){
 
+                    var max = '20px';
+
+                    if(obj.animateTop){ max = obj.animateTop}
+
+                    return "translate(-50%,"+max+")";
+
+                })()
             });
-        })
+
+        },50)
 
 
         setTimeout(function(){
+
+            if(obj.back){ obj.back() }
 
             strObj.remove();
 

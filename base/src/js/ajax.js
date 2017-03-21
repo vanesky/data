@@ -59,6 +59,16 @@
 
         },
 
+        this.get = function(url,callback){
+
+            $.get(url,function(data,status){
+
+                callback(data,status)
+
+            });
+
+        },
+
         this.url = function(url){
 
             if(path == 'develop'){
@@ -89,6 +99,21 @@
 
             return base + url;
 
+        },
+
+        this.tempUrl = function(url){
+
+            if(path == 'develop'){
+
+                base = "http://192.168.0.100/featsky/template/";
+
+            }else if(path == 'test'){
+
+                base = "http://test.featsky.com/img/";
+
+            }else{ base = "http://www.featsky.com/featsky/template/" }
+
+            return base + url;
 
         },
 

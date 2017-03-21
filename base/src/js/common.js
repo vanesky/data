@@ -3,7 +3,6 @@ window.com = {};
 
 (function(){
 
-
     this.device = function(){                          //种植设备信息
 
         //if(window.localStorage.device){return false}
@@ -73,34 +72,5 @@ window.com = {};
         return false;
 
     };
-
-    this.validateMethod = function(validate){
-
-        var str = [];
-
-        $.each(validate.rules,function(attrName,attrObj){
-
-            var value = $("[name='"+attrName+"']").val();
-
-            if(!value){  value = $("[name='"+attrName+"']").text() }
-
-            $.each(attrObj,function(ruleName,ruleParam){
-
-                if(!window.validateRule[ruleName](value)){
-
-                    str.push(validate.prompt[attrName][ruleName]);
-                }
-            })
-        });
-
-        if(str.length>0){
-
-            com.prompt(0,str[0]);
-
-            return false;
-        }
-        return true;
-    };
-
 
 }).apply(com);

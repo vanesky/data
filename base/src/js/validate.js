@@ -1,4 +1,4 @@
-window.validateMethod = {
+var validateRule = {
 
     require:function(val){
 
@@ -31,3 +31,32 @@ window.validateMethod = {
     }
 
 }
+
+
+window.validateMethod = function(validate){
+
+    var str = [];
+
+    $.each(validate.rules,function(attrName,attrObj){
+
+        var value = $("[name='"+attrName+"']").val();
+
+        if(!value){  value = $("[name='"+attrName+"']").text() }
+
+        $.each(attrObj,function(ruleName,ruleParam){
+
+            if(!validateRule[ruleName](value)){
+
+                str.push(validate.prompt[attrName][ruleName]);
+            }
+        })
+    });
+
+    if(str.length>0){
+
+        com.prompt(0,str[0]);
+
+        return false;
+    }
+    return true;
+};

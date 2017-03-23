@@ -185,10 +185,10 @@ postcss-loader(前缀) autoprefixer
 url-loader image-webpack-loader(图片压缩) html-loader(模板加载)
 extract-text-webpack-plugin(css提取)
 vue-loader vue vue-template-compiler
+版本 html-webpack-plugin
+服务器模块webpack-dev-server
+copy-webpack-plugin
 **/
-
-//服务器模块webpack-dev-server
-//版本 html-webpack-plugin
 
 
 

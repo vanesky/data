@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+
+<div id="list"></div>
+<script>
+
+
+
+    (function(){
+
+
+        /*function* helloWorldGenerator() {
+
+        };*/
+
+        var hw = (function* (){
+
+            yield 'hello';
+            yield 'world';
+            return 'ending';
+
+        })()
+
+        //var hw = helloWorldGenerator();
+
+        console.log(hw.next());
+        console.log(hw.next());
+        console.log(hw.next());
+        console.log(hw.next());
+
+    });
+
+
+    //Symbol.iterator
+    (function(){
+
+        var myIterable = {
+
+            name:'jack',
+
+            0:'wowo'
+
+        };
+        myIterable[Symbol.iterator] = function* () {
+            yield 1;
+            yield 2;
+            yield 3;
+        };
+
+        console.log(myIterable)
+
+
+        //为对象添加遍历接口
+        function* objectEntries(obj) {
+            let propKeys = Reflect.ownKeys(obj);
+
+            for (let propKey of propKeys) {
+                yield [propKey, obj[propKey]];
+            }
+        }
+
+        let jane = { first: 'Jane', last: 'Doe' };
+
+        for (let [key, value] of objectEntries(jane)) {
+            console.log(`${key}: ${value}`);
+        }
+        // first: Jane
+        // last: Doe
+
+        //---------------------------------------------
+
+        function* objectEntries() {
+            let propKeys = Object.keys(this);
+
+            for (let propKey of propKeys) {
+                yield [propKey, this[propKey]];
+            }
+        }
+
+        let jane = { first: 'Jane', last: 'Doe' };
+
+        jane[Symbol.iterator] = objectEntries;
+
+        for (let [key, value] of jane) {
+            console.log(`${key}: ${value}`);
+        }
+        // first: Jane
+        // last: Doe
+
+    });
+
+    //除了for...of循环以外，扩展运算符（...）、解构赋值和Array.from方法内部调用的，都是遍历器接口。
+    // 这意味着，它们都可以将Generator函数返回的Iterator对象，作为参数。
+    (function(){
+
+        function* numbers () {
+            yield 1
+            yield 2
+            return 3
+            yield 4
+        }
+
+        // 扩展运算符
+        [...numbers()] // [1, 2]
+
+        // Array.from 方法
+        Array.from(numbers()) // [1, 2]
+
+        // 解构赋值
+        let [x, y] = numbers();
+        x // 1
+        y // 2
+
+        // for...of 循环
+        for (let n of numbers()) {
+            console.log(n)
+        }
+
+    })()
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

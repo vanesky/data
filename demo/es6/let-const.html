@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+<script>
+
+    //作用域
+    (function(){
+
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i] = function () {
+                console.log(i);
+            };
+        }
+        a[6]();
+
+
+        var b = [];
+        for (let i = 0; i < 10; i++) {
+            b[i] = function () {
+                console.log(i);
+            };
+        }
+        b[6]();
+
+    });
+
+    //变量提升、暂时性死区********************************
+    (function(){
+
+        console.log(foo); // 输出undefined
+        var foo = 2;
+
+
+        console.log(bar); // 报错ReferenceError
+        let bar = 2;
+
+        //-------------------------
+        var tmp = 123;
+
+        if (true) {
+            tmp = 'abc'; // ReferenceError
+            let tmp;
+        }
+        //typeof不再安全
+
+    });
+
+
+    //块级作用域************************************
+    (function(){
+
+        function f1() {
+            let n = 5;
+            if (true) {
+                let n = 10;
+            }
+            console.log(n); // 5
+        }
+
+        //------------------------
+
+        // IIFE 写法
+        (function () {
+            var tmp = '';
+        }());
+
+
+        {{{{
+            let insane = 'Hello World';
+            {let insane = 'Hello World'}
+        }}}};
+
+
+        //块级作用于返回值
+        /*let x = do {
+            let t = f();
+            t * t + 1;
+        };
+        console.log(x);*/
+
+    });
+
+    //const********************************************
+    (function(){
+
+        //const foo; // SyntaxError: 必须初始化，并且无法改变;
+
+        const foo = {}; //常量指向的是一个内存地址 将 foo 指向另一个对象，就会报错
+
+        foo.prop = 123;
+
+        console.log(foo)
+
+        //冻结常量不可改变
+        //foo = Object.freeze({});
+
+        foo.name = 'lisa';
+
+        console.log(foo)
+
+
+    })
+
+    //window对象 顶层对象
+    (function(){
+
+        var a = 1;
+        // 如果在Node的REPL环境，可以写成global.a
+        // 或者采用通用方法，写成this.a
+        //window.a // 1
+
+        let b = 1;
+        //window.b // undefined
+
+    })
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

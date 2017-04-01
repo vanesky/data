@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+
+    <div id="list"></div>
+<script>
+
+    //字符串遍历
+    (function(){
+
+        var s = 'Hello world!';
+
+        s.startsWith('Hello') // true
+        s.endsWith('!') // true
+        s.includes('o') // true
+
+
+        //重复字符-----------------------------
+        'x'.repeat(3) // "xxx"
+        'hello'.repeat(2) // "hellohello"
+        'na'.repeat(0) // ""
+
+        //补全字符串----------------------------
+        '157'.padStart(10, '0')
+        '12'.padStart(10, '0')
+
+    });
+
+
+    //模板字符串****************************************
+    (function(){
+
+        let p = 'jack';
+
+        let str = `<span>hahahah</span>`
+
+        $('#list').html(`
+            <ul>
+            <li>first</li>
+            <li>second</li>
+            <li>${p}</li>
+            </ul>
+        `.trim());
+
+
+
+        //模板函数处理-------------------------
+        var a = 5;
+        var b = 10;
+
+        function tag(s, v1, v2) {
+            console.log(s[0]);
+            console.log(s[1]);
+            console.log(s[2]);
+            console.log(v1);
+            console.log(v2);
+
+            return "OK";
+        }
+
+        tag`Hello ${ a + b } world ${ a * b}`;
+
+    });
+
+
+
+    //数值新方法
+    (function(){
+
+        Number.isInteger(25) // true
+        Number.isInteger(25.0) // true
+        Number.isInteger(25.1) // false
+        Number.isInteger("15") // false
+        Number.isInteger(true) // false
+
+        Math.trunc(4.1) // 4
+        Math.trunc(4.9) // 4
+        Math.trunc(-4.1) // -4
+        Math.trunc(-4.9) // -4
+        Math.trunc(-0.1234) // -0
+
+        //方法用来判断一个数到底是正数、负数、还是零。
+        Math.sign(-5) // -1
+        Math.sign(5) // +1
+        Math.sign(0) // +0
+        Math.sign(-0) // -0
+        Math.sign(NaN) // NaN
+        Math.sign('foo'); // NaN
+        Math.sign();      // NaN
+
+        //指数运算符
+        2 ** 2 // 4
+        2 ** 3 // 8
+
+        let a = 2;
+        a **= 2;
+        // 等同于 a = a * a;
+
+        let b = 3;
+        b **= 3;
+        // 等同于 b = b * b * b;
+
+    });
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

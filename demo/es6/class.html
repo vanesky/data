@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+
+<div id="list"></div>
+<script>
+
+
+
+    (function(){
+
+        //定义类
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            toString() {
+                return '(' + this.x + ', ' + this.y + ')';
+            }
+        }
+
+        var a = new Point(1,4);
+
+        Object.setPrototypeOf(a,{
+
+            name:'jack'
+
+        })
+
+        console.log(Point.prototype)
+        console.log(a.__proto__)
+
+
+    });
+
+    (function(){
+
+
+        let person = new class {
+            constructor(name) {
+                this.name = name;
+            }
+
+            sayName() {
+                console.log(this.name);
+            }
+        }('张三');
+
+        person.sayName(); // "张三"
+
+
+    });
+
+
+    //继承
+    (function(){
+
+        class Point {
+
+            constructor(x, y) {
+
+                this.x = 100;
+
+            }
+
+            toString() {
+                return '父级';
+            }
+        };
+
+
+        class ColorPoint extends Point {
+
+            constructor(color) {
+                super(); // 调用父类的constructor(x, y)
+                this.color = color;
+            }
+
+            toString() {
+                return this.color + ' ' + super.toString() + ' ' + this.x; // 调用父类的toString()
+            }
+
+            demo(){
+                console.log(this.constructor)
+            }
+        }
+
+        let a = new ColorPoint('red');
+
+        console.log(a.demo())
+
+    })()
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

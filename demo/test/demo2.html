@@ -12,43 +12,25 @@
 </head>
 <body>
 
-    <canvas id="canvas"></canvas>
 
     <div class="demo"></div>
     <script>
 
-        function demo(str){
 
-            var a = {},b = 0,c = '';
+        function initscript(){                                      //动态添加js
 
-            for(var i=0;i<str.length;i++){
+            var label = document.createElement('div');
 
-                if(!a[str[i]]){
+            label.setAttribute('src','text/javascript')
 
-                    a[str[i]] = 1;
+            label.src = 'www.baidu.com';
 
-                }else{
+            var k1 = document.getElementsByTagName('body')[0];
 
-                    a[str[i]] = a[str[i]]+1;
+            k1.parentNode.insertBefore(label,k1.nextSibling)
 
-                }
-
-            }
-            for(var j in a){
-
-                if(a[j]>b){
-
-                    b = a[j];
-
-                    c = j;
-
-                }
-            }
-
-            return c;
         }
-
-
+        initscript()
     </script>
 
 </body>

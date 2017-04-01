@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+
+<div id="list"></div>
+<script>
+
+
+    (function(){
+
+        function log(x, y = 'World') {
+            console.log(x, y);
+        }
+
+        log('Hello') // Hello World
+        log('Hello', 'China') // Hello China
+        log('Hello', '') // Hello
+
+    })
+
+    //解构默认与参数默认
+    (function(){
+
+        // 写法一
+        function m1({x = 0, y = 0} = {}) {
+            return [x, y];
+        }
+
+        // 写法二
+        function m2({x, y} = { x: 0, y: 0 }) {
+            return [x, y];
+        }
+
+        // 函数没有参数的情况
+        m1() // [0, 0]
+        m2() // [0, 0]
+
+        // x和y都有值的情况
+        m1({x: 3, y: 8}) // [3, 8]
+        m2({x: 3, y: 8}) // [3, 8]
+
+        // x有值，y无值的情况
+        m1({x: 3}) // [3, 0]
+        m2({x: 3}) // [3, undefined]
+
+        // x和y都无值的情况
+        m1({}) // [0, 0];
+        m2({}) // [undefined, undefined]
+
+        m1({z: 3}) // [0, 0]
+        m2({z: 3}) // [undefined, undefined]
+
+    });
+
+
+    (function(){
+
+        //一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域
+        let x = 1;
+
+        function f(y = x) {
+            let x = 2;
+            console.log(y);
+        }
+
+        f() // 1
+
+
+        //利用参数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误。
+        function throwIfMissing() {
+            throw new Error('Missing parameter');
+        }
+
+        function foo(mustBeProvided = throwIfMissing()) {
+            return mustBeProvided;
+        }
+
+        foo()
+        // Error: Missing parameter
+
+    });
+
+    //rest参数
+    (function(){
+
+        function add(...values) {
+            let sum = 0;
+
+            for (var val of values) {
+                sum += val;
+            }
+
+            return sum;
+        }
+        add(2, 5, 3) // 10
+
+
+        //扩展运算符（spread）是三个点（...）。它好比 rest 参数的逆运算
+        console.log(...[1, 2, 3])
+        // 1 2 3
+
+        console.log(1, ...[2, 3, 4], 5)
+        // 1 2 3 4 5
+
+        //[...document.querySelectorAll('div')]
+        // [<div>, <div>, <div>]
+
+
+
+        // ES5的写法（添加数组到尾部）----------------------------
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        Array.prototype.push.apply(arr1, arr2);
+
+        // ES6的写法
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        arr1.push(...arr2);
+
+    });
+
+
+    //扩展运算符应用
+    (function(){
+
+        //合并数组------------------
+        // ES5
+        [1, 2].concat(more)
+        // ES6
+        [1, 2, ...more]
+
+        //与解构赋值结合-------------
+
+        const [first, ...rest] = [1, 2, 3, 4, 5];
+        first // 1
+        rest  // [2, 3, 4, 5]
+
+        const [first, ...rest] = [];
+        first // undefined
+        rest  // []:
+
+        const [first, ...rest] = ["foo"];
+        first  // "foo"
+        rest   // []
+
+
+        //字符串分割数组
+        [...'hello']
+
+    });
+
+    //箭头函数****************************************
+    (function(){
+
+        const full = ({ first, last }) => first + ' ' + last;
+        // 等同于
+        function full(person) {
+            return person.first + ' ' + person.last;
+        }
+
+
+        //rest参数
+        const headAndTail = (head, ...tail) => [head, tail];
+
+        headAndTail(1, 2, 3, 4, 5)
+        // [1,[2,3,4,5]]
+
+
+
+    })
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

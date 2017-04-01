@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+
+<div id="list"></div>
+<script>
+
+
+    (function(){
+        //Set 本身是一个构造函数，用来生成 Set 数据结构。
+        /*const s = new Set();
+
+        [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));   // 2 3 5 4
+        for (let i of s) {
+            console.log(i);
+        }*/
+
+
+        //set方法---------------------------------------
+        //add(value)：添加某个值，返回Set结构本身。
+        //delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。
+        //has(value)：返回一个布尔值，表示该值是否为Set的成员。
+        //clear()：清除所有成员，没有返回值。
+
+        //set的遍历方法
+        //keys()：返回键名的遍历器
+        //values()：返回键值的遍历器
+        //entries()：返回键值对的遍历器
+        //forEach()：使用回调函数遍历每个成员
+
+
+        //数组去重-----------------------------------
+        function dedupe(array) {
+            return Array.from(new Set(array));
+        }
+
+        dedupe([1, 1, 2, 3]) // [1, 2, 3]
+
+
+        //求集---------------------------------
+        let a = new Set([1, 2, 3]);
+        let b = new Set([4, 3, 2]);
+
+        // 并集
+        let union = new Set([...a, ...b]);
+        // Set {1, 2, 3, 4}
+
+        // 交集
+        let intersect = new Set([...a].filter(x => b.has(x)));
+        // set {2, 3}
+
+        // 差集
+        let difference = new Set([...a].filter(x => !b.has(x)));
+
+
+    });
+
+
+    //map 数据结构**********************************
+    (function(){
+
+        var m = new Map();
+        var o = {p: 'Hello World'};
+
+        m.set(o, 'content')
+        m.get(o) // "content"
+
+        m.has(o) // true
+        m.delete(o) // true
+        m.has(o) // false
+
+
+        //实例方法----------------------------
+
+        var a = new Map();
+
+        a.set("edition", 6)        // 键是字符串
+        a.set(262, "standard")     // 键是数值
+        a.set(undefined, "nah")    // 键是undefined
+
+        a.get(262) // "standard"
+
+        //map数据结构遍历-------------------------
+        //keys()：返回键名的遍历器。
+        ///values()：返回键值的遍历器。
+        //entries()：返回所有成员的遍历器。
+        //forEach()：遍历Map的所有成员。
+
+        /*let map = new Map([
+            ['F', 'no'],
+            ['T',  'yes'],
+        ]);
+
+        for (let key of map.keys()) {
+            console.log(key);
+        }
+        // "F"
+        // "T"
+
+        for (let value of map.values()) {
+            console.log(value);
+        }
+        // "no"
+        // "yes"
+
+        for (let item of map.entries()) {
+            console.log(item[0], item[1]);
+        }*/
+
+
+    })
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

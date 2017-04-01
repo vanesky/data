@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../javascript/lib/jquery.js"></script>
+</head>
+<body>
+
+<div id="list"></div>
+<script>
+
+
+    (function(){
+
+        function runAsync1(){
+            var p = new Promise(function(resolve, reject){
+                //做一些异步操作
+                setTimeout(function(){
+                    console.log('异步任务1执行完成');
+                    resolve('随便什么数据1');
+                }, 1000);
+            });
+            return p;
+        }
+        function runAsync2(){
+            var p = new Promise(function(resolve, reject){
+                //做一些异步操作
+                setTimeout(function(){
+                    console.log('异步任务2执行完成');
+                    resolve('随便什么数据2');
+                }, 2000);
+            });
+            return p;
+        }
+        function runAsync3(){
+            var p = new Promise(function(resolve, reject){
+                //做一些异步操作
+                setTimeout(function(){
+                    console.log('异步任务3执行完成');
+                    resolve('随便什么数据3');
+                }, 2000);
+            });
+            return p;
+        }
+
+
+
+        runAsync1()
+        .then(function(data){
+            console.log(data);
+            return runAsync2();
+        })
+        .catch(function(reason){
+            console.log('rejected');
+            console.log(reason);
+        })
+        .then(function(data){
+            console.log(data);
+            return runAsync3();  //这里直接返回数据
+        })
+        .then(function(data){
+            console.log(data);
+        });
+
+
+        //Promise的all方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。
+        Promise
+        .all([runAsync1(), runAsync2(), runAsync3()])
+        .then(function(results){
+            console.log(results);
+        });
+
+    });
+
+
+    //race 可用于请求超时
+    (function(){
+
+        function requestImg(){
+            var p = new Promise(function(resolve, reject){
+                var img = new Image();
+                img.onload = function(){
+                    resolve(img);
+                }
+                img.src = 'xxxxxx';
+            });
+            return p;
+        }
+
+        //延时函数，用于给请求计时
+        function timeout(){
+            var p = new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    reject('图片请求超时');
+                }, 5000);
+            });
+            return p;
+        }
+
+        Promise
+        .race([requestImg(), timeout()])
+        .then(function(results){
+            console.log(results);
+        })
+        .catch(function(reason){
+            console.log(reason);
+        });
+
+    });
+
+    (function(){
+
+
+
+        let arr = [1,2,3,1,1,1,1,9];
+
+        let es6 = {
+            edition: 6,
+            committee: "TC39",
+            standard: "ECMA-262"
+        }
+
+        console.log(Object.keys(es6))
+
+        for(let y of Object.keys(es6)){
+
+            console.log(y);
+        }
+
+    })()
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

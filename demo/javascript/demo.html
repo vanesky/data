@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="../h5_css3/a/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="ce.js"></script>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+
     <title>Title</title>
 
     <style type="text/css">
@@ -16,74 +16,115 @@
 
     </style>
 
-    <script type="text/javascript">
-
-
-        function position(type,index){
-
-
-            if(type=='pc'){
-
-                box = 20;
-
-                box1 = 200;
-
-                if(index>5){
-
-                    box2 = Math.ceil(index/5);
-
-                }else if(index<=5){
-
-                    box2 = 1;
-
-                }
-
-                if(index/5>1){
-
-                    index = index%5;
-
-                }
-
-            }else{
-
-                box = 10;
-
-                box1 = 100;
-
-                if(index/3>1){
-
-                    index = index%3;
-
-                }
-
-
-                box2 = Math.ceil(index/5);
-
-            }
-
-            temp = index*(box+box1);
-
-            return temp;
-
-        }
-
-        //===============================
-
-
-
-
-    </script>
 
 </head>
 
 <body>
 
 
+    <div id="header" onclick="myFunction()">
+        <span id="num">123</span>
+    </div>
 
 
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+<li>55</li>
+
+    <input type="checkbox"><span>lisa</span>
+    <input type="checkbox"><span>ffff</span>
 </body>
 
 
+<script type="text/javascript">
+
+
+    (function(){
+
+        var obj = document.getElementById('list').getElementsByTagName("li");
+
+
+            for(var i=0;i<obj.length;i++){
+
+                obj[i].onclick = (function(num){
+
+                    return function(){
+
+                        alert(num)
+                    }
+
+                })(i)
+
+            }
+
+
+
+    })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    (function(){
+        var head = document.getElementById('header');
+
+        var body = document.getElementsByTagName('body')[0];
+
+        var node = document.createElement('div');
+
+        node.setAttribute('id','one');
+
+        //body.appendChild(node);
+
+
+        //a(head,node);
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function a(target,newNode){
+
+        target.insertBefore(newNode,target.childNodes[0]);
+
+        console.log(node.getAttribute('id'))
+
+    }
+
+    function myFunction() {
+        var textnode=document.createTextNode("Water");
+        var item=document.getElementById("num");
+        item.replaceChild(textnode,item.childNodes[0]);
+    }
+
+
+
+
+</script>
 </html>
 
 

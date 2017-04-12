@@ -8,29 +8,41 @@
     <style>
         body{text-align: center;}
 
+        .count-down{
+            width:5rem;
+            text-align: center;
+            border: none;
+            background-color: transparent;
+        }
+
     </style>
 </head>
 <body>
 
 
-    <div class="demo"></div>
+    <div id="demo">ff</div>
+    <br/>
+    <div id="demo2">888</div>
+
+    <input id="t" type="text" value="123" disabled>
+
     <script>
 
+        var a = document.getElementById('demo');
 
-        function initscript(){                                      //动态添加js
-
-            var label = document.createElement('div');
-
-            label.setAttribute('src','text/javascript')
-
-            label.src = 'www.baidu.com';
-
-            var k1 = document.getElementsByTagName('body')[0];
-
-            k1.parentNode.insertBefore(label,k1.nextSibling)
+        a.onclick=function(){
 
         }
-        initscript()
+
+        var b = document.getElementById('demo2');
+
+        b.onclick=function(){
+
+        };
+
+
+
+
     </script>
 
 </body>

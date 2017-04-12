@@ -45,6 +45,11 @@ http://www.mamicode.com/info-detail-427942.html   MVC
 
 http://blog.csdn.net/guoyankun/article/details/19335065 理解MVC
 
+http://blog.csdn.net/lucifer19900724/article/details/48524209
+
+
+http://blog.csdn.net/lucifer19900724/article/details/48524209
+
 http://jiongks.name/blog/just-vue/ VUE
 
 http://www.php100.com/html/it/biancheng/2015/0212/8619.html  组件

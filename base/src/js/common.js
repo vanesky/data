@@ -124,39 +124,37 @@ window.com = {};
 
     };
 
-    this.clearLogin = function(){
+    this.setLogin = function(type,sign){
 
-        localStorage.removeItem('uid');
-
-        localStorage.removeItem('name');
-
-        localStorage.removeItem('loginName');
-
-        localStorage.removeItem('loginPass');
-
-    };
-
-    this.setLogin = function(sign){
-
-        com.clearLogin();
+        localStorage.removeItem('user');
 
         var signObj = sign;
-
-        localStorage.setItem('uid', signObj.uid);
-
-        localStorage.setItem('name', signObj.name);
-
-        localStorage.setItem('loginName', signObj.loginName);
-
-        localStorage.setItem('loginPass', signObj.loginPass);
-
-        localStorage.setItem('user',JSON.stringify(signObj));
 
         //设置过期时间
         var expire = new Date().getTime();
 
-        localStorage.setItem('expire',expire + 7*24*60*60*1000);
+        var time = expire + signObj.expire*60*60*1000;
 
+            signObj.expire = time;
+
+        localStorage.setItem(type,JSON.stringify(signObj));
+
+    };
+
+    this.getLogin = function(type,key){
+
+        var data = JSON.parse(localStorage.getItem(type));
+
+        var d = new Date().getTime();
+
+        if(d>data['expire']){
+
+            return false;
+
+        }else{
+
+            return data[key];
+        }
     };
 
     this.setCookie = function(name,value,expday){
@@ -185,6 +183,8 @@ window.com = {};
         }
 
     };
+
+
 
 
 }).apply(com);

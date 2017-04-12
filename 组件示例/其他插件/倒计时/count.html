@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/base.css">
+
+    <style>
+        body{text-align: center;}
+
+        .count-down{
+            width:5rem;
+            text-align: center;
+            border: none;
+            background-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<span>密码</span>
+<input type="text">
+<input id="send" class="count-down" type="text" value="发送验证码" onclick="sendCode(this)" readonly>
+
+<input id="bank" type="text" value="" oninput="bankFormat(this)">
+<script>
+
+
+    function bankFormat(o){
+
+        var val = o.value;
+
+        o.value = val.replace(/\s/g,"").replace(/(\d{4})(?=\d)/g,"$1 ");
+
+    }
+
+
+    var time = 5;
+
+    function sendCode(o,s){
+
+        if(time == 0){
+
+            o.value = '发送验证码';
+
+            time = 5;
+
+            o.removeAttribute("disabled");
+
+        }else{
+
+            o.setAttribute("disabled",true);
+
+            o.value = '倒计时 ' +time+ 's';
+
+            time--;
+
+            setTimeout(function(){
+
+                sendCode(o);
+
+            },1000)
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

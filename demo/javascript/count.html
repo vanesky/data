@@ -89,15 +89,13 @@
 
         //var nice = [1,2];
 
-        function copy(arr){                                         //深度clone
+        function clone(arr){                //clone
 
-            var save,temp = arr.constructor === Array ? []:{};
+            if(typeof arr != 'object'){return}
 
-            if(typeof arr !=='object'){
+            var save,temp = arr instanceof Array ? [] : {};
 
-                return;
-
-            }else if(window.JSON){
+            if(window.JSON){
 
                 save = JSON.stringify(arr);
 
@@ -105,35 +103,37 @@
 
             }else{
 
-                for(var i in arr){
+                for(let i in arr){
 
-                    temp[i] = typeof arr[i] !=='object'? arr[i] : copy(arr[i]);
+                    temp[i] = typeof arr[i] !== 'object'? arr[i] : clone(arr[i]);
 
                 }
-
             }
+
+            return temp;
         }
 
 
-        function char(a){                          //编写一个方法 求一个字符串的字节长度
 
-            if(arguments.length==0){return}
 
-            if(a==''){return}
+        function char(str){     //编写一个方法 求一个字符串的字节长度
 
-            var box = 0;
+            let count = 0;
 
-            for(var i=0;i<a.length;i++){
+            for(let i=0;i<str.length;i++){
 
-                if(a.charCodeAt(a[i])>255){
+                if(str.charCodeAt(str[i])>255){
 
-                    box = box+2;
+                    count = count+2;
 
-                }else{box++;}
-
+                }else{
+                    count++;
+                }
             }
-            return box;
+
+            return count;
         }
+
 
 
         (function(){                                //求取最多出现的字符

@@ -305,6 +305,7 @@
 
         function setTarget(evt){                     //跨浏览器获取目标事件
 
+            //currentTarget真正事件监听者
             if(evt.target){
 
                 return evt.target;
@@ -440,50 +441,6 @@
 
         /*********************语法基本***********************/
 
-        window.color = "red";                       //call可实现在不同作用域下对象的冒充使用
-
-        var box={ color:"pink" };
-
-        function result(){ alert(this.color)}
-
-        //result.call(box);
-
-
-        function k1(a,b){ alert(a+b) }
-
-        function k2(c,d){ k1.apply(this,[c,d] ) }
-
-        //k2(4,3);
-
-
-
-        function Box(name,age){                     //原型和构造模式解决了传参和方法共享的组合继承
-
-            this.name = name;
-
-            this.age = age;
-
-        }
-
-        Box.prototype.arr = function(){
-
-            alert(this.name + this.age)
-
-        };
-
-
-        function Desk(name,age){
-
-            Box.call(this,name,age)
-
-        }
-
-        Desk.prototype = new Box();
-
-        var nice = new Desk("jack",18);
-
-        //nice.arr()
-
 
 
         (function(){
@@ -552,7 +509,62 @@
 
 
 
-}
+};
+
+
+    (function(){
+
+        this.clearLogin = function(){
+
+            localStorage.removeItem('uid');
+
+            localStorage.removeItem('name');
+
+            localStorage.removeItem('loginName');
+
+            localStorage.removeItem('loginPass');
+
+            localStorage.removeItem('expires');
+        };
+
+        this.setLogin = function(sign){
+
+            com.clearLogin();
+
+            var signObj = sign;
+
+            localStorage.setItem('uid', signObj.uid);
+
+            localStorage.setItem('name', signObj.name);
+
+            localStorage.setItem('loginName', signObj.loginName);
+
+            localStorage.setItem('loginPass', signObj.loginPass);
+
+            //localStorage.setItem('user',JSON.stringify(signObj));
+
+            //设置过期时间
+            var expire = new Date().getTime();
+
+            localStorage.setItem('expires',expire + signObj.expire*60*60*1000);
+
+        };
+
+        this.getLogin = function(key){
+
+            var d = new Date().getTime();
+
+            if(d>localStorage.getItem('expires')){
+
+                return false;
+
+            }else{
+
+                return localStorage.getItem(key);
+            }
+        }
+
+    })
 
 </script>
 

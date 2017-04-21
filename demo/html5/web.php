@@ -1,6 +1,7 @@
 
 <?php
 
+    header('Access-Control-Allow-Origin:*');
     header('Content-Type: text/event-stream');
     header('Cache-Control: no-cache');
 
@@ -11,9 +12,9 @@
 
     echo "\n\n";
 
-    echo "retry:1000\n";
+    //echo "retry:1000\n";
 
-    flush();
+    //flush();
 
 
 

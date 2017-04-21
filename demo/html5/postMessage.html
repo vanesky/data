@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <div onclick="posts()">
+        1223
+    </div>
+
+<script>
+
+    var obj = {
+
+        demo:function(){
+
+            alert('sss123456')
+        }
+
+
+    }
+
+    localStorage.setItem('name','jack')
+
+    function posts(){
+
+        window.open('http://127.0.0.1/data/demo/html5/WebSocket.html',"_blank")
+
+        setTimeout(function(){
+
+            window.postMessage('123',"http://127.0.0.1")
+
+        },3000)
+
+    }
+
+</script>
+</body>
+</html>

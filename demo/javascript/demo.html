@@ -22,17 +22,11 @@
 <body>
 
 
-    <div id="header" onclick="myFunction()">
-        <span id="num">123</span>
-    </div>
-
-
     <ul id="list">
         <li>1</li>
         <li>2</li>
         <li>3</li>
     </ul>
-<li>55</li>
 
     <input type="checkbox"><span>lisa</span>
     <input type="checkbox"><span>ffff</span>
@@ -44,21 +38,15 @@
 
     (function(){
 
-        var obj = document.getElementById('list').getElementsByTagName("li");
+
+        var str = '123456';
+
+        var arr = str.split('').reverse();
+
+            console.log.apply(console,arr);
 
 
-            for(var i=0;i<obj.length;i++){
 
-                obj[i].onclick = (function(num){
-
-                    return function(){
-
-                        alert(num)
-                    }
-
-                })(i)
-
-            }
 
 
 
@@ -69,58 +57,30 @@
 
 
 
-
-
-
-
-
-
-
-
-
     (function(){
-        var head = document.getElementById('header');
 
-        var body = document.getElementsByTagName('body')[0];
+        var a = {
 
-        var node = document.createElement('div');
+            name:'jack',
+            age:11,
 
-        node.setAttribute('id','one');
+        }
+        var b = {
 
-        //body.appendChild(node);
+            name:'jack2',
+            sex:'男',
+
+        }
+
+        var result = $.extend({},a,b)
+
+        //result.name = 'lisa';
 
 
-        //a(head,node);
+        console.log(result)
+
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function a(target,newNode){
-
-        target.insertBefore(newNode,target.childNodes[0]);
-
-        console.log(node.getAttribute('id'))
-
-    }
-
-    function myFunction() {
-        var textnode=document.createTextNode("Water");
-        var item=document.getElementById("num");
-        item.replaceChild(textnode,item.childNodes[0]);
-    }
-
 
 
 

@@ -2,17 +2,27 @@
 @charset "utf-8";
 @import "color.less";
 
+
+.wh(@w:0,@h:0){
+  width:@w*1px;
+  height:@h*1px;
+}
+
+.com-shadow(@shadow-opacity:.04){
+  box-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,@shadow-opacity);
+}
+.shadow(@x:0,@y:1,@blur:1px, @color:#000) {
+  box-shadow:@arguments;
+}
+
+.auto(@t:0){
+  margin-top:@t;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 //边框
 .border(@border-color:@cdb;){
   border:1px solid @border-color;
-}
-
-.shadow(@shadow-opacity:.04){
-  box-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,@shadow-opacity);
-}
-
-.auto(){
-  margin-left:auto;
-  margin-right:auto;
 }
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+    <h2 id="clone"></h2>
+
+</body>
+
+
+<script type="text/javascript">
+
+
+    //添加节点
+    (function(){
+
+        var body = document.getElementsByTagName('body')[0];
+
+        var node = document.createElement('div');
+
+            node.setAttribute('id','one');
+
+            body.appendChild(node);
+
+    });
+
+    //插入节点
+    (function(){
+
+        var box = document.getElementById('box');
+
+        var node = document.createElement('div');
+
+            node.setAttribute('id','one');
+
+            box.insertBefore(node,box.childNodes[0]);
+
+
+        //**********************************************
+        var node2 = document.createElement('p');
+
+        var text = document.createTextNode("Water");
+
+            node2.appendChild(text);
+
+            nextNode(box,node2);
+
+    })();
+
+    //同级后插入节点
+    function nextNode(target,newNode){
+
+        target.parentNode.insertBefore(newNode,target.nextSibling);
+
+    }
+
+    //节点替换
+    function replaceNode() {
+
+        var text = document.createElement("h1");
+
+        var item = document.getElementById("box");
+
+        item.replaceChild(text,item.childNodes[0]);
+
+    }
+
+    replaceNode();
+
+
+    //克隆节点
+    function clone(){                          //clone
+
+        var itm = document.getElementById("box");
+
+        var cln = itm.cloneNode(true);
+
+        document.getElementById("clone").appendChild(cln);
+
+    }
+    //clone();
+
+
+    //删除属性
+    function removeAttr(){
+
+        var itm = document.getElementById("box");
+
+            itm.removeAttribute('id');
+    }
+    //removeAttr()
+
+
+    //删除节点
+    function removeNode(){
+
+        var item = document.getElementById("box");
+
+        item.removeChild(item.childNodes[0]);
+    }
+    //removeNode()
+
+</script>
+</html>
+
+
+
+
+
+
+
+

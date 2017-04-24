@@ -1,64 +1,29 @@
-http://www.duanliang920.com/learn/web/html5/304.html    移动开发流程
-
-http://www.bubuko.com/infodetail-268180.html    媒介查询
 
 http://www.jianshu.com/p/e141d1543143   浏览器渲染
 
 http://www.cnblogs.com/lhb25/p/how-browsers-work.html#Resources  浏览器原理
 
-http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html    严格模式
-
-http://lifemap.in/javascript-memory-optimize/	内存优化
 
 http://www.zhihu.com/question/20521802    jquery 文章集合
 
-
 http://docs.emmet.io/cheat-sheet/ Element 工具快捷键
+
+http://www.zhihu.com/question/19886806   CSS优化
+
+http://www.108js.com/
+
+http://www.php100.com/html/it/biancheng/2015/0212/8619.html  组件
+
 
 http://www.cnblogs.com/igeneral/p/3641574.html //get post
 
 https://i5ting.github.io/oh-http/#640104 http讲解
 
-
-http://www.cnblogs.com/yexiaochai/p/4463420.html 前后端分离
-
-http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/ 前后端分离
-
-http://blog.jobbole.com/65534/ 前后端分离
-
-http://www.zhihu.com/question/19886806   CSS优化
-
-http://www.cnblogs.com/pifoo/archive/2011/05/22/webkit-touch-event-3.html  多点触控
-
-http://wnworld.com/archives/170.html transform兼容
-
-http://www.108js.com/
-
-
-======================================
-
-http://www.ituring.com.cn/article/116701  phonegap
-
-http://zhidao.baidu.com/link?url=uGmnusw2KBFvJwQnqz1XpTEspQDAVTCwDzixsvJeO5uxJWx0nRgyw84bM77bWplQDBBJra4m0X0h3B7nMCRC3GQi6MUaoNHvbvS263iyhU3
-
-http://www.mamicode.com/info-detail-427942.html   MVC
-
-http://blog.csdn.net/guoyankun/article/details/19335065 理解MVC
-
-http://blog.csdn.net/lucifer19900724/article/details/48524209
-
-
-http://blog.csdn.net/lucifer19900724/article/details/48524209
-
-http://jiongks.name/blog/just-vue/ VUE
-
-http://www.php100.com/html/it/biancheng/2015/0212/8619.html  组件
-
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise  ES6网络请求
 
 http://www.tuicool.com/articles/f63yUja  fetch ES6网络请求
 
-http://ourjs.com/detail/529ca5950cb6498814000005 nodejs 讲解
+
 
 
 

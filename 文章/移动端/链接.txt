@@ -1,0 +1,6 @@
+
+http://www.duanliang920.com/learn/web/html5/304.html    移动开发流程
+
+http://www.bubuko.com/infodetail-268180.html    媒介查询
+
+http://www.cnblogs.com/pifoo/archive/2011/05/22/webkit-touch-event-3.html  多点触控

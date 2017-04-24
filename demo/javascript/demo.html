@@ -43,10 +43,34 @@
 
         var arr = str.split('').reverse();
 
-            console.log.apply(console,arr);
+            //console.log.apply(console,arr);
 
 
+        function object(o){
+            function F(){}
+            F.prototype = o;
+            return new F();
+        }
 
+        var person = {
+            name: "Nicholas",
+            friends: ["Shelby", "Court", "Van"]
+        };
+
+        //var anotherPerson = object(person)
+        //anotherPerson.name = "Greg";
+        //anotherPerson.friends.push("Rob");
+
+        //console.log(person)
+
+
+        var k = Object.create(person);
+
+        k.friends.push('lisa')// = 'jack'
+
+        console.log(k.friends)
+
+        console.log(person.friends)
 
 
 

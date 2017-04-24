@@ -1,0 +1,2 @@
+
+computed 可检测到父级变动 this.$parent

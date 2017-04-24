@@ -16,6 +16,12 @@ https://llp0574.github.io/2016/11/29/getting-started-with-webpack2/  教程
 
 http://array_huang.coding.me/webpack-book/chapter0/preface.html 架构
 
+https://github.com/u9648u6653u52c7/projectTemplate/tree/master/config  webpack
+
+http://www.imooc.com/article/7221 webpack
+
+https://segmentfault.com/a/1190000006871991
+
 
 require('lodash') 	// 从模块目录查找
 require('./file') 	// 按相对路径查找

@@ -26,3 +26,25 @@ https://segmentfault.com/a/1190000007575302 表单
 https://segmentfault.com/a/1190000005168085 单文件组件
 
 http://lib.csdn.net/article/react/50085 reader
+
+http://jiongks.name/blog/just-vue/ VUE
+
+http://www.imooc.com/article/2583  实现tap
+
+http://blog.csdn.net/github_26672553/article/details/53046923  插件
+
+
+
+
+
+
+
+
+
+vuex**************************************************************************************
+
+http://www.jianshu.com/p/61761907469f   
+
+https://github.com/yelingfeng/vuex-tutorial/blob/master/tutorial/03/index.html
+
+https://vuex.vuejs.org/zh-cn/

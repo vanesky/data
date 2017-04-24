@@ -1,0 +1,14 @@
+http://www.mamicode.com/info-detail-427942.html   MVC
+
+http://blog.csdn.net/guoyankun/article/details/19335065 理解MVC
+
+http://taobaofed.org/tags/midway/ 淘宝团
+
+
+http://blog.csdn.net/lucifer19900724/article/details/48524209 mvc
+
+http://www.cnblogs.com/yexiaochai/p/4463420.html 前后端分离
+
+http://ued.taobao.org/blog/2014/04/full-stack-development-with-nodejs/ 前后端分离
+
+http://blog.jobbole.com/65534/ 前后端分离

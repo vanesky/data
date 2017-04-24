@@ -216,8 +216,8 @@
                 alert(this.name);
             };
 
-            var keys = Object.keys(Person.prototype);
-            alert(keys);       //"name,age,sayName"
+            //var keys = Object.keys(Person.prototype);
+            //alert(keys);       //"name,age,sayName"
 
             var p1 = new Person();
             p1.name = "Rob";
@@ -361,7 +361,7 @@
             var instance1 = new SubType("Nicholas", 29);
             instance1.colors.push("black");
             alert(instance1.colors);      //"red,blue,green,black"
-            instance1.sayName();          //"Nicholas";
+            //instance1.sayName();          //"Nicholas";
             instance1.sayAge();           //29
 
             var instance2 = new SubType("Greg", 27);
@@ -372,7 +372,7 @@
 
         });
 
-        //6.3.4继承实例对象
+        //6.3.4继承实例对象 浅拷贝
         (function(){
 
             var person = {

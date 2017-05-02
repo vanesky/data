@@ -22,7 +22,7 @@
 
     <div id="demo">ff</div>
     <br/>
-    <div id="demo2">888</div>
+
 
     <input id="t" type="text" value="123" disabled>
 
@@ -32,16 +32,14 @@
 
         a.onclick=function(){
 
-        }
-
-        var b = document.getElementById('demo2');
-
-        b.onclick=function(){
-
+            a.onclick = null;
+            //alert('sss')
         };
 
-
-
+        (function(x){
+            delete x;
+            alert(x);
+        })(1+5);
 
     </script>
 

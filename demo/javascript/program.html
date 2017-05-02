@@ -373,6 +373,17 @@
         });
 
         //6.3.4继承实例对象 浅拷贝
+
+        (function(){
+            //浅拷贝
+            function object(o){
+                function F(){}
+                F.prototype = o;
+                return new F();
+            }
+
+        });
+
         (function(){
 
             var person = {

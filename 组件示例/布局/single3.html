@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .left,.center,.right{height:400px;}
+        .left{
+            width:100px;
+            float:left;
+            background-color: red
+            }
+        .center{
+            word-break: break-all;
+            background-color: #1fb394;
+        }
+        .right{
+            width:100px;
+            float:right;
+            background-color: #2e4250;
+        }
+
+        /*.parent{display:flex;background-color: red}
+        .left{width:100px; background-color: #1fb394;}
+        .center{flex:1;}
+        .right{width:100px; background-color: #2e4250;}*/
+
+    </style>
+</head>
+<body>
+
+
+    <div class="left">sdfsf</div>
+    <div class="right">esf</div>
+    <div class="center">
+        <ul>
+            <li>fs</li>
+            <li>fds</li>
+            <li>fds</li>
+            <li>fds</li>
+            <li>fds</li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        window.onload = function(){
+
+            var obj = document.querySelector('.center');
+            
+
+
+            for(var i=0;i<100;i++){
+                var table = document.createElement('span');
+
+                var text = document.createTextNode('123');
+
+                table.appendChild(text);
+
+
+                obj.appendChild(table);
+            }
+
+
+        }
+    </script>
+
+</body>
+</html>

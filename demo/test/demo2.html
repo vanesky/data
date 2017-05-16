@@ -20,26 +20,20 @@
 <body>
 
 
-    <div id="demo">ff</div>
-    <br/>
+    <div id="demo" class="auto">content</div>
 
 
-    <input id="t" type="text" value="123" disabled>
+    <input>
 
     <script>
 
-        var a = document.getElementById('demo');
+        var obj = document.querySelector('input');
 
-        a.onclick=function(){
+            //console.log(obj.hasAttributes())
 
-            a.onclick = null;
-            //alert('sss')
-        };
+        var time = new Date();
 
-        (function(x){
-            delete x;
-            alert(x);
-        })(1+5);
+        console.log(time.getMonth()+1)
 
     </script>
 

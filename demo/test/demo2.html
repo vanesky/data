@@ -15,6 +15,7 @@
             background-color: transparent;
         }
 
+
     </style>
 </head>
 <body>
@@ -22,18 +23,68 @@
 
     <div id="demo" class="auto">content</div>
 
+    <form action="1">
+        <input type="text" name="name">
+        <input type="text" name="age">
+        <input id="file" type="file">
+        <input type="submit" value="发送">
+    </form>
 
-    <input>
+    <div class="mt10" onclick="sub()">点击我</div>
+
+    <div class="mt10" onclick="send()">发送请求</div>
+
 
     <script>
 
-        var obj = document.querySelector('input');
+        $(function(){
 
-            //console.log(obj.hasAttributes())
 
-        var time = new Date();
 
-        console.log(time.getMonth()+1)
+
+
+
+        })
+
+        function sub(){
+
+            console.log($('form').serialize())
+        }
+
+        function send(){
+
+            var obj = {
+
+                name:'jack',
+
+                age:11
+            }
+
+
+            var file = document.getElementById("file").files;
+            
+            var fd = new FormData();
+
+            fd.append('imgName',file[0])
+
+            fd.append("para",JSON.stringify({name:'小明',age:12}));
+
+
+            $.ajax({
+
+                url:'http://127.0.0.1/demo2.php',
+
+                type:'post',
+                cache : false,
+                processData : false,
+                contentType : false,
+
+                data:fd
+
+            })
+
+        }
+
 
     </script>
 

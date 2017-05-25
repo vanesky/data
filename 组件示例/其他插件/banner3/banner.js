@@ -37,7 +37,7 @@ $.fn.banner = function(sel){
 
             dir = direction;
 
-            var banner_ = direction == 'left' ? banner_w:-banner_w;
+            var banner_ = direction == 'left' ? -banner_w:banner_w;
 
             for(var i=0;i<listObj.length;i++){                       //判断当前是否为最后一个元素 如果是则把元素位置初始化
 
@@ -45,21 +45,41 @@ $.fn.banner = function(sel){
 
                     le = Number(le.trim());
 
-                    le == banner_ ? banner.btList(i) : false;
+                    if(le==-banner_*(listObj.length-1)){
+
+                        listObj.eq(i).css('transition','');
+
+                        listObj.eq(i).css('transform','translate('+banner_+'px)');
+                    }
+
+
+
+
+
+                var leIng = listObj.eq(i).css('transform').split(',')[4];
+
+                    leIng = Number(leIng.trim());
+
+                    leIng == banner_ ? banner.btList(i) : false;
 
                     listObj.eq(i).css({
 
                         transition:'all '+sel.mspeed/1000+'s',
 
-                        transform:'translateX('+(le-banner_)+'px)'
+                        transform:'translateX('+(leIng-banner_)+'px)'
 
                     });
             }
+
+            if(typeof sel.speed == 'undefined'|| typeof sel.mspeed =='undefined'){return false}
+
+            time = setTimeout(function(){banner.slideRun();},sel.speed);
+
             //设置正在运动
-            isRun = true;
+            //isRun = true;
         };
 
-        this.slideEventEnd = function(){
+        /*this.slideEventEnd = function(){
 
             listObj.on('webkitTransitionEnd',function(){
 
@@ -95,7 +115,7 @@ $.fn.banner = function(sel){
                 },sel.speed);
             })
 
-        };
+        };*/
 
         this.slideEvent = function(){
 
@@ -145,18 +165,17 @@ $.fn.banner = function(sel){
 
     banner.slideInit()
 
-    banner.slideEventEnd()
+    //banner.slideEventEnd()
 
     //动画完毕间隔执行
-    banner.slideEvent();
+    //banner.slideEvent();
 
-    setTimeout(function(){
+    //setTimeout(function(){
 
         banner.slideRun('left');
 
-    },sel.speed)
+    //},sel.speed)
 
-    $(window).resize(function(){banner_w = $(window).width();  banner.slideInit();})
 
 }
 

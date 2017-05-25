@@ -16,11 +16,11 @@
 </head>
 <body>
 
-    <input id="fileupload" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="http://192.168.0.100/demo.php" multiple>
+    <input id="fileupload" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="http://127.0.0.1/demo2.php">
 
 
     <progress id="progress" class="pro-val" value="0" max="100"></progress>
-    <span class="bar"></span>
+    <span class="bar" onclick="send()">点击</span>
 
     <script>
 
@@ -53,6 +53,8 @@
             });
 
         });
+
+
     </script>
 
 </body>

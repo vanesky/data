@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/ajaxfileupload.js"></script>
+</head>
+<body>
+
+    <input id="file1" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="">
+
+    <span class="bar" onclick="ajaxFileUpload()">点击</span>
+
+
+</body>
+
+
+    <script>
+
+        function ajaxFileUpload() {
+            $.ajaxFileUpload(
+                    {
+                        url: 'http://127.0.0.1/demo2.php', //用于文件上传的服务器端请求地址
+                        secureuri: false, //是否需要安全协议，一般设置为false
+                        fileElementId: 'file1', //文件上传域的ID
+                        dataType: 'json', //返回值类型 一般设置为json
+                        success: function (data, status)  //服务器成功响应处理函数
+                        {
+                            $("#img1").attr("src", data.imgurl);
+                            if (typeof (data.error) != 'undefined') {
+                                if (data.error != '') {
+                                    alert(data.error);
+                                } else {
+                                    alert(data.msg);
+                                }
+                            }
+                        },
+                        error: function (data, status, e)//服务器响应失败处理函数
+                        {
+                            alert(e);
+                        }
+                    }
+            )
+            return false;
+        }
+    </script>
+
+</html>

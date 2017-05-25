@@ -41,12 +41,12 @@
     //选择照片更改后执行
     $("#file").on('change',function(){
 
-        readFileRule(function(file){
+        readFileRule(function(num){
 
             //上传图片
-            for(var i=0;i<file.length;i++){
+            for(var i=0;i<num.length;i++){
 
-                upLoadImg(file,i);
+                upLoadImg(num,i);
             }
 
         });

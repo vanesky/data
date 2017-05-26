@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <input id="file1" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="">
+    <input id="file1" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="" onchange="ajaxFileUpload()">
 
     <span class="bar" onclick="ajaxFileUpload()">点击</span>
 
@@ -21,7 +21,7 @@
         function ajaxFileUpload() {
             $.ajaxFileUpload(
                     {
-                        url: 'http://127.0.0.1/demo2.php', //用于文件上传的服务器端请求地址
+                        url: 'http://127.0.0.1/demo.php', //用于文件上传的服务器端请求地址
                         secureuri: false, //是否需要安全协议，一般设置为false
                         fileElementId: 'file1', //文件上传域的ID
                         dataType: 'json', //返回值类型 一般设置为json

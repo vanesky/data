@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <input id="fileupload" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="http://127.0.0.1/demo2.php">
+    <input id="fileupload" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="http://127.0.0.1/demo.php">
 
 
     <progress id="progress" class="pro-val" value="0" max="100"></progress>
@@ -37,7 +37,7 @@
                     /*$.each(data.result.files,function (index, file) {
                         $('<p/>').text(file.name).appendTo(document.body);
                     });*/
-
+                    alert(123)
                 },
                 //上传过程中的回调函数
                 progressall: function (e, data) {

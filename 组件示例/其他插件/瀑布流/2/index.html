@@ -38,7 +38,7 @@
 <body>
 
     <div class="fall-item">
-        <ul id="demo">
+        <ul id="demo" class="clearfix">
             <li class="box"><img src="../img/01.jpg"></li>
             <li class="box"><img src="../img/02.jpg"></li>
             <li class="box"><img src="../img/03.jpg"></li>
@@ -66,7 +66,7 @@
     $(function(){
 
 
-        $("#demo").waterfall({
+        $(".fall-item").waterfall({
             itemClass: ".box", //图片网格元素的class名称
             spacingWidth:10,   //间距
             spacingHeight:10,

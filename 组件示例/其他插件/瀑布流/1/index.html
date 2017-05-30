@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/base.css">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery.wookmark.min.js"></script>
+
+    <style>
+
+        #main,#tiles{
+            position:relative;
+        }
+        #tiles li{
+            display:none;
+            width:200px;
+            padding:4px;
+            border:1px solid #dedede;
+            border-radius:2px;
+            background-color:#fff;
+            cursor:pointer;
+            transition: all .5s;
+        }
+
+        #tiles li.inactive{
+            visibility:hidden;
+            opacity:0;
+        }
+        #tiles li img{
+            display:block;
+            width:100%;
+        }
+
+
+        .load{
+            display: none;
+            position: absolute;
+            top:101%;
+            left:50%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div id="main" role="main">
+        <ul id="tiles">
+            <!-- These are our grid blocks -->
+            <li><img src="../img/01.jpg"></li>
+            <li><img src="../img/02.jpg"></li>
+            <li><img src="../img/03.jpg"></li>
+            <li><img src="../img/01.jpg"></li>
+            <li><img src="../img/02.jpg"></li>
+            <li><img src="../img/03.jpg"></li>
+            <li><img src="../img/01.jpg"></li>
+            <li><img src="../img/02.jpg"></li>
+            <li><img src="../img/03.jpg"></li>
+            <li><img src="../img/04.jpg"></li>
+            <li><img src="../img/05.jpg"></li>
+            <li><img src="../img/06.jpg"></li>
+            <li><img src="../img/07.jpg"></li>
+            <li><img src="../img/08.jpg"></li>
+            <li><img src="../img/09.jpg"></li>
+            <!-- End of grid blocks -->
+        </ul>
+        <p class="load">正在加载...</p>
+    </div>
+
+
+
+<input type="button" value="点击我" onclick="loads()">
+
+<script>
+
+    var handler = null;
+    //定义基本属性.
+    var options = {
+        // Prepare layout options.
+        autoResize: true, //设置成true表示当window窗口大小改变的时候，重新布局
+        container: $('#main'), //容器包含一个css属性"position:relative" 该元素的 width 将被用于计算列的数量
+        offset: 5, //2个相邻元素之间的间距
+        resizeDelay: 50, //在浏览器resize之后重新布局的延迟时间默认是50默认值
+
+        onLayoutChanged:function(){ //当所有布局改变调用
+
+            console.log(1)
+        },
+
+        //outerOffset: 0, // Optional, the distance to the containers border
+        //itemWidth: 210, //指定对象的宽度
+        //fillEmptySpace:true //如果设置为 "true", 在每一列的底部创建占位符(placeholder ),以创建相等的布局. Placeholders 元素会被设置CSS类 "wookmark-placeholder".
+    }
+
+    $(function(){
+
+        handler = $('#tiles li');
+
+        handler.wookmark(options);
+
+        $(document).bind('scroll', onScroll);
+
+        /*handler.click(function(){
+             var newHeight = $('img', this).height() + Math.round(Math.random() * 300 + 30);
+             $(this).css('height', newHeight+'px');
+             handler.wookmark();
+         });*/
+    })
+
+
+    function loads(){
+
+        $('.load').show();
+
+        var str = '<li><img src="../img/01.jpg"></li>'
+
+        $('#tiles').append(str);
+
+        //if(handler) {handler.wookmarkClear()};
+        //创建新的wookmark对象
+        handler = $('#tiles li');
+        handler.wookmark(options);
+
+        //$('.load').hide();
+    }
+
+    //定义滚动函数
+    function onScroll(event) {
+        //是否到底部（这里是判断离底部还有100px开始载入数据）.
+        var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 100);
+        if(closeToBottom) {
+            //这里就是AJAX载入的数据
+            console.log(123456)
+            /*$.ajax({
+                url:"data.html",
+                dataType:"html",
+                success:function(html){
+                    //把新数据追加到对象中
+                    $('#waterfall').append(html);
+                    //清除原来的定位
+                    if(handler) handler.wookmarkClear();
+                    //创建新的wookmark对象
+                    handler = $('#waterfall li');
+                    handler.wookmark(options);
+                }
+            });*/
+        }
+    };
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

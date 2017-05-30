@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/base.css">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery.waterfall.min.js"></script>
+
+    <style>
+
+        .fall-item{
+            position: relative;
+        }
+
+        #demo {
+            margin: auto;
+            position: relative;
+        }
+        .box {
+            float: left;
+            padding:5px;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            box-shadow: 0 0 8px #ccc;
+            width:210px;
+        }
+        .box:hover { box-shadow: 0 0 10px #999; }
+        .box img { width:100%; }
+
+
+        .fall-load{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fall-item">
+        <ul id="demo">
+            <li class="box"><img src="../img/01.jpg"></li>
+            <li class="box"><img src="../img/02.jpg"></li>
+            <li class="box"><img src="../img/03.jpg"></li>
+            <li class="box"><img src="../img/01.jpg"></li>
+            <li class="box"><img src="../img/02.jpg"></li>
+            <li class="box"><img src="../img/03.jpg"></li>
+            <li class="box"><img src="../img/01.jpg"></li>
+            <li class="box"><img src="../img/02.jpg"></li>
+            <li class="box"><img src="../img/03.jpg"></li>
+            <li class="box"><img src="../img/04.jpg"></li>
+            <li class="box"><img src="../img/05.jpg"></li>
+            <li class="box"><img src="../img/06.jpg"></li>
+            <li class="box"><img src="../img/07.jpg"></li>
+            <li class="box"><img src="../img/08.jpg"></li>
+            <li class="box"><img src="../img/09.jpg"></li>
+        </ul>
+        <p class="fall-load">正在加载。。。</p>
+    </div>
+
+    <input type="button" value="点击我" onclick="loads()">
+
+<script>
+
+
+    $(function(){
+
+
+        $("#demo").waterfall({
+            itemClass: ".box", //图片网格元素的class名称
+            spacingWidth:10,   //间距
+            spacingHeight:10,
+            minColCount: 2,     //最小列数
+            resizeable: true,
+            ajaxCallback: function(success, end) {
+                console.log(11)
+                var data = {"data": [
+                    { "src": "03.jpg" }, { "src": "04.jpg" }, { "src": "02.jpg" }, { "src": "05.jpg" }, { "src": "01.jpg" }, { "src": "06.jpg" }
+                ]};
+                var str = "";
+                var templ = '<li class="box" style="opacity:0;filter:alpha(opacity=0);">' +
+                        '<img src="../img/{{src}}" />' +
+                        '</li>'
+
+                for(var i = 0; i < data.data.length; i++) {
+                    str += templ.replace("{{src}}", data.data[i].src);
+                }
+
+                console.log(str)
+
+                $(str).appendTo($("#demo"));
+                success();
+                end();
+            }
+        })
+
+    })
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

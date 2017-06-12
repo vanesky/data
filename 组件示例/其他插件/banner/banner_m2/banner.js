@@ -1,7 +1,7 @@
 
 $.fn.banner = function(sel){
 
-    var that = $(this),time = '',dir = 'left',pause = false,isRun = false;
+    var that = $(this),time = '',dir = 'left',isRun = false;
 
     var banner = {};
 
@@ -27,12 +27,13 @@ $.fn.banner = function(sel){
 
                     transform:'translateX('+banner_w*i+'px)'
                 })
-
             }
+
+            that.find('.label-list').eq(0).css('backgroundColor',sel.nowColor)
         }
 
         this.slideRun = function(direction){
-            //如果正在运动则返回
+
             if(isRun){return}
 
             dir = direction;
@@ -41,21 +42,21 @@ $.fn.banner = function(sel){
 
             for(var i=0;i<listObj.length;i++){                       //判断当前是否为最后一个元素 如果是则把元素位置初始化
 
-                var le = listObj.eq(i).css('transform').split(',')[4];
+                var tranObjIng = listObj.eq(i)[0];
 
-                    le = Number(le.trim());
+                var leIng = window.getComputedStyle(tranObjIng,null)['transform'].split(', ')[4];
 
-                    le == banner_ ? banner.btList(i) : false;
+                    leIng == banner_ ? banner.btList(i) : false;
 
                     listObj.eq(i).css({
 
                         transition:'all '+sel.mspeed/1000+'s',
 
-                        transform:'translateX('+(le-banner_)+'px)'
+                        transform:'translateX('+(leIng-banner_)+'px)'
 
                     });
             }
-            //设置正在运动
+
             isRun = true;
         };
 
@@ -67,16 +68,13 @@ $.fn.banner = function(sel){
 
                 clearTimeout(time);
 
-                //运动完毕
-                isRun = false;
-
                 var banner_ = dir == 'left' ? banner_w:-banner_w;
 
                 for(var i=0;i<listObj.length;i++){    //判断当前是否为最后一个元素 如果是则把元素位置初始化
 
-                    var le = listObj.eq(i).css('transform').split(',')[4];
+                    var tranObj = listObj.eq(i)[0];
 
-                        le = Number(le.trim());
+                    var le = window.getComputedStyle(tranObj,null)['transform'].split(', ')[4];
 
                     if(le == -banner_*(listObj.length-1)){
 
@@ -84,11 +82,11 @@ $.fn.banner = function(sel){
                     }
                 }
 
+                //运动完毕
+                isRun = false;
 
                 //运动完成间隔
                 time = setTimeout(function(){
-                    //如果鼠标在点击区则取消
-                    if(pause){return}
 
                     banner.slideRun('left');
 
@@ -97,38 +95,54 @@ $.fn.banner = function(sel){
 
         };
 
+
         this.slideEvent = function(){
 
-            that.find("[name='toggle']").on({
+            var startTime = '',movex = '',movexIng = '';
 
-                'click':function(){
+            //var hammertime = new Hammer(main[0]);
 
-                    var direction = $(this).prop('class');
+            main[0].addEventListener('touchstart',function(e){
 
-                        direction = direction == 'left' ? 'right' : 'left';
+                clearInterval(time);
 
-                        banner.slideRun(direction);
-                },
+                startTime = new Date().getTime();
 
-                'mouseenter':function(){
-
-                    pause = true;
-
-                    clearTimeout(time);
-                },
-
-                'mouseleave':function(){
-
-                    pause = false;
-
-                    time = setTimeout(function(){
-
-                        banner.slideRun('left');
-
-                    },sel.speed);
-                }
+                movex = e.touches[0].clientX;
 
             })
+
+            main[0].addEventListener('touchmove',function(e){
+
+                movexIng = e.touches[0].clientX;
+
+            })
+
+            main[0].addEventListener('touchend',function(e){
+
+                var timeout = new Date().getTime() - startTime;
+
+                if(timeout<250&&movexIng&&movexIng-movex>0){
+
+                    banner.slideRun('right');
+
+                }else{
+                    banner.slideRun('left');
+                }
+            })
+
+
+            //hammertime.on('swipeleft', function(){
+
+            //banner.slideRun('left');
+
+            //});
+
+            //hammertime.on('swiperight', function(){
+
+            //banner.slideRun('right')
+
+            //});
         };
 
         this.btList = function(index){
@@ -145,19 +159,17 @@ $.fn.banner = function(sel){
 
     banner.slideInit()
 
-    banner.slideEventEnd()
-
-    //动画完毕间隔执行
     banner.slideEvent();
 
-    setTimeout(function(){
+    banner.slideEventEnd();
+
+    time = setTimeout(function(){
 
         banner.slideRun('left');
 
     },sel.speed)
 
     $(window).resize(function(){banner_w = $(window).width();  banner.slideInit();})
-
 }
 
 

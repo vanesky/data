@@ -27,8 +27,8 @@ $.fn.banner = function(sel){
 
                     transform:'translateX('+banner_w*i+'px)'
                 })
-
             }
+            that.find('.label-list').eq(0).css('backgroundColor',sel.nowColor)
         }
 
         this.slideRun = function(direction){

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="banner.css">
+</head>
+<body>
+
+
+    <div class="banner-wrapper">
+
+        <ul class="banner-main">
+            <li class="list">
+                <img src="../img/banner1.jpg" alt="">
+            </li>
+            <li class="list">
+                <img src="../img/banner2.jpg" alt="">
+            </li>
+            <li class="list">
+                <img src="../img/banner3.jpg" alt="">
+            </li>
+        </ul>
+
+        <ul class="label">
+            <li class="label-list"></li>
+            <li class="label-list"></li>
+            <li class="label-list"></li>
+        </ul>
+
+        <div name="toggle" class="left">sssss</div>
+        <div name="toggle" class="right">aaaaa</div>
+
+    </div>
+
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="banner.js"></script>
+    <script>
+
+        $(function(){
+
+            console.log(111)
+
+            $('.banner-wrapper').banner({
+
+                style:'slide',
+
+                speed:3000,
+
+                mspeed:800,
+
+                listColor:'#fff',
+
+                nowColor:'orange'
+
+            })
+        })
+
+    </script>
+</body>
+</html>

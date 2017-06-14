@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .load{
+            display: inline-block;
+            font-size: 0;
+        }
+
+        .load-box{
+            display: inline-block;
+            position:relative;
+            height:30px;
+            width: 30px;
+            border:2px solid #fff;
+            border-radius:50%;
+            border-top-color:transparent;
+            animation:loadAnimate 1s infinite linear;
+        }
+        .load-box-child:after{
+            content:'';
+            position: absolute;
+            width:0px;
+            height:0px;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 6px solid #fff;
+            transform:rotate(-140deg);
+            top:-2px;
+            left:2px;
+        }
+        @keyframes loadAnimate{
+            100% {
+                transform:rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<section class="wrapper">
+
+    <label class="load">
+        <i class="load-box load-box-child"></i>
+    </label>
+
+</section>
+</body>
+</html>

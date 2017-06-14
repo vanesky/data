@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .load{
+            display: inline-block;
+            font-size: 0;
+            margin-left: 10px;
+        }
+
+        .load-list{
+            display: inline-block;
+            width: 3px;
+            height:20px;
+            animation-fill-mode: both;
+            border-radius:25%;
+            background-color: #fff;
+            margin-left: 1px;
+        }
+
+        .load > .load-list:nth-child(1) {
+            animation: loadAnimate 1s infinite ease-in-out;
+        }
+        .load > .load-list:nth-child(2) {
+            animation: loadAnimate 1s 0.4s infinite ease-in-out;
+        }
+        .load > .load-list:nth-child(3) {
+            animation: loadAnimate 1s 0.2s infinite ease-in-out;
+        }
+        .load > .load-list:nth-child(4) {
+            animation: loadAnimate 1s 0.6s infinite ease-in-out;
+        }
+        @keyframes loadAnimate{
+            50% {
+                transform:scaleY(0.5)
+            }
+            100% {
+                transform:scaleY(1)
+            }
+        }
+
+    </style>
+</head>
+<body>
+<section class="wrapper">
+
+    <label class="load">
+        <i class="load-list"></i>
+        <i class="load-list"></i>
+        <i class="load-list"></i>
+        <i class="load-list"></i>
+    </label>
+
+</section>
+</body>
+</html>

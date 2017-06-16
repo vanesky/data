@@ -41,65 +41,63 @@
     //选择照片更改后执行
     $("#file").on('change',function(){
 
-        readFileRule(function(num){
+        var file = document.getElementById("file").files;
 
-            //上传图片
-            for(var i=0;i<num.length;i++){
+        readFileRule(file);
 
-                upLoadImg(num,i);
-            }
+        upLoadImg(file);
 
-        });
-    })
+    });
 
     //校验图片格式
-    function readFileRule(fun){
+    function readFileRule(fileObj){
 
-        var file = document.getElementById("file").files;
+        var file = fileObj;
 
         for(var i = 0;i<file.length;i++){
 
             if((file[i].size/1000)>500){
 
                 //提示组件
-                console.log('过大')
+                console.log('过大');
                 file = '';
                 return;
 
             }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
 
                 //提示组件
-                console.log('格式不正确')
+                console.log('格式不正确');
                 return;
             }
         }
-
-        if(fun){ fun(file) }
     }
 
 
-    function upLoadImg(file,index){
+    function upLoadImg(file){
 
-        var fd = new FormData();
+        for(var i=0;i<file.length;i++){
 
-        fd.append('imgName',file[index])
+            var fd = new FormData();
 
-        fd.append("para",JSON.stringify({name:'小明',age:12}));
+            fd.append('imgName',file[i]);
 
-        $.ajax({
-            type : 'post',
-            url : 'http://192.168.0.100/demo.php',
-            data : fd,
-            cache : false,
-            processData : false,
-            contentType : false,
-            success : function(){
-                console.log('ok')
-            },
-            error : function(){
-                console.log('err')
-            }
-        })
+            fd.append("para",JSON.stringify({name:'小明',age:12}));
+
+            $.ajax({
+                type : 'post',
+                url : 'http://192.168.0.100/demo.php',
+                data : fd,
+                cache : false,
+                processData : false,
+                contentType : false,
+                success : function(){
+                    console.log('ok')
+                },
+                error : function(){
+                    console.log('err')
+                }
+            })
+        }
     }
 
 

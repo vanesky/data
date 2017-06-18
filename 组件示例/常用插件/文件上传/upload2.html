@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <input id="fileupload" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="http://127.0.0.1/demo.php">
+    <input id="fileupload" type="file" accept="image/jpg,image/jpeg,image/png" data-url="http://127.0.0.1/demo2.php">
 
 
     <progress id="progress" class="pro-val" value="0" max="100"></progress>
@@ -27,20 +27,36 @@
         $(function () {
             $('#fileupload').fileupload({
                 dataType: 'json',
-                // 上传完成后的执行逻辑
-                /*add:function(e,data){
+                formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加
 
+                //当文件被添加到上传组件时被触发
+                /*add:function(e,data){
                     console.log(e)
                     console.log(data)
                 },*/
                 done: function (e, data) {
+                    console.log(789)
+                    // 上传完成后的执行逻辑
                     /*$.each(data.result.files,function (index, file) {
                         $('<p/>').text(file.name).appendTo(document.body);
                     });*/
-                    alert(123)
+
+                    /*data.context = $('<button/>').text('Upload')
+                            .appendTo(document.body)
+                            .click(function () {
+                                $(this).replaceWith($('<p/>').text('Uploading...'));
+                                data.submit();
+                            });*/
+
+                },
+                fail :function(error){
+                  console.log(error)
+                },
+                always:function(error){
+                    //console.log(error)
                 },
                 //上传过程中的回调函数
-                progressall: function (e, data) {
+                /*progressall: function (e, data) {
 
                     var progress = parseInt(data.loaded / data.total * 100, 10);
 
@@ -48,7 +64,7 @@
 
                     $('#progress').val(progress);
 
-                },
+                },*/
                 //autoUpload:true,
             });
 

@@ -1,0 +1,209 @@
+jQuery File Upload文件上传插件使用
+
+　　jQuery File Upload 是一个Jquery文件上传组件，支持多文件上传、取消、删除，上传前缩略图预览、列表显示图片大小，支持上传进度条显示；支持各种动态语言开发的服务器端。官网链接：https://github.com/blueimp/jQuery-File-Upload/wiki
+
+　　特点：拖放支持；上传进度条；图像预览；可定制和可扩展的；兼容任何服务器端应用平台（PHP, Python, Ruby on Rails, Java, Node.js, Go etc.）。
+
+使用方法：
+
+1. 需要加载的js文件：
+
+jquey-1.8.3.min.js
+
+jquery-ui-widget.js
+
+jquery.iframe-transport.js
+
+jquery.fileupload.js
+
+2. html代码：
+
+<input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+
+3. js代码：
+
+$(function () {
+
+    $('#fileupload').fileupload({
+
+        dataType: 'json',
+
+        done: function (e, data) {
+
+            $.each(data.result.files, function (index, file) {
+
+                $('<p/>').text(file.name).appendTo(document.body);
+
+            });
+
+        }
+
+    });
+
+});
+
+ 
+
+　　3.1 显示上传进度条：
+
+　　$('#fileupload').fileupload({
+
+    　　progressall: function (e, data) {
+
+        　　var progress = parseInt(data.loaded / data.total * 100, 10);
+
+        　　$('#progress .bar').css(
+
+            　　'width',
+
+            　　progress + '%'
+
+        　　);
+
+    　　}
+
+　　});
+
+　　3.2 需要一个<div>容器用来显示进：
+
+　　<div id="progress">
+
+    　　<div class="bar" style="width: 0%;"></div>
+
+　　</div>
+
+ 
+
+4. API
+
+4.1 Initialization：
+
+在上传按钮上调用fileupload()方法;
+
+示例：$('#fileupload').fileupload();
+
+ 
+
+4.2 Options :
+
+1: url：请求发送的目标url
+
+Type: string
+
+Example: '/path/to/upload/handler.json'
+
+2.Type: 文件上传HTTP请求方式，可以选择“POST”，“PUT”或者"PATCH",
+
+默认"POST"
+
+Type: string
+
+Example: 'PUT'
+
+3. dataType:希望从服务器返回的数据类型，默认"json"
+
+Type: string
+
+Example: 'json'
+
+4. autoUpload:默认情况下，只要用户点击了开始按钮被添加至组件的文件会立即上传。将autoUpload值设为true可以自动上传。
+
+Type: boolean
+
+Default: true
+
+5. acceptFileTypes：允许上传的的文件类型
+
+Example: /(\.|\/)(gif|jpe?g|png|xlsx)$/i
+
+6. maxFileSize: 最大上传文件大小
+
+Example: 999000 (999KB)      //单位：B
+
+7. minFileSize:最小上传文件大小
+
+Example: 100000  (100KB)     //单位：B
+
+8.previewMaxWidth : 图片预览区域最大宽度
+
+Example: 100      //单位：px
+
+ 
+
+4.3 Callback Options:
+
+使用方法一：函数属性
+
+      实例：$('#fileupload').fileupload({
+
+    　　drop: function (e, data) {
+
+        　　$.each(data.files, function (index, file) {
+
+            　　alert('Dropped file: ' + file.name);
+
+        　　});
+
+    　　},
+
+    　　change: function (e, data) {
+
+        　　$.each(data.files, function (index, file) {
+
+            　　alert('Selected file: ' + file.name);
+
+        　　});
+
+    　　}
+
+　　});
+
+使用方法二：绑定事件监听函数
+
+　　实例：
+
+      $('#fileupload')
+
+　　　　.bind('fileuploaddrop', function (e, data) {/* ... */})
+
+　　　　.bind('fileuploadchange', function (e, data) {/* ... */});
+
+每个事件名称都添加前缀：”fileupload”;
+
+注意推荐使用第二种方法。
+
+ 
+
+常用的回调函数：
+
+1. add: 当文件被添加到上传组件时被触发
+
+$('#fileupload').bind('fileuploadadd', function (e, data) {/* ... */});
+
+或者$('#fileupload').on('fileuploadadd', function (e, data) {/* ... */});
+
+2. processalways: 当一个单独的文件处理队列结束（完成或失败时）触发
+
+3. progressall: 全局上传处理事件的回调函数
+
+Example:
+
+$('#fileupload').on('fileuploadprogressall', function (e, data) {      //进度条显示
+
+    var progress = parseInt(data.loaded / data.total * 100, 10);
+
+    $('#progress .progress-bar').css(
+
+            'width',
+
+            progress + '%'
+
+    );
+
+});
+
+4. fail : 上传请求失败时触发的回调函数，如果服务器返回一个带有error属性的json响应这个函数将不会被触发。
+
+5. done : 上传请求成功时触发的回调函数，如果服务器返回一个带有error属性的json响应这个函数也会被触发。
+
+6. always : 上传请求结束时（成功，错误或者中止）都会被触发。

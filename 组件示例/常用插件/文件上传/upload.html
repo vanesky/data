@@ -21,6 +21,7 @@
             font-size: 14px;
             text-align: center;
             line-height: 30px;
+            color:#fff;
         }
     </style>
 </head>
@@ -32,6 +33,7 @@
             <span class="btn">点击上传</span>
             <input id="file" name="upFile" type="file" accept="image/jpg,image/jpeg,image/png" class="hide" multiple="multiple">
         </label>
+        <span></span>
     </div>
 
 
@@ -43,37 +45,41 @@
 
         var file = document.getElementById("file").files;
 
-        readFileRule(file);
+        if(!readFileRule(file,1000)){
 
-        upLoadImg(file);
+            file = ''
+
+            return;
+        }
+
+        upLoadImg(file,{name:'ui'});
 
     });
 
     //校验图片格式
-    function readFileRule(fileObj){
-
-        var file = fileObj;
+    function readFileRule(file,max){
 
         for(var i = 0;i<file.length;i++){
 
-            if((file[i].size/1000)>500){
+            if((file[i].size/1000)>max){
 
                 //提示组件
                 console.log('过大');
-                file = '';
-                return;
+
+                return false;
 
             }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
 
                 //提示组件
                 console.log('格式不正确');
-                return;
+                return false;
             }
         }
+        return true;
     }
 
 
-    function upLoadImg(file){
+    function upLoadImg(file,obj){
 
         for(var i=0;i<file.length;i++){
 
@@ -81,11 +87,11 @@
 
             fd.append('imgName',file[i]);
 
-            fd.append("para",JSON.stringify({name:'小明',age:12}));
+            fd.append("para",JSON.stringify(obj));
 
             $.ajax({
                 type : 'post',
-                url : 'http://192.168.0.100/demo.php',
+                url : 'http://127.0.0.1/demo2.php',
                 data : fd,
                 cache : false,
                 processData : false,

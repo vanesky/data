@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="lib/base.css">
+    <style>
+        .demo{
+            width:400px;
+            height:300px;
+            background-color:#ccc;
+            margin:0 auto;
+        }
+        .btn{
+            display: inline-block;
+            width: 100px;
+            height:30px;
+            border-radius: 5px;
+            background-color: #1fb394;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+        }
+    </style>
     <script src="lib/jquery.js"></script>
     <script src="lib/ajaxfileupload.js"></script>
 </head>
 <body>
 
-    <input id="file1" type="file" name="file" accept="image/jpg,image/jpeg,image/png" data-url="" onchange="ajaxFileUpload()">
 
-    <span class="bar" onclick="ajaxFileUpload()">点击</span>
+    <div class="demo">
+        <label>
+            <span class="btn">点击上传</span>
+            <input id="file" name="upFile" type="file" accept="image/jpg,image/jpeg,image/png" class="hide" multiple="multiple" onchange="ajaxFileUpload()">
+        </label>
+        <span></span>
+    </div>
 
 </body>
 
@@ -19,11 +44,11 @@
 
         function ajaxFileUpload() {
             $.ajaxFileUpload({
-                        url: 'http://127.0.0.1/demo.php', //用于文件上传的服务器端请求地址
+                        url: 'http://127.0.0.1/demo2.php', //用于文件上传的服务器端请求地址
                         secureuri: false, //是否需要安全协议，一般设置为false
-                        fileElementId: 'file1', //文件上传域的ID
+                        fileElementId: 'file', //文件上传域的ID
                         dataType: 'json', //返回值类型 一般设置为json
-                        //data:{"type":"1"},
+                        data:{"name":"10000"},
                         success: function (data, status){
                             alert(456);
                             //$("#img1").attr("src", data.imgurl);
@@ -39,7 +64,6 @@
                             //alert(e);
                         }
             });
-            //return false;
         }
     </script>
 

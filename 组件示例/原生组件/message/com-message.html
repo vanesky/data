@@ -4,37 +4,27 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="../lib/com-base.css">
     <link rel="stylesheet" href="com-message.css">
     <script src="../lib/jquery.js"></script>
     <script src="com-message.js"></script>
-    <style>
-        .main{
-            width:600px;
-            margin:0 auto;
-            padding-top:100px;
-            border: 1px solid transparent;
-            background-color: #5a9993;
-            position: relative;
-        }
-    </style>
 </head>
 <body>
 
-<div class="main clearfix" onclick="a1()">
-
-
+    <div class="demo clearfix" onclick="a1()">
 
 </div>
 <script>
 
     function a1(){
+
         $.comMessage({  //可选(warning/success/prompt)
 
-            type:'warning',
+            type:'prompt',
 
-            text:'这是一段文字',
+            text:'信息提示！',
 
-            time:4000,
+            time:300000,
 
         })
 

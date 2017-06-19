@@ -3,107 +3,100 @@ $.fn.selSearch = function(obj){
 
     var _this = $(this);
 
-    if(obj.init){
+    var time = '';
 
-        var time = '';
+    var count = 0;
 
-        var count = 0;
+    var num = 4;
 
-        var num = 0;
+    //输入事件
+    _this.find(":text").on('input',function(){
 
-        //输入事件
-        _this.find(":text").on('input',function(){
+        clearTimeout(time);
 
-            clearTimeout(time);
+        var p = new Promise(function(r,s){
 
-            var p = new Promise(function(r,s){
+            time = setTimeout(function(){
 
-                time = setTimeout(function(){
+                app.ajax('get','http://127.0.0.1/demo.php',{},data => {
 
-                    app.ajax('get','http://127.0.0.1/demo.php',{},data => {
+                    r(data)
+                })
 
-                        r(data)
-                    })
+            },500)
 
-                },500)
+        });
 
-            })
+        p.then(function(data){
 
-            p.then(function(data){
+            if(data){
 
-                var data = data;
+                var result = '';
 
-                if(data){
+                num = data.length;
 
-                    var result = '';
+                var str = $('<div><li class="item-list"></li></div>');
 
-                    num = data.length;
+                data.forEach(function(val,index){
 
-                    var str = $('<div><li class="list"></li></div>');
+                    str.find('.item-list').text(val);
 
-                    data.forEach(function(val,index){
+                    result += str.html();
+                });
 
-                        str.find('.list').text(val);
+                //清除
+                count = 0;
 
-                        result += str.html();
-                    })
+                _this.find('item-list').removeClass('active');
 
-                    //清除
-                    count = 0;
+                _this.find('.search-item').html(result).removeClass('hide');
 
-                    _this.find('.list').removeClass('bc-f2');
-
-                    _this.find('.list-item').html(result).removeClass('hide');
-
-                }
-            })
-
-
-        })
-
-        //点击列表事件
-        _this.find('.list-item').on('click','.list',function(){
-
-            _this.find(":text").val($(this).text())
-
-            _this.find('.list-item').addClass('hide')
-
-        })
-
-        //键盘
-        _this.find(':text').on('keydown',function(ev){
-
-
-            if(ev.keyCode == 38){
-
-                if(count <= 1){return}
-
-                count--;
-
-            }else if(ev.keyCode == 40){
-
-                if(count >= num){return}
-
-                count++;
-
-            }else if(ev.keyCode == 13){
-
-                $(this).val(_this.find('.list').eq(count-1).text());
-
-                _this.find('.list-item').addClass('hide');
             }
-
-            if(ev.keyCode == 38 || ev.keyCode == 40){
-
-                _this.find('.list').removeClass('bc-f2');
-
-                _this.find('.list').eq(count-1).addClass('bc-f2')
-            }
-
         })
 
 
-    }
+    });
+
+    //点击列表事件
+    _this.find('.search-item').on('click','.item-list',function(){
+
+        _this.find(":text").val($(this).text());
+
+        _this.find('.search-item').addClass('hide')
+
+    });
+
+    //键盘
+    _this.find(':text').on('keydown',function(ev){
+
+        if(ev.keyCode == 38){
+
+            if(count <= 1){return}
+
+            count--;
+
+        }else if(ev.keyCode == 40){
+
+            if(count >= num){return}
+
+            count++;
+
+        }else if(ev.keyCode == 13){
+
+            $(this).val(_this.find('.item-list').eq(count-1).text());
+
+            _this.find('.search-item').addClass('hide');
+        }
+
+        if(ev.keyCode == 38 || ev.keyCode == 40){
+
+            _this.find('.item-list').removeClass('active');
+
+            _this.find('.item-list').eq(count-1).addClass('active')
+        }
+
+    })
+
 
 }
 

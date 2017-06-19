@@ -5,7 +5,7 @@ $.extend({
 
         var pos = 'absolute';
 
-        var str = '<section style="position:'+pos+'" id="load" class="com-load"><div class="load-main"><div class="animate">' +
+        var str = '<section style="position:'+pos+'" id="load" class="com-load"><div class="load-main"><div class="load-animate">' +
             '<div class="animate-list"></div>' +
             '<div class="animate-list"></div>' +
             '<div class="animate-list"></div>' +
@@ -30,8 +30,8 @@ $.extend({
 
             $('#load').show();
 
-        }else{return;}
+        }
 
     }
 
-})
+});

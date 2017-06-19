@@ -4,55 +4,40 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="../lib/com-base.css">
     <link rel="stylesheet" href="com-search.css">
     <script src="../lib/jquery.js"></script>
-    <script src="com-search.js"></script>
-    <style>
-        .main{
-            width:600px;
-            margin:0 auto;
-            padding-top:100px;
-            border: 1px solid transparent;
-        }
-    </style>
 </head>
 <body>
 
-<div class="main clearfix">
+<div class="demo clearfix">
 
-    <span id="search-1" class="com-search">
+    <label class="com-search">
         <input type="text">
-        <img name="img" class="searchImg va-c fr" src="search2.png">
-    </span>
-
-    <span id="search-2" class="com-search">
-        <input type="text">
-        <img name="img" class="searchImg va-c fr" src="search2.png">
-    </span>
-
+        <img class="searchImg" src="search2.png">
+    </label>
 
 </div>
 <script>
 
-    $('#search-1').comSearch({
+    function search(fun){
 
-        init:true,
+        var _this = $('.com-search');
 
-        fun:function(val){
+        _this.find(".searchImg").on('click',function(){
 
-            console.log(val)
-        }
-    })
+            fun ? fun(_this.find('input').val()) : '';
 
-    $('#search-2').comSearch({
+        })
+    }
 
-        init:true,
+    search(function(val){
 
-        fun:function(val){
+        console.log(val)
 
-            console.log(val)
-        }
-    })
+    });
+
+
 
 </script>
 </body>

@@ -3,13 +3,11 @@ $.extend({
 
     comMessage:function(obj){
 
-        var hook = '<div class="hook"></div>';
-
-        var sigh = '<div class="sigh"></div>';
 
         var str = '<section class="com-message">' +
-            '<div class="circle"></div><div class="text"></div>' +
-            '<span class="close">&times;</span>' +
+            '<label class="circle"><i id="circleChild" class=""></i></label>' +
+            '<div class="text"></div>' +
+            '<i class="close">&times;</i>' +
             '</section>';
 
 
@@ -17,11 +15,11 @@ $.extend({
 
         if(obj.type == 'warning' || obj.type == 'prompt'){
 
-            strObj.find('.circle').append(sigh);
+            strObj.find('#circleChild').addClass('sigh');
 
         }else if(obj.type == 'success'){
 
-            strObj.find('.circle').append(hook);
+            strObj.find('#circleChild').addClass('hook');
         }
 
         strObj.find('.circle').addClass(obj.type);
@@ -35,7 +33,7 @@ $.extend({
             if(obj.back){ obj.back() }
 
             strObj.remove()
-        })
+        });
 
         $('body').append(strObj);
 
@@ -56,7 +54,7 @@ $.extend({
                 })()
             });
 
-        },50)
+        },50);
 
 
         setTimeout(function(){

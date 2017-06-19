@@ -1,1 +1,13 @@
-.com-check .box,.com-check label{display:inline-block}.com-check .box-add{background-color:#714f52}.com-check .box{width:1rem;height:1rem;border-radius:1rem;border:2px solid #666}
+.com-check label {
+  display: inline-block;
+}
+.com-check .box-add {
+  background-color: #714f52;
+}
+.com-check .box {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #666;
+  display: inline-block;
+}

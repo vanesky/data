@@ -1,36 +1,38 @@
 
 .com-message{
   position: fixed;
-  top:0%;
-  left:50%;
   width:19rem;
   padding:1rem;
   border-radius: 2px;
-  color:#666;
-  transform: translateX(-50%);
-  background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04);
+  top:0%;
+  left:50%;
+  color:#666;
+  background-color: #ffffff;
   opacity: 0;
+  transform: translateX(-50%);
   transition:all .5s;
   z-index: 99;
 
   //文字
   .text{
     width:15rem;
-    float:left;
+    display: inline-block;
     margin-top: .5rem;
     margin-left:1rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     word-wrap: break-word;
     letter-spacing: 1px;
+    vertical-align: middle;
   }
   //图标公共
   .circle{
+    display: inline-block;
     position: relative;
     width:2.6rem;
     height:2.6rem;
-    float:left;
     border-radius: 2.6rem;
+    vertical-align: middle;
   }
   //关闭
   .close{
@@ -39,6 +41,7 @@
     left:100%;
     transform:translateX(-1.5rem);
     font-size: 1.5rem;
+    font-style: normal;
     cursor: pointer;
   }
 
@@ -58,7 +61,7 @@
     left:50%;
     top:50%;
     width:1.2rem;
-    height:.6rem;
+    height:.75rem;
     border-left: .35rem solid #fff;
     border-bottom: .35rem solid #fff;
     transform: translate(-50%,-60%) rotateZ(-45deg);

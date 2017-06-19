@@ -1,1 +1,53 @@
-.com-prompt{position:fixed;width:100%;height:100%;top:0;left:0;background-color:rgba(0,0,0,.4);z-index:99;opacity:0;display:none}.com-prompt .prompt-main{position:relative;width:80%;height:12rem;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);text-align:center;background-color:#fff;border-radius:5px}.com-prompt .prompt-main .prompt-tit{height:3rem;line-height:3rem;border-bottom:1px solid #f2f2f2;font-weight:700;text-align:left;padding-left:1.5rem}.com-prompt .prompt-main .prompt-text{padding-top:1rem;height:4rem;width:85%;margin:0 auto;font-size:1.4rem}.com-prompt .prompt-main .prompt-item{width:80%;margin:0 auto}.com-prompt .prompt-main .prompt-item .prompt-button{display:inline-block;width:7rem;height:2.5rem;line-height:2.5rem;border-radius:5px}.com-prompt .prompt-main .prompt-item .prompt-button:first-child{margin-right:2rem}
+.com-prompt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  opacity: 0;
+  display: none;
+}
+.com-prompt .prompt-main {
+  position: relative;
+  width: 30rem;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+.com-prompt .prompt-main .prompt-tit {
+  padding: .5rem 1rem;
+  border-bottom: 1px solid #ebebeb;
+  font-weight: bold;
+  text-align: left;
+}
+.com-prompt .prompt-main .prompt-text {
+  padding: 1rem 0;
+  margin: 0 auto;
+  font-size: 1.4rem;
+  color: #666;
+}
+.com-prompt .prompt-main .prompt-item {
+  padding: 1.5rem 0;
+}
+.com-prompt .prompt-main .prompt-item .prompt-button {
+  display: inline-block;
+  width: 7rem;
+  margin: 0 1rem;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.com-prompt .prompt-main .prompt-item .prompt-button:first-child {
+  background-color: #dbdbdb;
+  color: #333;
+}
+.com-prompt .prompt-main .prompt-item .prompt-button:last-child {
+  background-color: #00a7d1;
+  color: #fff;
+}

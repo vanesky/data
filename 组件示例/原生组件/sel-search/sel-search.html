@@ -4,30 +4,23 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="../lib/com-base.css">
     <link rel="stylesheet" href="sel-search.css">
     <script src="../lib/jquery.js"></script>
     <script src="../lib/ajax.js"></script>
     <script src="sel-search.js"></script>
-    <style>
-        .main{
-            width:600px;
-            margin:0 auto;
-            padding-top:100px;
-            border: 1px solid transparent;
-            position: relative;
-        }
-    </style>
 </head>
 <body>
 
-<div class="main clearfix">
+<div class="demo clearfix">
 
     <section id="selSearch" class="sel-search">
-        <span id="search-1" class="com-search">
-            <input type="text">
-        </span>
-        <ul class="list-item hide">
-            <!--<li class="list"></li>-->
+        <input class="form-input" type="text">
+        <ul class="search-item">
+            <li class="item-list">防守打法</li>
+            <li class="item-list">问问</li>
+            <li class="item-list">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</li>
+            <li class="item-list">fffffffffffff</li>
         </ul>
     </section>
 
@@ -35,7 +28,7 @@
 </div>
 <script>
 
-    $('#selSearch').selSearch({init:true})
+    $('#selSearch').selSearch();
 
 </script>
 </body>

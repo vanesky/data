@@ -1,1 +1,27 @@
-.sel-search{display:inline-block}.sel-search .com-search{position:relative;display:inline-block;width:12rem;height:2rem;padding:.1rem .5rem;border:1px solid #dbdbdb;border-radius:3px;-webkit-transition:border .5s;transition:border .5s}.sel-search .com-search:hover{border:1px solid #ccc}.sel-search .com-search input{width:95%;height:100%}.sel-search .list-item{color:#666}.sel-search .list-item .list{height:1.8rem;line-height:1.8rem;border-left:1px solid #ebebeb;border-right:1px solid #ebebeb;border-bottom:1px solid #ebebeb;padding-left:.5rem;font-size:12px;cursor:pointer}.sel-search .list-item .list:hover{background-color:#f2f2f2}
+.sel-search {
+  /*选中的样式*/
+  display: inline-block;
+  width: 12rem;
+}
+.sel-search .active {
+  background-color: #f2f2f2;
+}
+.sel-search .search-item {
+  position: relative;
+  color: #666;
+}
+.sel-search .search-item .item-list {
+  width: 100%;
+  padding: .3rem .5rem;
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sel-search .search-item .item-list:hover {
+  background-color: #f2f2f2;
+}

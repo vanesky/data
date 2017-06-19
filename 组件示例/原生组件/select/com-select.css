@@ -1,1 +1,22 @@
-.com-select{width:10rem}.com-select .sel-head{width:100%;height:2.2rem;text-align:center;border:1px solid #333;cursor:pointer}.com-select .sel-content{position:relative;text-align:left}.com-select .sel-content .sel-list{height:2.2rem;line-height:2.2rem;cursor:pointer}.com-select .sel-content .sel-list:hover{background-color:#999}
+.com-select {
+  width: 10rem;
+}
+.com-select .sel-head {
+  width: 100%;
+  height: 2.2rem;
+  text-align: center;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+.com-select .sel-content {
+  position: relative;
+  text-align: left;
+}
+.com-select .sel-content .sel-list {
+  height: 2.2rem;
+  line-height: 2.2rem;
+  cursor: pointer;
+}
+.com-select .sel-content .sel-list:hover {
+  background-color: #999;
+}

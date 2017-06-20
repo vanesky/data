@@ -13,25 +13,32 @@
 
     <div class="demo clearfix">
 
-        <section id="select-1" class="com-select fl">
-            <input data-val="" class="sel-head" value="" readonly placeholder="请选择"/>
+        <section class="com-select">
+            <label class="sel-item arrow-down2">
+                <input class="sel-head" value="" readonly placeholder="请选择"/>
+                <input name="selected" type="hidden" value="">
+            </label>
             <ul class="sel-content hide">
-                <li data-val="1" class="sel-list">fsdf</li>
-                <li data-val="" class="sel-list">fds</li>
-                <li data-val="" class="sel-list">f</li>
+                <li data-val="1" class="sel-list">fsdfffffffffff</li>
+                <li data-val="2" class="sel-list">fds</li>
+                <li data-val="3" class="sel-list">f</li>
             </ul>
         </section>
 
-        <section id="select-2" class="com-select fr">
-            <input data-val="" class="sel-head" value="" readonly placeholder="请选择"/>
+        <section class="com-select mt10">
+            <label class="sel-item arrow-down2">
+                <input class="sel-head" value="" readonly placeholder="请选择"/>
+                <input name="selected" type="hidden" value="">
+            </label>
             <ul class="sel-content hide">
-                <li data-val="1" class="sel-list">fsdf</li>
-                <li data-val="" class="sel-list">fds</li>
-                <li data-val="" class="sel-list">f</li>
+                <li data-val="1" class="sel-list">78978</li>
+                <li data-val="2" class="sel-list">ffsdf7841211e</li>
+                <li data-val="3" class="sel-list">mike</li>
             </ul>
         </section>
 
     </div>
+
 
     <script>
 
@@ -44,12 +51,10 @@
                 id:2,
                 text:'橘子'
             }
-        ]
+        ];
 
 
-        $('#select-1').comSelect({init:true})
-
-        $('#select-2').comSelect({init:true})
+        $('.com-select').comSelect({init:false});
     </script>
 </body>
 </html>

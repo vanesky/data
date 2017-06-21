@@ -4,18 +4,24 @@ $.fn.comCheck = function(obj){
 
     var _this = $(this);
 
-    _this.find('input').click(function(ev){
+    _this.find('input').change(function(ev){
 
+        //当前点击checked对象
         var input = $(this);
 
-        var has = input.siblings("[data-name='checkList']").hasClass('box-add');
+        /*
+         * @inputParent
+         * @当前点击模块最外层模块
+         * @如果实例(_this)是多个，确定在当前模块实例中防止干扰其他实例。
+         */
+        var inputParent = input.parents('.com-check');
 
-            has ? input.siblings("[data-name='checkList']").removeClass('box-add') : input.siblings("[data-name='checkList']").addClass('box-add');
+        input.siblings("[data-name='checkList']").toggleClass('box-add');
 
         var isTrue = false;
 
         //是否全选
-        var arr = _this.find(":checkbox").each(function(index,val){
+        inputParent.find(":checkbox").each(function(index,val){
 
             if(!val.checked){
 
@@ -30,11 +36,11 @@ $.fn.comCheck = function(obj){
 
         if(isTrue){
 
-            _this.find("[data-name='allCheck']").addClass('box-add');
+            inputParent.find("[data-name='allCheck']").addClass('box-add');
 
         }else{
 
-            _this.find("[data-name='allCheck']").removeClass('box-add');
+            inputParent.find("[data-name='allCheck']").removeClass('box-add');
         }
 
         ev.stopPropagation();

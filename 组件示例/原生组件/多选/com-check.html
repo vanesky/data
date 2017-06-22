@@ -4,24 +4,16 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="../lib/com-base.css">
     <link rel="stylesheet" href="com-check.css">
     <script src="../lib/jquery.js"></script>
     <script src="com-check.js"></script>
-    <style>
-        .main{
-            width:600px;
-            margin:0 auto;
-            padding-top:100px;
-            border: 1px solid transparent;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 
-<div class="main clearfix">
+<div class="demo clearfix">
 
-    <section id="check-1" class="com-check">
+    <section class="com-check">
 
         <label data-name="all" class="mr20">
             <span data-name="allCheck" class="box"></span>
@@ -41,26 +33,51 @@
         </label>
     </section>
 
-    <input class="mt20" type="button" value="点击我" onclick="clicks()">
 
+    <section class="com-check">
+        <label data-name="all" class="mr20">
+            <span data-name="allCheck" class="box"></span>
+            <span>全选</span>
+        </label>
+
+        <label>
+            <span data-name="checkList" class="box"></span>
+            <span>哈哈</span>
+            <input type="checkbox" class="hide" value="哈哈">
+        </label>
+
+        <label>
+            <span data-name="checkList" class="box"></span>
+            <span>往往</span>
+            <input type="checkbox" class="hide" value="往往">
+        </label>
+    </section>
+
+    <input class="mt20" type="button" value="点击我" onclick="clicks()">
+    <input class="mt20" type="button" value="点击我2" onclick="clicks2()">
 </div>
 
 <script>
 
-    $('#check-1').comCheck({init:true});
+    $('.com-check').comCheck();
 
     function clicks(){
 
-        //console.log($(":checkbox:checked").val())
-
-        $(":checkbox:checked").each(function(index,val){
+        $('.com-check').eq(0).find(":checkbox:checked").each(function(index,val){
 
             console.log(val.value)
-
         })
 
     }
 
+    function clicks2(){
+
+        $('.com-check').eq(1).find(":checkbox:checked").each(function(index,val){
+
+            console.log(val.value)
+        })
+
+    }
 </script>
 </body>
 </html>

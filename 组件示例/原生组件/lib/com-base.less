@@ -1,9 +1,4 @@
-@charset "utf-8";
-@cf:#fff;@cf2:#f2f2f2;@ceb:#ebebeb;
-@cdb:#dbdbdb;@cc:#ccc;@c3:#333;
-@c6:#666;@c9:#999;@c10:#101010;
-@c0:#000000;
-
+@import "com-color";
 .demo{
   width:800px;
   height:400px;
@@ -27,19 +22,18 @@
   height:100%;
   min-height:2rem;
   padding:.1rem .5rem;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
+  border: 1px solid @cc;
+  border-radius: 4px;
 
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
+  /*line-height: 1.42857143;*/
+  color: @c3;
+  background-color: @cf;
   background-image: none;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 
   &:focus{
-    border: 1px solid #BBBBBB;
-    box-shadow: 0 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid @a;
+    box-shadow: 0 0 1px 1px rgba(32,160,255,.075);
   }
 }
 
@@ -55,7 +49,7 @@
   height:0px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 7px solid #999;
+  border-top: 7px solid @c9;
 }
 
 .arrow-down2:after{
@@ -63,8 +57,8 @@
   content:'';
   width:4px;
   height:4px;
-  border-top: 2px solid #999;
-  border-left: 2px solid #999;
+  border-top: 2px solid @c9;
+  border-left: 2px solid @c9;
   border-bottom: 1px solid transparent;
   border-right: 1px solid transparent;
   transform: rotateZ(-135deg);

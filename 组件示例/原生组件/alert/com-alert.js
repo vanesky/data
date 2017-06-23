@@ -16,7 +16,7 @@ $.extend($,{
 
             strObj.find('.prompt-button').on('click',function(){
 
-                if(fun && $(this).index() == 1){fun()};
+                if(fun && $(this).index() == 1){fun()}
 
                 strObj.remove();
 

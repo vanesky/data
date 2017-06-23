@@ -1,3 +1,5 @@
+@charset "utf-8";
+/*@a:#49a0db;*/
 .sel-search {
   /*选中的样式*/
   display: inline-block;
@@ -13,9 +15,9 @@
 .sel-search .search-item .item-list {
   width: 100%;
   padding: .3rem .5rem;
-  border-left: 1px solid #ebebeb;
-  border-right: 1px solid #ebebeb;
-  border-bottom: 1px solid #ebebeb;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
   font-size: 12px;
   cursor: pointer;
   overflow: hidden;

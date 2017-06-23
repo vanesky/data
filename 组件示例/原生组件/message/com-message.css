@@ -1,3 +1,5 @@
+@charset "utf-8";
+/*@a:#49a0db;*/
 .com-message {
   position: fixed;
   width: 19rem;
@@ -7,8 +9,8 @@
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   top: 0%;
   left: 50%;
-  color: #666;
-  background-color: #ffffff;
+  font-size: 1rem;
+  background-color: #fff;
   opacity: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -19,12 +21,11 @@
 .com-message .text {
   width: 15rem;
   display: inline-block;
-  margin-top: .5rem;
   margin-left: 1rem;
-  font-size: 1rem;
   word-wrap: break-word;
   letter-spacing: 1px;
   vertical-align: middle;
+  color: #666;
 }
 .com-message .circle {
   display: inline-block;
@@ -43,6 +44,7 @@
   font-size: 1.5rem;
   font-style: normal;
   cursor: pointer;
+  color: #999;
 }
 .com-message .success {
   background-color: #13CE66;
@@ -59,8 +61,8 @@
   top: 50%;
   width: 1.2rem;
   height: .75rem;
-  border-left: .35rem solid #fff;
-  border-bottom: .35rem solid #fff;
+  border-left: 0.35rem solid #fff;
+  border-bottom: 0.35rem solid #fff;
   -webkit-transform: translate(-50%, -60%) rotateZ(-45deg);
           transform: translate(-50%, -60%) rotateZ(-45deg);
 }

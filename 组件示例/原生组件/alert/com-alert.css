@@ -1,3 +1,5 @@
+@charset "utf-8";
+/*@a:#49a0db;*/
 .com-prompt {
   position: fixed;
   top: 0;
@@ -11,14 +13,14 @@
 }
 .com-prompt .prompt-main {
   position: relative;
-  width: 30rem;
+  width: 25rem;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
   background-color: #ffffff;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 .com-prompt .prompt-main .prompt-tit {
   padding: .5rem 1rem;
@@ -27,27 +29,25 @@
   text-align: left;
 }
 .com-prompt .prompt-main .prompt-text {
+  width: 80%;
   padding: 1rem 0;
   margin: 0 auto;
   font-size: 1.4rem;
-  color: #666;
 }
 .com-prompt .prompt-main .prompt-item {
-  padding: 1.5rem 0;
+  padding: 1.2rem 0;
 }
 .com-prompt .prompt-main .prompt-item .prompt-button {
   display: inline-block;
-  width: 7rem;
   margin: 0 1rem;
-  padding: .5rem 1rem;
-  border-radius: 5px;
+  padding: .4rem 2rem;
+  border-radius: 4px;
   cursor: pointer;
+  color: #fff;
 }
 .com-prompt .prompt-main .prompt-item .prompt-button:first-child {
-  background-color: #dbdbdb;
-  color: #333;
+  background-color: #ccc;
 }
 .com-prompt .prompt-main .prompt-item .prompt-button:last-child {
-  background-color: #00a7d1;
-  color: #fff;
+  background-color: #20a0ff;
 }

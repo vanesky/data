@@ -1,4 +1,4 @@
-
+@import "../lib/com-color.less";
 .com-load{
   //position: absolute;
   width: 100%;
@@ -12,20 +12,18 @@
     position: relative;
     display: inline-block;
     width: 120px;
-    padding:10px 0;
+    padding:12px 0;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #f2f2f2;
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 5px;
+    border-radius: 4px;
+    color:@cf;
 
     .load-animate{
       position: relative;
-      top:5px;
       display: inline-block;
-      padding:0 10px;
       //竖线列表
       .animate-list {
         display: inline-block;
@@ -33,8 +31,8 @@
         height:20px;
         animation-fill-mode: both;
         border-radius:25%;
-        background-color: #f2f2f2;
-        margin-left: 1px;
+        background-color: @ceb;
+        margin-left:2px;
       }
     }
     @keyframes animate-list {
@@ -61,6 +59,8 @@
     //==================//
     .animate-text{
       font-size: 13px;
+      margin-left: 10px;
+      vertical-align: text-top;
     }
   }
 }

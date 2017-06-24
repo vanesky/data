@@ -1,3 +1,5 @@
+@charset "utf-8";
+/*@a:#49a0db;*/
 .com-select {
   position: relative;
   width: 10rem;
@@ -14,12 +16,15 @@
   min-height: 2rem;
   padding: .1rem .5rem;
   padding-right: 1rem;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #ccc;
   border-radius: 2px;
   font-size: 14px;
   line-height: 1.42857143;
   background-color: #fff;
   cursor: pointer;
+}
+.com-select .sel-head:hover {
+  background-color: #f2f2f2;
 }
 .com-select .sel-content {
   position: absolute;
@@ -30,8 +35,8 @@
   border-bottom: 1px solid #dbdbdb;
   z-index: 10;
   background-color: #fff;
-  -webkit-box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.04);
-          box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: 1px 1px 2px #ebebeb;
+          box-shadow: 1px 1px 2px #ebebeb;
 }
 .com-select .sel-content .sel-list {
   padding: .4rem;
@@ -44,8 +49,10 @@
 .com-select .sel-content .sel-list:hover {
   background-color: #f2f2f2;
 }
-.com-select .arrow-down2:after {
+.com-select .icon-arrow-down:before {
+  position: absolute;
   left: 100%;
-  top: 10px;
-  margin-left: -14px;
+  top: .5rem;
+  margin-left: -1.1rem;
+  color: #666;
 }

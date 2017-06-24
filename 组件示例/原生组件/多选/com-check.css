@@ -1,3 +1,5 @@
+@charset "utf-8";
+/*@a:#49a0db;*/
 .com-check label {
   display: inline-block;
 }
@@ -7,7 +9,6 @@
 .com-check .box {
   width: 1rem;
   height: 1rem;
-  border-radius: 1rem;
   border: 2px solid #ccc;
   display: inline-block;
 }

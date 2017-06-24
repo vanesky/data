@@ -1,7 +1,8 @@
+@import "../lib/com-color.less";
 .com-select{
   position: relative;
   width:10rem;
-  color: #333;
+  color: @c3;
   .sel-item{display: inline-block;}
   .sel-head{
     display:block;
@@ -10,25 +11,26 @@
     min-height:2rem;
     padding:.1rem .5rem;
     padding-right:1rem;
-    border: 1px solid #dbdbdb;
+    border: 1px solid @cc;
     border-radius: 2px;
 
     font-size: 14px;
     line-height: 1.42857143;
-    background-color: #fff;
+    background-color:@cf;
     cursor: pointer;
+    &:hover{background-color:@cf2}
   }
   //列表框
   .sel-content{
     position: absolute;
     width:100%;
     text-align: left;
-    border-left: 1px solid #dbdbdb;
-    border-right:1px solid #dbdbdb;
-    border-bottom:1px solid #dbdbdb;
+    border-left: 1px solid @cdb;
+    border-right:1px solid @cdb;
+    border-bottom:1px solid @cdb;
     z-index: 10;
     background-color: #fff;
-    box-shadow: 1px 1px 0px rgba(0,0,0,.04);
+    box-shadow: 1px 1px 2px @ceb;
     //列表
     .sel-list{
       padding:.4rem;
@@ -38,17 +40,19 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       &:hover{
-        background-color: #f2f2f2;
+        background-color:@cf2;
       }
     }
   }
 
 
   /*图标特定样式覆盖*/
-  .arrow-down2:after{
+  .icon-arrow-down:before{
+    position: absolute;
     left:100%;
-    top:10px;
-    margin-left: -14px;
+    top:.5rem;
+    margin-left: -1.1rem;
+    color:@c6;
   }
 
 }

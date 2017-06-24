@@ -1,5 +1,6 @@
 @charset "utf-8";
 /*@a:#49a0db;*/
+@import "http://at.alicdn.com/t/font_dwb9hoxqj1pmbo6r.css";
 .demo {
   width: 800px;
   height: 400px;
@@ -36,7 +37,7 @@
           box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
 }
 /*
- * 所有组件依赖的图标
+ * 所有组件依赖的绘制图标
  */
 .arrow-down:after {
   position: absolute;

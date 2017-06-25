@@ -1,13 +1,14 @@
 @charset "utf-8";
 /*@a:#49a0db;*/
 .com-select {
+  display: inline-block;
   position: relative;
-  width: 10rem;
+  width: 100%;
   color: #333;
   /*图标特定样式覆盖*/
 }
 .com-select .sel-item {
-  display: inline-block;
+  display: block;
 }
 .com-select .sel-head {
   display: inline-block;

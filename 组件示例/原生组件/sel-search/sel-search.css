@@ -1,9 +1,9 @@
 @charset "utf-8";
 /*@a:#49a0db;*/
 .sel-search {
-  /*选中的样式*/
   display: inline-block;
-  width: 12rem;
+  width: 100%;
+  /*选中的样式*/
 }
 .sel-search .active {
   background-color: #f2f2f2;

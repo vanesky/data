@@ -11,13 +11,6 @@
   border: 1px solid @ceb;
 }
 
-//表单组
-.form-group{
-  display: inline-block;
-  width: 10rem;
-  height:2rem;
-  vertical-align: middle;
-}
 
 //基本表单元素
 .form-input{
@@ -39,6 +32,33 @@
     border: 1px solid @a;
     box-shadow: 0 0 1px 1px rgba(32,160,255,.075);
   }
+}
+
+
+//表单模块基本样式
+.form-item{
+  margin-bottom: 23px;
+  .form-title{
+    display: inline-block;
+    min-width:5rem;
+    min-height: 2rem;
+    line-height: 2rem;
+    padding-right:.5rem;
+    float: left;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .form-content{
+    position: relative;
+  }
+}
+
+//表单组
+.form-group{
+  display: inline-block;
+  width: 10rem;
+  height:2rem;
+  vertical-align: middle;
 }
 
 

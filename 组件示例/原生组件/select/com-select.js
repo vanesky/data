@@ -7,7 +7,7 @@ $.fn.comSelect = function(obj){
 
 
     //默认初始化所有列表选中第一项
-    if(obj.init){
+    if(obj && obj.init){
 
         headObj.val(_this.find('.sel-list').eq(0).text());
 

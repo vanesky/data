@@ -5,7 +5,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="../lib/reset.css">
     <link rel="stylesheet" href="../lib/com-base.css">
+
+    <link rel="stylesheet" href="../select/com-select.css">
     <script src="../lib/jquery.js"></script>
+
+    <style>
+        .form{width:20rem;}
+
+        .form-content{
+            margin-left: 5rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,13 +23,53 @@
 
     <label class="form-group">
         <input class="form-input" type="text">
-        <span>123s</span>
     </label>
 
+    <!--form-->
+    <form action="" class="form mt50">
+
+        <div class="form-item">
+            <label class="form-title">姓名：</label>
+            <div class="form-content">
+                <input class="form-input" type="text">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-title">年龄：</label>
+            <div class="form-content">
+                <input class="form-input" type="text">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-title">喜好：</label>
+            <div class="form-content">
+                <!--component-->
+                <section class="com-select">
+                    <label class="sel-item iconfont icon-arrow-down">
+                        <input class="sel-head" value="" readonly placeholder="请选择"/>
+                        <input name="selected" type="hidden" value="">
+                    </label>
+                    <ul class="sel-content hide">
+                        <li data-val="1" class="sel-list">篮球</li>
+                        <li data-val="2" class="sel-list">足球</li>
+                        <li data-val="3" class="sel-list">羽毛球</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </form>
+
+
 </div>
+
+
+
+<script src="../select/com-select.js"></script>
 <script>
 
-
+    $('.com-select').comSelect();
 </script>
 </body>
 </html>

@@ -8,12 +8,6 @@
   padding: 10px;
   border: 1px solid #ebebeb;
 }
-.form-group {
-  display: inline-block;
-  width: 10rem;
-  height: 2rem;
-  vertical-align: middle;
-}
 .form-input {
   display: inline-block;
   width: 100%;
@@ -31,6 +25,28 @@
 .form-input:focus {
   border: 1px solid #20a0ff;
   box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
+}
+.form-item {
+  margin-bottom: 23px;
+}
+.form-item .form-title {
+  display: inline-block;
+  min-width: 5rem;
+  min-height: 2rem;
+  line-height: 2rem;
+  padding-right: .5rem;
+  float: left;
+  text-align: right;
+  vertical-align: middle;
+}
+.form-item .form-content {
+  position: relative;
+}
+.form-group {
+  display: inline-block;
+  width: 10rem;
+  height: 2rem;
+  vertical-align: middle;
 }
 /*
  * 所有组件依赖的绘制图标

@@ -15,9 +15,8 @@
   vertical-align: middle;
 }
 .form-input {
-  display: block;
+  display: inline-block;
   width: 100%;
-  height: 100%;
   min-height: 2rem;
   padding: .1rem .5rem;
   border: 1px solid #ccc;
@@ -26,15 +25,12 @@
   color: #333;
   background-color: #fff;
   background-image: none;
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
 .form-input:focus {
   border: 1px solid #20a0ff;
-  -webkit-box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
-          box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
+  box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
 }
 /*
  * 所有组件依赖的绘制图标

@@ -1,6 +1,12 @@
 @charset "utf-8";
 /*@a:#49a0db;*/
-.com-check label {
+.com-check {
+  display: inline-block;
+}
+.com-check label[data-name="all"] {
+  display: block;
+}
+.com-check label[data-name="checkList"] {
   display: inline-block;
 }
 .com-check .box-add {

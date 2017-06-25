@@ -1,7 +1,9 @@
 @import "../lib/com-color.less";
 .com-check{
+  display: inline-block;
 
-  label{display: inline-block;}
+  label[data-name="all"]{display: block;}
+  label[data-name="checkList"]{display: inline-block;}
 
   .box-add{
     background-color: @c9;

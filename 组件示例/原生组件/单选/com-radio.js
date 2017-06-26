@@ -14,9 +14,9 @@ $.fn.comRadio = function(obj){
     _this.find('label').on('click',function(){
 
         //统一模块中同级样式消除
-        $(this).siblings('label').find("[data-name='radioList']").removeClass('box-add');
+        $(this).siblings('label').find("[data-name='radioBox']").removeClass('box-add');
 
-        $(this).find("[data-name='radioList']").addClass('box-add');
+        $(this).find("[data-name='radioBox']").addClass('box-add');
 
     })
 

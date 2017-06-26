@@ -16,7 +16,7 @@ $.fn.comCheck = function(obj){
          */
         var parent = that.parents('.com-check');
 
-        that.siblings("[data-name='checkList']").toggleClass('box-add');
+        that.siblings("[data-name='checkBox']").toggleClass('box-add');
 
         var isTrue = false;
 
@@ -47,7 +47,7 @@ $.fn.comCheck = function(obj){
     });
 
     //点击全部选中
-    _this.find("label[data-name='all']").on('click',function(){
+    _this.find("label[data-name='checkAll']").on('click',function(){
 
         var that = $(this);
 
@@ -60,14 +60,14 @@ $.fn.comCheck = function(obj){
             //删除选中
             parent.find(":checkbox").prop('checked',false);
             //删除选中样式
-            parent.find("[data-name='checkList']").removeClass('box-add');
+            parent.find("[data-name='checkBox']").removeClass('box-add');
 
         }else{
 
             //选中
             parent.find(":checkbox").prop('checked',true);
             //选中样式
-            parent.find("[data-name='checkList']").addClass('box-add');
+            parent.find("[data-name='checkBox']").addClass('box-add');
         }
 
         that.find("[data-name='allCheck']").toggleClass('box-add');

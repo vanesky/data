@@ -1,18 +1,38 @@
 @import "../lib/com-color.less";
+
 .com-check{
   display: inline-block;
 
-  label[data-name="all"]{display: block;}
-  label[data-name="checkList"]{display: inline-block;}
+  label{cursor: pointer}
 
   .box-add{
-    background-color: @c9;
+    background-color: @a;
+
+    &:after{
+      box-sizing: content-box;
+      content: "";
+      border: 2px solid @cf;
+      border-left: 0;
+      border-top: 0;
+      width: .25rem;
+      height: .45rem;
+      position: absolute;
+      left:50%;
+      top:50%;
+      margin-left: -.28rem;
+      transform: rotate(45deg) translate(-50%,-50%);
+      transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+      transform-origin: center center;
+    }
   }
 
-  .box{
+  .check-box{
+    position: relative;
     width:1rem;
     height:1rem;
-    border: 2px solid @cc;
+    border: 2px solid @a;
+    border-radius: .2rem;
     display: inline-block;
   }
+
 }

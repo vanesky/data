@@ -8,6 +8,9 @@
   padding: 10px;
   border: 1px solid #ebebeb;
 }
+.hide {
+  display: none;
+}
 .form-input {
   display: inline-block;
   width: 100%;

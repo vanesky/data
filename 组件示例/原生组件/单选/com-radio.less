@@ -1,14 +1,29 @@
 @import "../lib/com-color.less";
 .com-radio{
   display: inline-block;
+  label{cursor: pointer}
   .box-add{
-    background-color: @c9;
+    position: relative;
+    background-color: @a;
+    border:.1rem solid @a !important;
+    &:after{
+      width: .4rem;
+      height: .4rem;
+      border-radius: 50%;
+      background-color: #fff;
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      transition: transform .15s cubic-bezier(.71,-.46,.88,.6);
+    }
   }
   .radio-box{
     width:1rem;
     height:1rem;
     border-radius: 1rem;
-    border: 2px solid @cc;
+    border: .1rem solid @cc;
     display: inline-block;
   }
 }

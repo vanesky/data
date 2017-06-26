@@ -3,13 +3,34 @@
 .com-radio {
   display: inline-block;
 }
+.com-radio label {
+  cursor: pointer;
+}
 .com-radio .box-add {
-  background-color: #999;
+  position: relative;
+  background-color: #20a0ff;
+  border: 0.1rem solid #20a0ff !important;
+}
+.com-radio .box-add:after {
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background-color: #fff;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+  transition: -webkit-transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+  transition: transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+  transition: transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6), -webkit-transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6);
 }
 .com-radio .radio-box {
   width: 1rem;
   height: 1rem;
   border-radius: 1rem;
-  border: 2px solid #ccc;
+  border: 0.1rem solid #ccc;
   display: inline-block;
 }

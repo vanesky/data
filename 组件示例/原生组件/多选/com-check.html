@@ -33,28 +33,8 @@
         </label>
     </section>
 
-
-    <section class="com-check">
-        <label data-name="all">
-            <span data-name="allCheck" class="box"></span>
-            <span>全选</span>
-        </label>
-
-        <label>
-            <span data-name="checkList" class="box"></span>
-            <span>哈哈</span>
-            <input type="checkbox" class="hide" value="哈哈">
-        </label>
-
-        <label>
-            <span data-name="checkList" class="box"></span>
-            <span>往往</span>
-            <input type="checkbox" class="hide" value="往往">
-        </label>
-    </section>
-
     <input class="mt20" type="button" value="点击我" onclick="clicks()">
-    <input class="mt20" type="button" value="点击我2" onclick="clicks2()">
+  
 </div>
 
 <script>
@@ -70,14 +50,7 @@
 
     }
 
-    function clicks2(){
 
-        $('.com-check').eq(1).find(":checkbox:checked").each(function(index,val){
-
-            console.log(val.value)
-        })
-
-    }
 </script>
 </body>
 </html>

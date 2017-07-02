@@ -2,7 +2,7 @@
 /*@a:#49a0db;*/
 .com-message {
   position: fixed;
-  width: 19rem;
+  width: 18rem;
   padding: 1rem;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
@@ -18,7 +18,7 @@
   z-index: 99;
 }
 .com-message .text {
-  width: 15rem;
+  width: 75%;
   display: inline-block;
   margin-left: 1rem;
   word-wrap: break-word;
@@ -43,7 +43,7 @@
   font-size: 1.5rem;
   font-style: normal;
   cursor: pointer;
-  color: #999;
+  color: #bbbbbb;
 }
 .com-message .success {
   background-color: #13CE66;

@@ -8,6 +8,7 @@
   /*图标特定样式覆盖*/
 }
 .com-select .sel-item {
+  position: relative;
   display: block;
 }
 .com-select .sel-head {
@@ -17,8 +18,7 @@
   padding: .1rem .5rem;
   padding-right: 1rem;
   border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 14px;
+  border-radius: 4px;
   line-height: 1.42857143;
   background-color: #fff;
   cursor: pointer;
@@ -39,7 +39,7 @@
 }
 .com-select .sel-content .sel-list {
   padding: .4rem;
-  border-radius: 2px;
+  border-radius: 4px;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -51,7 +51,9 @@
 .com-select .icon-arrow-down:before {
   position: absolute;
   left: 100%;
-  top: .5rem;
+  top: 50%;
   margin-left: -1.1rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   color: #666;
 }

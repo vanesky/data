@@ -8,6 +8,9 @@
   padding: 10px;
   border: 1px solid #ebebeb;
 }
+html {
+  font-size: 1rem;
+}
 .hide {
   display: none;
 }

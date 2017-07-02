@@ -20,7 +20,7 @@
           transform: translate(-50%, -50%);
   text-align: center;
   background-color: #ffffff;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 .com-prompt .prompt-main .prompt-tit {
   padding: .5rem 1rem;

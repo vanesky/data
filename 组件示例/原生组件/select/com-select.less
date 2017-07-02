@@ -4,7 +4,10 @@
   position: relative;
   width:100%;
   color: @c3;
-  .sel-item{display:block;}
+  .sel-item{
+    position: relative;
+    display:block;
+  }
   .sel-head{
     display:inline-block;
     width:100%;
@@ -12,9 +15,8 @@
     padding:.1rem .5rem;
     padding-right:1rem;
     border: 1px solid @cc;
-    border-radius: 2px;
+    border-radius: 4px;
 
-    font-size: 14px;
     line-height: 1.42857143;
     background-color:@cf;
     cursor: pointer;
@@ -34,7 +36,7 @@
     //列表
     .sel-list{
       padding:.4rem;
-      border-radius: 2px;
+      border-radius: 4px;
       cursor: pointer;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -50,8 +52,9 @@
   .icon-arrow-down:before{
     position: absolute;
     left:100%;
-    top:.5rem;
+    top:50%;
     margin-left: -1.1rem;
+    transform: translateY(-50%);
     color:@c6;
   }
 

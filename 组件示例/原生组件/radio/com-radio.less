@@ -1,14 +1,18 @@
 @import "../lib/com-color.less";
 .com-radio{
   display: inline-block;
-  label{cursor: pointer}
+  label{
+    cursor: pointer;
+    position: relative;
+    input[type='radio']{display: none;}
+  }
   .box-add{
     position: relative;
     background-color: @a;
     border:.1rem solid @a !important;
     &:after{
-      width: .4rem;
-      height: .4rem;
+      width: 6px;
+      height: 6px;
       border-radius: 100%;
       background-color: #fff;
       content: "";
@@ -20,8 +24,10 @@
     }
   }
   .radio-box{
+    position: relative;
     width:1rem;
     height:1rem;
+    top:.1rem;
     border-radius: 100%;
     border: .1rem solid @cc;
     display: inline-block;

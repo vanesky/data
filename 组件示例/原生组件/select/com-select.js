@@ -11,7 +11,7 @@ $.fn.comSelect = function(obj){
 
         headObj.val(_this.find('.sel-list').eq(0).text());
 
-        _this.find("input[name='selected']").val(_this.find('.sel-list').eq(0).attr('data-val'))
+        _this.find("input:hidden").val(_this.find('.sel-list').eq(0).attr('data-val'))
     }
 
     //绑定事件
@@ -25,7 +25,7 @@ $.fn.comSelect = function(obj){
 
             that.parents('.com-select').find('.sel-head').val(text);
 
-            dataVal ? that.parents('.com-select').find("input[name='selected']").val(dataVal) : '';
+            dataVal ? that.parents('.com-select').find("input:hidden").val(dataVal) : '';
 
     });
 
@@ -37,27 +37,26 @@ $.fn.comSelect = function(obj){
 
             var that = $(this);
 
-            var isTrue = that.parents('.com-select').find('.sel-content').hasClass('hide');
+            var isTrue = that.parents('.com-select').find('.sel-content').is(':hidden');
 
             if(isTrue){
 
-                //关闭所有列表显示
-                _this.find('.sel-content').addClass('hide');
+                _this.find('.sel-content').hide();
 
-                //切换当前列表显示
-                that.parents('.com-select').find('.sel-content').toggleClass('hide');
+                that.parents('.com-select').find('.sel-content').toggle();
+
             }else{
 
-                that.parents('.com-select').find('.sel-content').addClass('hide')
+                that.parents('.com-select').find('.sel-content').hide()
             }
         }
 
     });
 
     //点击外部关闭所有列表显示
-    $('body').on('click',function(){
+    $(window).on('click',function(){
 
-        _this.find('.sel-content').addClass('hide');
+        _this.find('.sel-content').hide();
     });
 
 };

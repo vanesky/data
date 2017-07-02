@@ -27,6 +27,7 @@
   background-color: #f2f2f2;
 }
 .com-select .sel-content {
+  display: none;
   position: absolute;
   width: 100%;
   text-align: left;

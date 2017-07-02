@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../lib/com-base.css">
 
     <link rel="stylesheet" href="../select/com-select.css">
-    <script src="../lib/jquery.js"></script>
+    <link rel="stylesheet" href="../radio/com-radio.css">
+    <link rel="stylesheet" href="../check/com-check.css">
 
     <style>
         .form{width:20rem;}
@@ -16,10 +17,8 @@
             margin-left: 5rem;
         }
 
-        .form-input{height:2rem;}
-
-        .com-select .sel-head{
-            height:2rem;
+        .com-radio,.com-check{
+            padding:.3rem 0rem;
         }
     </style>
 </head>
@@ -49,15 +48,59 @@
         </div>
 
         <div class="form-item">
+            <label class="form-title">性别：</label>
+            <!-- component -->
+            <div class="form-content">
+                <section id="radio-1" class="com-radio">
+                    <label>
+                        <input name="radio-1" type="radio" value="男">
+                        <span data-name="radioBox" class="radio-box"></span>
+                        <span>男</span>
+                    </label>
+
+                    <label class="ml10">
+                        <input name="radio-1" type="radio" value="女">
+                        <span data-name="radioBox" class="radio-box"></span>
+                        <span>女</span>
+                    </label>
+                </section>
+            </div>
+        </div>
+
+        <div class="form-item">
             <label class="form-title">喜好：</label>
             <div class="form-content">
-                <!--component-->
+                <section class="com-check">
+                    <label data-name="checkAll">
+                        <i data-name="allCheck" class="check-box"></i>
+                        <span>全选</span>
+                    </label>
+
+                    <label>
+                        <i data-name="checkBox" class="check-box"></i>
+                        <span>小李</span>
+                        <input type="checkbox" value="小李">
+                    </label>
+
+                    <label>
+                        <i data-name="checkBox" class="check-box"></i>
+                        <span>小红</span>
+                        <input type="checkbox" value="小红">
+                    </label>
+                </section>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="form-title">喜好：</label>
+            <div class="form-content">
+                <!-- component -->
                 <section class="com-select">
                     <label class="sel-item iconfont icon-arrow-down">
                         <input class="sel-head" value="" readonly placeholder="请选择"/>
-                        <input name="selected" type="hidden" value="">
+                        <input type="hidden" value="">
                     </label>
-                    <ul class="sel-content hide">
+                    <ul class="sel-content">
                         <li data-val="1" class="sel-list">篮球</li>
                         <li data-val="2" class="sel-list">足球</li>
                         <li data-val="3" class="sel-list">羽毛球</li>
@@ -65,17 +108,29 @@
                 </section>
             </div>
         </div>
+
+        <button type="submit">提交</button>
     </form>
 
-
+    <div onclick="demo()">demo</div>
 </div>
 
-
-
+<script src="../lib/jquery.js"></script>
 <script src="../select/com-select.js"></script>
+<script src="../radio/com-radio.js"></script>
+<script src="../check/com-check.js"></script>
 <script>
 
     $('.com-select').comSelect();
+
+    $('.com-radio').comRadio();
+
+    $('.com-check').comCheck();
+
+    function demo(){
+        alert($('#radio-1').find(":checked").val())
+    }
+
 </script>
 </body>
 </html>

@@ -6,6 +6,9 @@
 .com-check label {
   cursor: pointer;
 }
+.com-check label input[type='checkbox'] {
+  display: none;
+}
 .com-check .box-add {
   background-color: #20a0ff;
 }

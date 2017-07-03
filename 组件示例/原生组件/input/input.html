@@ -31,7 +31,7 @@
     </label>
 
     <!--form-->
-    <form action="" class="form mt50">
+    <form class="form mt50">
 
         <div class="form-item">
             <label class="form-title">姓名：</label>
@@ -68,7 +68,7 @@
         </div>
 
         <div class="form-item">
-            <label class="form-title">喜好：</label>
+            <label class="form-title">喜欢：</label>
             <div class="form-content">
                 <section class="com-check">
                     <label data-name="checkAll">
@@ -76,23 +76,23 @@
                         <span>全选</span>
                     </label>
 
-                    <label>
+                    <label class="ml10">
                         <i data-name="checkBox" class="check-box"></i>
-                        <span>小李</span>
-                        <input type="checkbox" value="小李">
+                        <span>香蕉</span>
+                        <input type="checkbox" value="banana">
                     </label>
 
-                    <label>
+                    <label class="ml5">
                         <i data-name="checkBox" class="check-box"></i>
-                        <span>小红</span>
-                        <input type="checkbox" value="小红">
+                        <span>苹果</span>
+                        <input type="checkbox" value="apple">
                     </label>
                 </section>
             </div>
         </div>
 
         <div class="form-item">
-            <label class="form-title">喜好：</label>
+            <label class="form-title">兴趣：</label>
             <div class="form-content">
                 <!-- component -->
                 <section class="com-select">
@@ -109,8 +109,15 @@
             </div>
         </div>
 
-        <button type="submit">提交</button>
+        <div class="form-item">
+            <label class="form-title">留言：</label>
+            <div class="form-content">
+                <textarea name="" id=""></textarea>
+            </div>
+        </div>
     </form>
+
+    <div>提交</div>
 
     <div onclick="demo()">demo</div>
 </div>
@@ -120,6 +127,17 @@
 <script src="../radio/com-radio.js"></script>
 <script src="../check/com-check.js"></script>
 <script>
+
+
+    //rander
+
+    var data = [
+        {val:1,name:'jack'},
+        {val:2,name:'lisa'}
+    ];
+
+
+
 
     $('.com-select').comSelect();
 

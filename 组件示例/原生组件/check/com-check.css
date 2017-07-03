@@ -4,10 +4,15 @@
   display: inline-block;
 }
 .com-check label {
+  display: inline-block;
   cursor: pointer;
 }
 .com-check label input[type='checkbox'] {
   display: none;
+}
+.com-check label i,
+.com-check label span {
+  vertical-align: middle;
 }
 .com-check .box-add {
   background-color: #20a0ff;
@@ -19,11 +24,11 @@
   border-left: 0;
   border-top: 0;
   width: .25rem;
-  height: .45rem;
+  height: .5rem;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -0.28rem;
+  margin-left: -0.26rem;
   -webkit-transform: rotate(45deg) translate(-50%, -50%);
           transform: rotate(45deg) translate(-50%, -50%);
   -webkit-transition: -webkit-transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6) 0.05s;
@@ -35,9 +40,8 @@
 }
 .com-check .check-box {
   position: relative;
-  top: .1rem;
-  width: 1rem;
-  height: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
   border: 1px solid #20a0ff;
   border-radius: 2px;
   display: inline-block;

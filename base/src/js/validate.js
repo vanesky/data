@@ -39,9 +39,9 @@ window.validateMethod = function(validate){
 
     $.each(validate.rules,function(attrName,attrObj){
 
-        var value = $("[name='"+attrName+"']").val();
+        var nameObj = $("[name='"+attrName+"']")
 
-        if(!value){  value = $("[name='"+attrName+"']").text() }
+        var value = nameObj.val() || nameObj.attr('data-val') || nameObj.text() || '';
 
         $.each(attrObj,function(ruleName,ruleParam){
 

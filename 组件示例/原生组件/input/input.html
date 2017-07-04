@@ -154,7 +154,23 @@
     function sub(){
 
 
+        var validate = {
 
+            rules:{
+
+                writTit:{require:true,nameRule:true},
+
+                writText:{require:true,textRule:true}
+
+            },
+            prompt:{
+
+                writTit:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的文字'},
+
+                writText:{require:'没有什么要说的吗?',textRule:'留言至少5个字符哦'}
+
+            }
+        };
 
 
 

@@ -79,11 +79,11 @@ $ git checkout -b xx origin/master  切换到远程更新分支并建立远程分支
 $ git rm xx -r -f  删除文件夹以及下面的文件
 
 
-$ git branch --set-upstream t1 origin/master 
+$ git branch --set-upstream t1 origin/master. 
 
-$ git checkout -b serverfix origin/serverfix
+$ git checkout -b serverfix origin/serverfix.
 
-$ git checkout --track origin/serverfix
+$ git checkout --track origin/serverfix.
 
 
 ---------------------------------------------------------------------------------------------

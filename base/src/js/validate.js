@@ -33,30 +33,61 @@ var validateRule = {
 }
 
 
-window.validateMethod = function(validate){
+window.validateMethod = function(form,validate){
 
     var str = [];
 
     $.each(validate.rules,function(attrName,attrObj){
 
-        var nameObj = $("[name='"+attrName+"']")
+        var nameObj = form.find("[name='"+attrName+"']")
+
+            if(nameObj.length < 1){
+
+                return str = attrName + ' no find';
+            }
+
 
         var value = nameObj.val() || nameObj.attr('data-val') || nameObj.text() || '';
 
+        //如果check radio
+        if(nameObj.length>1){
+
+            value = '';
+
+            nameObj.each(function(index,item){
+
+                if(item.checked){
+
+                    value = 1;
+
+                    return false;
+                }
+            })
+        }
+
         $.each(attrObj,function(ruleName,ruleParam){
 
-            if(!validateRule[ruleName](value)){
+            //校验规则启用
+            if(ruleParam){
 
-                str.push(validate.prompt[attrName][ruleName]);
+                var obj = {};
+
+                obj.name = attrName;
+
+                if(!validateRule[ruleName](value)){
+
+                    obj.val = validate.prompt[attrName][ruleName];
+
+                }else{
+                    obj.val = true;
+                }
+
+                str.push(obj);
             }
         })
+
     });
 
-    if(str.length>0){
+    return str;
 
-        com.prompt(0,str[0]);
-
-        return false;
-    }
-    return true;
 };

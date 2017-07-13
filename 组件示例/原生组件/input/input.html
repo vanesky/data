@@ -22,7 +22,7 @@
         }
 
         .sub{
-            padding:10px 50px;
+            padding:8px 30px;
             background-color: #14a3a4;
             border-radius: 5px;
             color:#fff;
@@ -134,6 +134,8 @@
 <script src="../check/com-check.js"></script>
 
 <script src="../message/com-message.js"></script>
+
+<script src="/data/base/src/js/validate.js"></script>
 <script>
 
     //组件数据渲染
@@ -153,24 +155,51 @@
     //提交
     function sub(){
 
-
         var validate = {
 
             rules:{
 
-                writTit:{require:true,nameRule:true},
+                name:{require:true,nameRule:true},
 
-                writText:{require:true,textRule:true}
+                age:{require:true,textRule:false},
+
+                sex:{require:true},
+
+                like:{require:true},
+
+                interest:{require:true},
 
             },
             prompt:{
 
-                writTit:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的文字'},
+                name:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的文字'},
 
-                writText:{require:'没有什么要说的吗?',textRule:'留言至少5个字符哦'}
+                age:{require:'请输入年龄',textRule:'留言至少5个字符哦'},
 
+                sex:{require:'请选择性别',textRule:false},
+
+                like:{require:'请选择喜欢水果'},
+
+                interest:{require:'请选择爱好'}
             }
         };
+
+        var arr = validateMethod($('form'),validate);
+
+        if(arr.length>0){
+
+            var form = $('form');
+
+            $.each(arr,function(key,item){
+
+                if(item.val === true){return true;}
+
+                form.find("[name="+item.name+"]").parents('.form-content').append('<p data-name="'+item.name+'-error">'+item.val+'</p>')
+
+            })
+        }
+
+        console.log(arr)
 
 
 

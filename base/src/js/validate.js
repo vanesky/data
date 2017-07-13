@@ -8,7 +8,7 @@ var validateRule = {
 
     nameRule:function(val){
 
-        return /^[\u4e00-\u9fa5|\d|\w]*$/.test(val);
+        return /^[\u4e00-\u9fa5|\d|\w]{3,}$/.test(val);
 
     },
 
@@ -46,7 +46,6 @@ window.validateMethod = function(form,validate){
                 return str = attrName + ' no find';
             }
 
-
         var value = nameObj.val() || nameObj.attr('data-val') || nameObj.text() || '';
 
         //如果check radio
@@ -65,26 +64,27 @@ window.validateMethod = function(form,validate){
             })
         }
 
+        var objParam = null;
+
         $.each(attrObj,function(ruleName,ruleParam){
 
             //校验规则启用
             if(ruleParam){
 
-                var obj = {};
-
-                obj.name = attrName;
-
                 if(!validateRule[ruleName](value)){
 
-                    obj.val = validate.prompt[attrName][ruleName];
+                    objParam = {};
 
-                }else{
-                    obj.val = true;
+                    objParam.name = attrName;
+
+                    objParam.val = validate.prompt[attrName][ruleName];
+
+                    return false;
                 }
-
-                str.push(obj);
             }
-        })
+        });
+
+        objParam ? str.push(objParam) : '';
 
     });
 

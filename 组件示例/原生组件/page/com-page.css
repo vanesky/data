@@ -1,0 +1,15 @@
+@charset "utf-8";
+/*@a:#49a0db;*/
+.com-page .page-btn,
+.com-page .page-item .item-list {
+  float: left;
+  min-height: 1.5rem;
+  line-height: 1.5rem;
+  margin-left: .2rem;
+  padding: .2rem .8rem;
+  border: 1px solid #dbdbdb;
+}
+.com-page .page-item {
+  overflow: auto;
+  float: left;
+}

@@ -1,21 +1,28 @@
 //颜色引用
 @import "com-color";
 //组件依赖的外部图标库
-@import "http://at.alicdn.com/t/font_dwb9hoxqj1pmbo6r.css";
+@import "http://at.alicdn.com/t/font_mxji3szscj7qr529.css";
 
 .demo{
   width:800px;
+  min-height: 400px;
   margin:0 auto;
   padding:10px;
   border: 1px solid @ceb;
 }
-html{
-  font-size: 1rem;
+@media screen and (max-width: 2000px) {
+  html{font-size:14px;}
+}
+@media screen and (max-width: 1800px) {
+  html{font-size:14px;}
+}
+@media screen and (max-width: 1700px) {
+  html{font-size:13px;}
+}
+@media screen and (max-width: 1500px) {
+  html{font-size:10px;}
 }
 
-.hide{
-  display: none;
-}
 
 //基本表单元素
 .form-input{
@@ -28,7 +35,6 @@ html{
   border-radius: 4px;
 
   /*line-height: 1.42857143;*/
-  color: @c3;
   background-color: @cf;
   background-image: none;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;

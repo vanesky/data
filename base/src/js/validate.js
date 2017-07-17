@@ -33,13 +33,13 @@ var validateRule = {
 }
 
 
-window.validateMethod = function(form,validate){
+window.validateMethod = function(form,validate,errorBox){
 
     var str = [];
 
     $.each(validate.rules,function(attrName,attrObj){
 
-        var nameObj = form.find("[name='"+attrName+"']")
+        var nameObj = form.find("[name='"+attrName+"']");
 
             if(nameObj.length < 1){
 
@@ -64,13 +64,14 @@ window.validateMethod = function(form,validate){
             })
         }
 
+        /*遍历规则*/
         var objParam = null;
 
         $.each(attrObj,function(ruleName,ruleParam){
 
-            //校验规则启用
+            //是否启动了此校验
             if(ruleParam){
-
+                //如果校验没通过
                 if(!validateRule[ruleName](value)){
 
                     objParam = {};
@@ -84,7 +85,25 @@ window.validateMethod = function(form,validate){
             }
         });
 
-        objParam ? str.push(objParam) : '';
+        if(objParam){
+
+            str.push(objParam);
+
+            if(errorBox){
+
+                var hasDom = form.find("[name-error="+objParam.name+"]");
+
+                if(hasDom.length <= 0){
+
+                    form.find("[name="+objParam.name+"]").parents('.form-content').append('<p name="'+objParam.name+'-error">'+objParam.val+'</p>')
+                }
+            }
+
+        }else{
+
+            if(errorBox){form.find("[name='"+attrName+"-error']").remove();}
+        }
+
 
     });
 

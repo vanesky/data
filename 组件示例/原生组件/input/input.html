@@ -184,22 +184,22 @@
             }
         };
 
-        var arr = validateMethod($('form'),validate);
+        var form = $('form');
 
-        if(arr.length>0){
+        var errorList = validateMethod(form,validate,true);
 
-            var form = $('form');
+        /*if(errorList.length>0){
 
-            $.each(arr,function(key,item){
+            $.each(errorList,function(key,item){
 
                 if(item.val === true){return true;}
 
-                form.find("[name="+item.name+"]").parents('.form-content').append('<p data-name="'+item.name+'-error">'+item.val+'</p>')
+                form.find("[name="+item.name+"]").parents('.form-content').append('<p name="'+item.name+'-error">'+item.val+'</p>')
 
             })
-        }
+        }*/
 
-        console.log(arr)
+        console.log(errorList);
 
 
 

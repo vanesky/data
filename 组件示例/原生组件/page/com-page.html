@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="com-page.css">
 
     <script src="../lib/jquery.js"></script>
-
+    <script src="com-page.js"></script>
 </head>
 <body>
 
 <div class="demo clearfix">
 
     <section class="com-page">
-
         <a class="page-btn">上一页</a>
         <ul class="page-item">
-            <li class="item-list">1</li>
-            <li class="item-list iconfont icon-more"></li>
-            <li class="item-list">2</li>
-            <li class="item-list">3</li>
+            <li data-name="first" class="item-list"></li>
+            <li data-name="more" class="item-list iconfont icon-more"></li>
+            <li data-name="num" class="item-list"></li>
+            <li data-name="num" class="item-list"></li>
+            <li data-name="num" class="item-list"></li>
+            <li data-name="num" class="item-list"></li>
+            <li data-name="num" class="item-list"></li>
+            <li data-name="more" class="item-list iconfont icon-more"></li>
+            <li data-name="last" class="item-list"></li>
         </ul>
         <a class="page-btn">下一页</a>
     </section>
@@ -30,7 +34,16 @@
 
 <script>
 
+    $('.com-page').comPage({
 
+        total:30,
+
+        pages:10,
+
+        callback:function(){
+
+        }
+    })
 
 
 </script>

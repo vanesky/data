@@ -3,13 +3,26 @@
 .com-page .page-btn,
 .com-page .page-item .item-list {
   float: left;
-  min-height: 1.5rem;
   line-height: 1.5rem;
   margin-left: .2rem;
-  padding: .2rem .8rem;
+  padding: .3rem .8rem;
   border: 1px solid #dbdbdb;
+  cursor: pointer;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+.com-page .page-btn:hover,
+.com-page .page-item .item-list:hover {
+  color: #20a0ff;
 }
 .com-page .page-item {
   overflow: auto;
   float: left;
+}
+.com-page .page-item .item-list:first-child,
+.com-page .page-item .item-list:last-child {
+  display: none;
+}
+.com-page .page-item [data-name='more'] {
+  display: none;
 }

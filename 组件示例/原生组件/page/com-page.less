@@ -4,12 +4,15 @@
 
   .page-btn,.page-item .item-list{
     float: left;
-    //height:2rem;
-    min-height: 1.5rem;
     line-height: 1.5rem;
     margin-left: .2rem;
-    padding:.2rem .8rem;
+    padding:.3rem .8rem;
     border: 1px solid @cdb;
+    cursor:pointer;
+    transition: color .2s;
+    &:hover{
+      color:@a;
+    }
   }
 
   .page-btn{
@@ -19,7 +22,12 @@
     overflow: auto;
     float: left;
     .item-list{
-
+      &:first-child,&:last-child{
+        display: none;
+      }
+    }
+    [data-name='more']{
+      display: none;
     }
   }
 

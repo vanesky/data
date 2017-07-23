@@ -27,6 +27,10 @@
             border-radius: 5px;
             color:#fff;
         }
+
+        form .error{
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -104,8 +108,8 @@
                 <!-- component -->
                 <section class="com-select">
                     <label class="sel-item iconfont icon-arrow-down">
-                        <input class="sel-head" value="" readonly placeholder="请选择"/>
-                        <input name="interest" type="hidden" value="">
+                        <input class="sel-head" type="text" readonly placeholder="请选择"/>
+                        <input name="interest" type="hidden">
                     </label>
                     <ul class="sel-content">
                         <li data-val="1" class="sel-list">篮球</li>
@@ -152,69 +156,52 @@
     $('.com-check').comCheck();
 
 
+    var form = $('form');
+
+    var validate = {
+
+        rules:{
+
+            name:{require:true,nameRule:true},
+
+            age:{require:true,textRule:false},
+
+            sex:{require:true},
+
+            like:{require:true},
+
+            interest:{require:true},
+
+        },
+        prompt:{
+
+            name:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的文字'},
+
+            age:{require:'请输入年龄',textRule:'留言至少5个字符哦'},
+
+            sex:{require:'请选择性别',textRule:false},
+
+            like:{require:'请选择喜欢水果'},
+
+            interest:{require:'请选择爱好'}
+        }
+    };
+
     //提交
     function sub(){
 
-        var validate = {
-
-            rules:{
-
-                name:{require:true,nameRule:true},
-
-                age:{require:true,textRule:false},
-
-                sex:{require:true},
-
-                like:{require:true},
-
-                interest:{require:true},
-
-            },
-            prompt:{
-
-                name:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的文字'},
-
-                age:{require:'请输入年龄',textRule:'留言至少5个字符哦'},
-
-                sex:{require:'请选择性别',textRule:false},
-
-                like:{require:'请选择喜欢水果'},
-
-                interest:{require:'请选择爱好'}
-            }
-        };
-
-        var form = $('form');
 
         var errorList = validateMethod(form,validate,true);
 
-        /*if(errorList.length>0){
-
-            $.each(errorList,function(key,item){
-
-                if(item.val === true){return true;}
-
-                form.find("[name="+item.name+"]").parents('.form-content').append('<p name="'+item.name+'-error">'+item.val+'</p>')
-
-            })
-        }*/
-
         console.log(errorList);
 
-
-
-        /*$.comMessage({  //可选(warning/success/prompt)
-
-            type:'prompt',
-
-            text:'信息提示！',
-
-            time:300000,
-
-            animateTop:''
-
-        })*/
     }
+
+    form.find("input").change(function(){
+
+        validateMethod(form,validate,true);
+    })
+
 
 
 

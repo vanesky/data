@@ -51,9 +51,9 @@
 }
 .com-select .icon-arrow-down:before {
   position: absolute;
-  left: 100%;
+  right: 0;
+  margin-right: .2rem;
   top: 50%;
-  margin-left: -1.1rem;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   color: #666;

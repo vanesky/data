@@ -91,11 +91,13 @@ window.validateMethod = function(form,validate,errorBox){
 
             if(errorBox){
 
-                var hasDom = form.find("[name-error="+objParam.name+"]");
+                var hasDom = form.find("[name="+objParam.name+"-error]");
+
+                console.log(hasDom.length)
 
                 if(hasDom.length <= 0){
 
-                    form.find("[name="+objParam.name+"]").parents('.form-content').append('<p name="'+objParam.name+'-error">'+objParam.val+'</p>')
+                    form.find("[name="+objParam.name+"]").parents('.form-content').append('<p class="error" name="'+objParam.name+'-error">'+objParam.val+'</p>')
                 }
             }
 

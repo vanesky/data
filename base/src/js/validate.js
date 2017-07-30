@@ -33,82 +33,163 @@ var validateRule = {
 }
 
 
-window.validateMethod = function(form,validate,errorBox){
+window.validateMethod = function(param,fun){
+
+    //form,validate,errorBox
+
+    var validate = param.validate;
+
+    var mes = param.prompt;
+
+    var form = param.formName;
+
+    var sub = param.submit;
+
+    var evList = param.evList;
+
 
     var str = [];
 
-    $.each(validate.rules,function(attrName,attrObj){
+    var v = {
+        //校验方法
+        run:function(){
 
-        var nameObj = form.find("[name='"+attrName+"']");
+            str = [];
 
-            if(nameObj.length < 1){
+            $.each(validate.rules,function(attrName,attrObj){
 
-                return str = attrName + ' no find';
-            }
+                var nameObj = form.find("[name='"+attrName+"']");
 
-        var value = nameObj.val() || nameObj.attr('data-val') || nameObj.text() || '';
+                if(nameObj.length < 1){
 
-        //如果check radio
-        if(nameObj.length>1){
-
-            value = '';
-
-            nameObj.each(function(index,item){
-
-                if(item.checked){
-
-                    value = 1;
-
-                    return false;
+                    return str = attrName + ' no find';
                 }
+
+                var value = nameObj.val() || nameObj.attr('data-val') || nameObj.text() || '';
+
+                //如果check radio
+                if(nameObj.length>1){
+
+                    value = '';
+
+                    nameObj.each(function(index,item){
+
+                        if(item.checked){
+
+                            value = 1;
+
+                            return false;
+                        }
+                    })
+                }
+
+                /*遍历规则*/
+                var objParam = null;
+
+                $.each(attrObj,function(ruleName,ruleParam){
+
+                    //是否启动了此校验
+                    if(ruleParam){
+                        //如果校验没通过
+                        if(!validateRule[ruleName](value)){
+
+                            objParam = {};
+
+                            objParam.name = attrName;
+
+                            objParam.val = validate.prompt[attrName][ruleName];
+
+                            return false;
+                        }
+                    }
+                });
+
+                if(objParam){
+
+                    str.push(objParam);
+
+                }else{
+
+                    if(prompt){form.find("[name='"+attrName+"-error']").remove();}
+                }
+
+            });
+
+            return str;
+        },
+
+        prompt:function(name){
+
+            if(str.length<=0){return;}
+
+            //遍历未通过数组
+            $.each(str,function(index,item){
+
+                if(name){
+
+                    if(item.name == name){
+
+                        //先删除提示信息
+                        form.find("[name=" + item.name + "-error]").remove();
+
+                        form.find("[name=" + item.name + "]").parents('.form-content').append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
+
+                        return false;
+                    }
+
+                }else{
+
+                    //先删除提示信息
+                    form.find("[name=" + item.name + "-error]").remove();
+
+                    form.find("[name=" + item.name + "]").parents('.form-content').append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
+                }
+
             })
         }
+    }
 
-        /*遍历规则*/
-        var objParam = null;
+    //是否启用了文字提示
+    if(mes){
 
-        $.each(attrObj,function(ruleName,ruleParam){
+        form.find('input').change(function(){
 
-            //是否启动了此校验
-            if(ruleParam){
-                //如果校验没通过
-                if(!validateRule[ruleName](value)){
+            v.run()
 
-                    objParam = {};
+            v.prompt($(this).attr('name'));
+        })
 
-                    objParam.name = attrName;
+        $(sub).on('click',function(){
 
-                    objParam.val = validate.prompt[attrName][ruleName];
+            v.run();
 
-                    return false;
-                }
-            }
-        });
+            v.prompt();
 
-        if(objParam){
+            if(str.length<=0){fun()}
+        })
 
-            str.push(objParam);
+    }else{
 
-            if(errorBox){
+        $(sub).on('click',function(){
 
-                var hasDom = form.find("[name="+objParam.name+"-error]");
+            fun(v.run())
 
-                console.log(hasDom.length)
-
-                if(hasDom.length <= 0){
-
-                    form.find("[name="+objParam.name+"]").parents('.form-content').append('<p class="error" name="'+objParam.name+'-error">'+objParam.val+'</p>')
-                }
-            }
-
-        }else{
-
-            if(errorBox){form.find("[name='"+attrName+"-error']").remove();}
-        }
+        })
+    }
 
 
-    });
+    if(mes && evList){
 
-    return str;
+        console.log(evList)
+
+        $('body').on('click',evList.join(','),function(){
+
+            alert('456')
+        })
+
+    }
+
+
+
 
 };

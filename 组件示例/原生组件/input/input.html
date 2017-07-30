@@ -128,9 +128,14 @@
         </div>
     </form>
 
-    <span class="sub" onclick="sub()">提交</span>
+    <span class="sub">提交</span>
 
 </div>
+
+<select name="" id="t">
+    <option value="1">1</option>
+    <option value="2">2</option>
+</select>
 
 <script src="../lib/jquery.js"></script>
 <script src="../select/com-select.js"></script>
@@ -162,7 +167,7 @@
 
         rules:{
 
-            name:{require:true,nameRule:true},
+            name:{require:true,nameRule:false},
 
             age:{require:true,textRule:false},
 
@@ -187,21 +192,34 @@
         }
     };
 
-    //提交
-    function sub(){
+
+    window.validateMethod({
+        //表单对象
+        formName:form,
+        //验证规则
+        validate:validate,
+        //提交按钮dom
+        submit:'.sub',
+
+        //如果值为true(回调函数为验证完毕后的回调函数) 否则返回验证失败的内容数组对象。
+        prompt:true,
+
+        evList:['.sel-list','[data-name="checkAll"]']
+
+    },function(arr){
+
+        console.log(arr)
+
+    });
 
 
-        var errorList = validateMethod(form,validate,true);
 
-        console.log(errorList);
 
-    }
 
-    form.find("input").change(function(){
+    /*form.find("input").change(function(){
 
-        validateMethod(form,validate,true);
-    })
 
+    })*/
 
 
 

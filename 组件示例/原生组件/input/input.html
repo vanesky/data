@@ -167,7 +167,7 @@
 
         rules:{
 
-            name:{require:true,nameRule:false},
+            name:{require:true,nameRule:true},
 
             age:{require:true,textRule:false},
 
@@ -204,7 +204,16 @@
         //如果值为true(回调函数为验证完毕后的回调函数) 否则返回验证失败的内容数组对象。
         prompt:true,
 
-        evList:['.sel-list','[data-name="checkAll"]']
+        evList:[
+            {
+                key:'.sel-list',
+                name:'interest'
+            },
+            {
+                key:'[data-name="checkAll"]',
+                name:'like'
+            }
+        ]
 
     },function(arr){
 

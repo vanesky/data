@@ -114,8 +114,6 @@ window.validateMethod = function(param,fun){
                 }
 
             });
-
-            return str;
         },
 
         prompt:function(name){
@@ -147,17 +145,19 @@ window.validateMethod = function(param,fun){
 
             })
         }
-    }
+    };
 
     //是否启用了文字提示
     if(mes){
 
         form.find('input').change(function(){
 
-            v.run()
+            v.run();
 
             v.prompt($(this).attr('name'));
-        })
+
+            if(str.length<=0){fun()}
+        });
 
         $(sub).on('click',function(){
 
@@ -166,29 +166,31 @@ window.validateMethod = function(param,fun){
             v.prompt();
 
             if(str.length<=0){fun()}
-        })
+        });
+
+        //外接组件事件添加
+        if(evList){
+
+            $.each(evList,function(index,item){
+
+                $('body').on('click',item.key,function(){
+
+                    v.run();
+
+                    v.prompt(item.name);
+
+                    if(str.length<=0){fun()}
+                })
+            })
+        }
 
     }else{
 
         $(sub).on('click',function(){
 
-            fun(v.run())
-
+            fun(str)
         })
     }
-
-
-    if(mes && evList){
-
-        console.log(evList)
-
-        $('body').on('click',evList.join(','),function(){
-
-            alert('456')
-        })
-
-    }
-
 
 
 

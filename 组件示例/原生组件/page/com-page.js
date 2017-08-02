@@ -83,6 +83,7 @@ $.fn.comPage = function(obj){
             number++;
         })
 
+        //判断某些按钮是否显示
         if(num>5){
 
             _this.find("[data-name='last']").show().text(num);

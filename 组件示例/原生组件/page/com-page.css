@@ -8,18 +8,19 @@
   padding: .3rem .8rem;
   border: 1px solid #dbdbdb;
   cursor: pointer;
-  -webkit-transition: color .2s;
-  transition: color .2s;
 }
 .com-page .page-btn:hover,
 .com-page .page-item .item-list:hover {
   color: #20a0ff;
 }
+.com-page .active {
+  background-color: #20a0ff;
+  color: #fff !important;
+}
 .com-page .page-item {
   overflow: auto;
   float: left;
 }
-.com-page .page-item .item-list:first-child,
 .com-page .page-item .item-list:last-child {
   display: none;
 }

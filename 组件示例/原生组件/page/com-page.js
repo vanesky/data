@@ -11,9 +11,11 @@ $.fn.comPage = function(obj){
             num+=1;
         }
 
-    _this.find("[data-name='num']").on('click',function(){
+    _this.find(".item-list").on('click',function(){
 
-        var start = Number($(this).text());
+        var temp = '',start = '';
+
+            temp = start = Number($(this).text());
 
         //如果总页数大于5
         if(num>5 && start>4){
@@ -31,7 +33,7 @@ $.fn.comPage = function(obj){
 
                 _this.find("[data-name='more']").last().hide()
 
-                _this.find("[data-name='last']").hide()
+                _this.find("[data-name='num']").last().hide()
 
             }else{
 
@@ -44,10 +46,10 @@ $.fn.comPage = function(obj){
 
                 _this.find("[data-name='more']").last().show()
 
-                _this.find("[data-name='last']").show()
+                _this.find("[data-name='num']").last().show()
             }
 
-            _this.find("[data-name='first']").text(1).show();
+            _this.find("[data-name='num']").first().text(1).show();
 
             _this.find("[data-name='more']").first().show()
 
@@ -57,12 +59,26 @@ $.fn.comPage = function(obj){
 
             init()
 
-            _this.find("[data-name='first']").text(1).hide();
+            //_this.find("[data-name='num']").first().text(1).hide();
 
             _this.find("[data-name='more']").first().hide()
         }
 
+        //添加样式
 
+        /*_this.find(".item-list").each(function(index,item){
+
+            var that = $(item);
+
+            if(temp == that.text()){
+
+                that.addClass('active').siblings('.item-list').removeClass('active')
+
+                return false;
+            }
+        })*/
+
+        //$(this).addClass('active').siblings('.item-list').removeClass('active')
     })
 
     function init(){
@@ -86,7 +102,7 @@ $.fn.comPage = function(obj){
         //判断某些按钮是否显示
         if(num>5){
 
-            _this.find("[data-name='last']").show().text(num);
+            _this.find("[data-name='num']").last().show().text(num);
         }
 
         if(num>6){

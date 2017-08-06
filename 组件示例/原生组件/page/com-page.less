@@ -9,20 +9,23 @@
     padding:.3rem .8rem;
     border: 1px solid @cdb;
     cursor:pointer;
-    transition: color .2s;
     &:hover{
       color:@a;
     }
   }
 
-  .page-btn{
-
+  //addClass
+  .active{
+    background-color: @a;
+    color:@cf !important;
   }
+
+
   .page-item{
     overflow: auto;
     float: left;
     .item-list{
-      &:first-child,&:last-child{
+      &:last-child{
         display: none;
       }
     }

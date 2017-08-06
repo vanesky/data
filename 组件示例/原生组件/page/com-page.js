@@ -11,6 +11,10 @@ $.fn.comPage = function(obj){
             num+=1;
         }
 
+    _this.find("[data-name='num']").first().text(1);
+    _this.find("[data-name='num']").last().text(num);
+
+
     _this.find(".item-list").on('click',function(){
 
         var temp = '',start = '';
@@ -26,6 +30,8 @@ $.fn.comPage = function(obj){
 
                 _this.find("[data-name='num']").each(function(index,item){
 
+                    if(index == 0 || index == 6){return true;}
+
                     $(item).text(start);
 
                     start++;
@@ -38,6 +44,8 @@ $.fn.comPage = function(obj){
             }else{
 
                 _this.find("[data-name='num']").each(function(index,item){
+
+                    if(index == 0 || index == 6){return true;}
 
                     $(item).text(start-2);
 
@@ -83,11 +91,11 @@ $.fn.comPage = function(obj){
 
     function init(){
 
-        var number = 1;
+        var number = 2;
 
         _this.find("[data-name='num']").each(function(index,item){
 
-            //if(index == 0 || index == 6){return true;}
+            if(index == 0 || index == 6){return true;}
 
             if(index + 1 > num){
 

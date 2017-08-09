@@ -11,22 +11,29 @@ $.fn.comPage = function(obj){
             num+=1;
         }
 
+    //设置前后数字
     _this.find("[data-name='num']").first().text(1);
+
     _this.find("[data-name='num']").last().text(num);
 
 
+    //点击事件
     _this.find(".item-list").on('click',function(){
 
-        var temp = '',start = '';
+        var start = Number($(this).text());
 
-            temp = start = Number($(this).text());
+        //如果总页数大于5 并且点击页数大于5
+        if(num>6 && start>5){
 
-        //如果总页数大于5
-        if(num>5 && start>4){
+            //显示之前更多
+            //_this.find("[data-name='num']").first().text(1).show();
 
+            _this.find("[data-name='more']").first().show();
+
+            //点击接近最后数字
             if(start + 3 >= num){
 
-                start = num - 4;
+                start = num - 5;
 
                 _this.find("[data-name='num']").each(function(index,item){
 
@@ -35,11 +42,11 @@ $.fn.comPage = function(obj){
                     $(item).text(start);
 
                     start++;
-                })
+                });
 
-                _this.find("[data-name='more']").last().hide()
+                _this.find("[data-name='more']").last().hide();
 
-                _this.find("[data-name='num']").last().hide()
+                //_this.find("[data-name='num']").last().hide();
 
             }else{
 
@@ -50,22 +57,18 @@ $.fn.comPage = function(obj){
                     $(item).text(start-2);
 
                     start++;
-                })
+                });
 
-                _this.find("[data-name='more']").last().show()
+                _this.find("[data-name='more']").last().show();
 
-                _this.find("[data-name='num']").last().show()
+                _this.find("[data-name='num']").last().show();
             }
-
-            _this.find("[data-name='num']").first().text(1).show();
-
-            _this.find("[data-name='more']").first().show()
 
         }
 
-        if(num>5 && start<5){
+        if(num>6 && start<6){
 
-            init()
+            init();
 
             //_this.find("[data-name='num']").first().text(1).hide();
 
@@ -97,23 +100,23 @@ $.fn.comPage = function(obj){
 
             if(index == 0 || index == 6){return true;}
 
-            if(index + 1 > num){
+            /*if(index + 1 > num){
 
                 $(item).hide()
-            }
+            }*/
 
-            $(item).text(number)
+            $(item).text(number);
 
             number++;
-        })
+        });
 
         //判断某些按钮是否显示
-        if(num>5){
+        if(num>6){
 
             _this.find("[data-name='num']").last().show().text(num);
         }
 
-        if(num>6){
+        if(num>7){
 
             _this.find("[data-name='more']").last().show()
         }

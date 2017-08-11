@@ -18,17 +18,49 @@ $.fn.comPage = function(obj){
 
 
     //点击事件
-    _this.find(".item-list").on('click',function(){
+    _this.find("[data-name='num']").on('click',function(){
 
-        var start = Number($(this).text());
+        //var temp = start = Number($(this).text());
 
-        //如果总页数大于5 并且点击页数大于5
+        render(Number($(this).text()));
+
+        //$(this).addClass('active').siblings('.item-list').removeClass('active')
+    });
+
+    //省略号事件
+    _this.find("[data-name='more']").on('click',function(){
+
+        var index = $(this).index();
+
+        if(index == 1){
+
+            var s = Number(_this.find("[data-name='num']").eq(1).text());
+
+            if(s - 3 > 1){
+
+                render(s)
+            }
+
+        }else{
+
+            var e = Number(_this.find("[data-name='num']").eq(5).text());
+
+            if(e + 3 < num){
+
+                render(e)
+            }
+        }
+    });
+
+
+    function render(start){
+
+        var temp = start;
+
+        //如果总页数大于6 并且点击页数大于5
         if(num>6 && start>5){
 
-            //显示之前更多
-            //_this.find("[data-name='num']").first().text(1).show();
-
-            _this.find("[data-name='more']").first().show();
+            if(num > 7){  _this.find("[data-name='more']").first().show();}
 
             //点击接近最后数字
             if(start + 3 >= num){
@@ -77,7 +109,7 @@ $.fn.comPage = function(obj){
 
         //添加样式
 
-        /*_this.find(".item-list").each(function(index,item){
+        _this.find(".item-list").each(function(index,item){
 
             var that = $(item);
 
@@ -87,10 +119,8 @@ $.fn.comPage = function(obj){
 
                 return false;
             }
-        })*/
-
-        //$(this).addClass('active').siblings('.item-list').removeClass('active')
-    })
+        })
+    }
 
     function init(){
 
@@ -100,10 +130,10 @@ $.fn.comPage = function(obj){
 
             if(index == 0 || index == 6){return true;}
 
-            /*if(index + 1 > num){
+            if(index + 1 > num){
 
                 $(item).hide()
-            }*/
+            }
 
             $(item).text(number);
 

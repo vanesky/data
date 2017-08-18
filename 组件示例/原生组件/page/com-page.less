@@ -31,6 +31,17 @@
     }
     [data-name='more']{
       display: none;
+      i{
+        position: relative;
+        display: inline-block;
+        width:2px;
+        height:2px;
+        margin:0 1px;
+        border-radius: 100%;
+        vertical-align: middle;
+        background-color: @c9;
+      }
+      &:hover{i{background-color: @a;}}
     }
   }
 

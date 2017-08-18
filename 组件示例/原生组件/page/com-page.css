@@ -27,3 +27,16 @@
 .com-page .page-item [data-name='more'] {
   display: none;
 }
+.com-page .page-item [data-name='more'] i {
+  position: relative;
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  margin: 0 1px;
+  border-radius: 100%;
+  vertical-align: middle;
+  background-color: #999;
+}
+.com-page .page-item [data-name='more']:hover i {
+  background-color: #20a0ff;
+}

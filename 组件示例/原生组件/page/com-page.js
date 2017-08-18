@@ -3,6 +3,8 @@ $.fn.comPage = function(obj){
 
     var _this = $(this);
 
+    var temp = 1;
+
     //显示的数字
     var num = Math.floor(obj.total/obj.pages);
 
@@ -52,10 +54,26 @@ $.fn.comPage = function(obj){
         }
     });
 
+    //上一页下一页事件
+    _this.find(".page-btn").on('click',function(){
 
+        if($(this).index()==0){
+
+            if(temp-1 < 1){return;}
+         
+            render(temp-1)
+
+        }else{
+
+            if(temp+1 > num){return;}
+        
+            render(temp+1)
+        }
+    })
+    
     function render(start){
 
-        var temp = start;
+        temp = start;
 
         //如果总页数大于6 并且点击页数大于5
         if(num>6 && start>5){
@@ -120,6 +138,8 @@ $.fn.comPage = function(obj){
                 return false;
             }
         })
+
+        obj.callback(temp);
     }
 
     function init(){

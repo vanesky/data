@@ -22,11 +22,8 @@ $.fn.comPage = function(obj){
     //点击事件
     _this.find("[data-name='num']").on('click',function(){
 
-        //var temp = start = Number($(this).text());
-
         render(Number($(this).text()));
-
-        //$(this).addClass('active').siblings('.item-list').removeClass('active')
+        
     });
 
     //省略号事件

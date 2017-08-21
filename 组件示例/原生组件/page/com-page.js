@@ -38,19 +38,13 @@ $.fn.comPage = function(obj){
 
             var s = Number(_this.find("[data-name='num']").eq(1).text());
 
-            if(s - 3 > 1){
-
-                render(s)
-            }
+            render(s)
 
         }else{
 
             var e = Number(_this.find("[data-name='num']").eq(5).text());
 
-            if(e + 3 < num){
-
-                render(e)
-            }
+            render(e)
         }
     });
 
@@ -96,8 +90,6 @@ $.fn.comPage = function(obj){
 
                 _this.find("[data-name='more']").last().hide();
 
-                //_this.find("[data-name='num']").last().hide();
-
             }else{
 
                 _this.find("[data-name='num']").each(function(index,item){
@@ -120,13 +112,10 @@ $.fn.comPage = function(obj){
 
             init();
 
-            //_this.find("[data-name='num']").first().text(1).hide();
-
             _this.find("[data-name='more']").first().hide()
         }
 
         //添加样式
-
         _this.find(".item-list").each(function(index,item){
 
             var that = $(item);

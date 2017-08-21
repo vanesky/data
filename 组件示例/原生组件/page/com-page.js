@@ -23,7 +23,7 @@ $.fn.comPage = function(obj){
     _this.find("[data-name='num']").on('click',function(){
 
         render(Number($(this).text()));
-        
+
     });
 
     //省略号事件

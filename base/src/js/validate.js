@@ -3,31 +3,20 @@ var validateRule = {
     require:function(val){
 
         return $.trim(val).length > 0;
+    },
+    email:function(val){
 
+      return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(val);
     },
 
     nameRule:function(val){
 
         return /^[\u4e00-\u9fa5|\d|\w]{3,}$/.test(val);
-
     },
 
-    loginNameRule:function(val){
+    phoneRule:function(val){
 
-        return /^\d+$/.test(val);
-
-    },
-
-    loginPassRule:function(val,param){
-
-        return $.trim(val).length >= param;
-
-    },
-
-    phoneRule:function(val,param){
-
-        return $.trim(val).length >= param;
-
+        return /^1[13578]\d{9}/.test(val);
     }
 
 }

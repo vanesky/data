@@ -4,10 +4,32 @@
 
 
 .wh(@w:0,@h:0){
-  width:@w*1px;
-  height:@h*1px;
+  width:@w;
+  height:@h;
 }
 
+.auto{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.fill{
+  left:0;
+  right:0;
+  top:0; 
+  bottom:0;
+}
+.bg-cover{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+//边框
+.border(@border-color:@cdb;){
+  border:1px solid @border-color;
+}
+//阴影
 .com-shadow(@shadow-opacity:.04){
   box-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,@shadow-opacity);
 }
@@ -15,14 +37,4 @@
   box-shadow:@arguments;
 }
 
-.auto(@t:0){
-  margin-top:@t;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-//边框
-.border(@border-color:@cdb;){
-  border:1px solid @border-color;
-}
 

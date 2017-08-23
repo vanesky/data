@@ -4,8 +4,8 @@
   display: inline-block;
   position: relative;
   width: 100%;
-  height: 2rem;
-  padding: .1rem .5rem;
+  height: 32px;
+  padding: 2px 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   -webkit-transition: border 0.5s;

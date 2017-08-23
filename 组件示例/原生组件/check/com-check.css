@@ -18,18 +18,18 @@
   background-color: #20a0ff;
 }
 .com-check .box-add:after {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   content: "";
   border: 2px solid #fff;
   border-left: 0;
   border-top: 0;
-  width: .25rem;
-  height: .5rem;
+  width: 3px;
+  height: 7px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -0.26rem;
+  margin-left: -3.5px;
+  margin-top: -1px;
   -webkit-transform: rotate(45deg) translate(-50%, -50%);
           transform: rotate(45deg) translate(-50%, -50%);
   -webkit-transition: -webkit-transform 0.15s cubic-bezier(0.71, -0.46, 0.88, 0.6) 0.05s;
@@ -41,8 +41,8 @@
 }
 .com-check .check-box {
   position: relative;
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 15px;
+  height: 15px;
   border: 1px solid #ccc;
   border-radius: 2px;
   display: inline-block;

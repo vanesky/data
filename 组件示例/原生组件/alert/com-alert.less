@@ -12,6 +12,62 @@
 
     .prompt-main{
       position: relative;
+      width: 300px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color:#ffffff;
+      border-radius: 6px;
+
+      .prompt-tit{
+        padding:6px 12px;
+        border-bottom:1px solid @ceb;
+        font-weight: bold;
+        text-align: left;
+      }
+      .prompt-text{
+        width:80%;
+        padding:12px 0;
+        margin:0 auto;
+        font-size: 14px;
+      }
+      //按钮组
+      .prompt-item{
+        padding:14px 0;
+        .prompt-button{
+          display: inline-block;
+          margin:0 12px;
+          padding:5px 24px;
+          border-radius: 4px;
+          cursor: pointer;
+          color:#fff;
+          &:first-child{
+            background-color:@cc;
+          }
+          &:last-child{
+            background-color:@a;
+          }
+        }
+      }
+    }
+  }
+
+/*
+
+  .com-prompt{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    opacity: 0;
+    display: none;
+
+    .prompt-main{
+      position: relative;
       width: 25rem;
       left: 50%;
       top: 50%;
@@ -52,3 +108,6 @@
       }
     }
   }
+
+
+*/

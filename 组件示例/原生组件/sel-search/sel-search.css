@@ -14,7 +14,7 @@
 }
 .sel-search .search-item .item-list {
   width: 100%;
-  padding: .3rem .5rem;
+  padding: 5px 8px;
   border-left: 1px solid #dbdbdb;
   border-right: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;

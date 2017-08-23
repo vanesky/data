@@ -13,7 +13,7 @@
 }
 .com-prompt .prompt-main {
   position: relative;
-  width: 25rem;
+  width: 300px;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -23,24 +23,24 @@
   border-radius: 6px;
 }
 .com-prompt .prompt-main .prompt-tit {
-  padding: .5rem 1rem;
+  padding: 6px 12px;
   border-bottom: 1px solid #ebebeb;
   font-weight: bold;
   text-align: left;
 }
 .com-prompt .prompt-main .prompt-text {
   width: 80%;
-  padding: 1rem 0;
+  padding: 12px 0;
   margin: 0 auto;
-  font-size: 1.4rem;
+  font-size: 14px;
 }
 .com-prompt .prompt-main .prompt-item {
-  padding: 1.2rem 0;
+  padding: 14px 0;
 }
 .com-prompt .prompt-main .prompt-item .prompt-button {
   display: inline-block;
-  margin: 0 1rem;
-  padding: .4rem 2rem;
+  margin: 0 12px;
+  padding: 5px 24px;
   border-radius: 4px;
   cursor: pointer;
   color: #fff;
@@ -51,3 +51,61 @@
 .com-prompt .prompt-main .prompt-item .prompt-button:last-child {
   background-color: #20a0ff;
 }
+/*
+
+  .com-prompt{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    opacity: 0;
+    display: none;
+
+    .prompt-main{
+      position: relative;
+      width: 25rem;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color:#ffffff;
+      border-radius: 6px;
+
+      .prompt-tit{
+        padding:.5rem 1rem;
+        border-bottom:1px solid @ceb;
+        font-weight: bold;
+        text-align: left;
+      }
+      .prompt-text{
+        width:80%;
+        padding:1rem 0;
+        margin:0 auto;
+        font-size: 1.4rem;
+      }
+      //按钮组
+      .prompt-item{
+        padding:1.2rem 0;
+        .prompt-button{
+          display: inline-block;
+          margin:0 1rem;
+          padding:.4rem 2rem;
+          border-radius: 4px;
+          cursor: pointer;
+          color:#fff;
+          &:first-child{
+            background-color:@cc;
+          }
+          &:last-child{
+            background-color:@a;
+          }
+        }
+      }
+    }
+  }
+
+
+*/

@@ -64,13 +64,9 @@ window.com = {};
                     return true;
 
                 }
-
             }
-
         }
-
         return false;
-
     };
 
     this.formatDate = function (strTime,sel) {

@@ -1,0 +1,18 @@
+{
+  "name": "vane",
+  "version": "1.0.0",
+  "description": "data",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.oschina.net:featsky/data"
+  },
+  "author": "vane",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

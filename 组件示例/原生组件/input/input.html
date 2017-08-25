@@ -201,7 +201,7 @@
         //提交按钮dom
         submit:'.sub',
         //是否开起提示
-        prompt:true,
+        prompt:false,
         //提示信息要插入的地方
         promptBox:'',
         //要触发校验的元素
@@ -218,7 +218,7 @@
 
     },function(arr){   //prompt参数【true(验证全部通过后的回调函数) false(返回验证失败的内容数组对象)】
 
-        //console.log(arr)
+        console.log(arr)
         form.submit()
 
     });

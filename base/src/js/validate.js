@@ -25,17 +25,16 @@ var validateRule = {
 window.validateMethod = function(param,fun){
 
     //form,validate,errorBox
+    var p = param;
 
-    var validate = param.validate;
+    var form = p.formName;
 
-    var mes = param.prompt;
+    var promptBox = '.form-content';
 
-    var form = param.formName;
+    if( param.promptBox){
 
-    var sub = param.submit;
-
-    var evList = param.evList;
-
+        promptBox = param.promptBox;
+    }
 
     var str = [];
 
@@ -45,7 +44,7 @@ window.validateMethod = function(param,fun){
 
             str = [];
 
-            $.each(validate.rules,function(attrName,attrObj){
+            $.each(p.validate.rules,function(attrName,attrObj){
 
                 var nameObj = form.find("[name='"+attrName+"']");
 
@@ -86,7 +85,7 @@ window.validateMethod = function(param,fun){
 
                             objParam.name = attrName;
 
-                            objParam.val = validate.prompt[attrName][ruleName];
+                            objParam.val = p.validate.prompt[attrName][ruleName];
 
                             return false;
                         }
@@ -105,7 +104,7 @@ window.validateMethod = function(param,fun){
             });
         },
 
-        prompt:function(name){
+        prompt:function(name){ //如果参数存在则只执行当前Input的提示
 
             if(str.length<=0){return;}
 
@@ -117,38 +116,38 @@ window.validateMethod = function(param,fun){
                     if(item.name == name){
 
                         //先删除提示信息
-                        form.find("[name=" + item.name + "-error]").remove();
-
-                        form.find("[name=" + item.name + "]").parents('.form-content').append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
+                        v.promptRun(index, item);
 
                         return false;
                     }
 
-                }else{
+                }else {
 
-                    //先删除提示信息
-                    form.find("[name=" + item.name + "-error]").remove();
-
-                    form.find("[name=" + item.name + "]").parents('.form-content').append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
+                    v.promptRun(index, item);
                 }
-
             })
+
+        },
+        promptRun:function(index,item){
+
+            //先删除提示信息
+            form.find("[name=" + item.name + "-error]").remove();
+
+            form.find("[name=" + item.name + "]").parents('.form-item').find(promptBox).append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
         }
     };
 
     //是否启用了文字提示
-    if(mes){
+    if(p.prompt){
 
         form.find('input').change(function(){
 
             v.run();
 
             v.prompt($(this).attr('name'));
-
-            if(str.length<=0){fun()}
         });
 
-        $(sub).on('click',function(){
+        $(p.submit).on('click',function(){
 
             v.run();
 
@@ -157,25 +156,25 @@ window.validateMethod = function(param,fun){
             if(str.length<=0){fun()}
         });
 
-        //外接组件事件添加
-        if(evList){
+        //其他组件事件点击触发
+        if(p.evList){
 
-            $.each(evList,function(index,item){
+            $.each(p.evList,function(index,item){
 
                 $('body').on('click',item.key,function(){
 
                     v.run();
 
                     v.prompt(item.name);
-
-                    if(str.length<=0){fun()}
                 })
             })
         }
 
     }else{
 
-        $(sub).on('click',function(){
+        $(p.submit).on('click',function(){
+
+            v.run();
 
             fun(str)
         })

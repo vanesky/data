@@ -68,8 +68,7 @@ window.validateMethod = function(param,fun){
                     })
                 }
 
-                /*遍历规则*/
-
+                /*遍历字段的规则*/
                 var objParam = {type:1,name:attrName}
 
                 $.each(attrObj,function(ruleName,ruleParam){

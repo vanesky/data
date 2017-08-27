@@ -44,14 +44,11 @@ window.validateMethod = function(param,fun){
 
             str = [];
 
+            var errArr = [];
+
             $.each(p.validate.rules,function(attrName,attrObj){
 
                 var nameObj = form.find("[name='"+attrName+"']");
-
-                if(nameObj.length < 1){
-
-                    return str = attrName + ' no find';
-                }
 
                 var value = nameObj.val() || nameObj.attr('data-val') || nameObj.text() || '';
 
@@ -72,18 +69,18 @@ window.validateMethod = function(param,fun){
                 }
 
                 /*遍历规则*/
-                var objParam = null;
+
+                var objParam = {type:1,name:attrName}
 
                 $.each(attrObj,function(ruleName,ruleParam){
 
                     //是否启动了此校验
                     if(ruleParam){
+
                         //如果校验没通过
                         if(!validateRule[ruleName](value)){
 
-                            objParam = {};
-
-                            objParam.name = attrName;
+                            objParam.type = 0;
 
                             objParam.val = p.validate.prompt[attrName][ruleName];
 
@@ -92,55 +89,52 @@ window.validateMethod = function(param,fun){
                     }
                 });
 
-                if(objParam){
-
-                    str.push(objParam);
-
-                }else{
-
-                    if(prompt){form.find("[name='"+attrName+"-error']").remove();}
-                }
-
+                str.push(objParam);
             });
+
+            //过滤出校验不正确的数组信息
+            $.each(str,function(index,item){
+
+                if(!item.type){errArr.push(item)}
+            })
+
+            return errArr;
         },
 
         prompt:function(name){ //如果参数存在则只执行当前Input的提示
 
-            if(str.length<=0){return;}
-
-            //遍历未通过数组
             $.each(str,function(index,item){
 
                 if(name){
 
                     if(item.name == name){
 
-                        //先删除提示信息
-                        v.promptRun(index, item);
-
-                        return false;
+                        v.mesToggle(index,item)
                     }
+                }else{
 
-                }else {
-
-                    v.promptRun(index, item);
+                    v.mesToggle(index,item)
                 }
             })
-
         },
-        promptRun:function(index,item){
 
-            //先删除提示信息
+        mesToggle:function(index,item){
+
             form.find("[name=" + item.name + "-error]").remove();
 
-            form.find("[name=" + item.name + "]").parents('.form-item').find(promptBox).append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
+            if(!item.type){
+
+                form.find("[name=" + item.name + "]").parents('.form-item').find(promptBox).append('<p class="error" name="' + item.name + '-error">' + item.val + '</p>');
+            }
         }
+
     };
+
 
     //是否启用了文字提示
     if(p.prompt){
 
-        form.find('input').change(function(){
+        form.find('input,textarea').change(function(){
 
             v.run();
 
@@ -149,11 +143,11 @@ window.validateMethod = function(param,fun){
 
         $(p.submit).on('click',function(){
 
-            v.run();
+            var isTRUE = v.run();
 
             v.prompt();
 
-            if(str.length<=0){fun()}
+            if(isTRUE.length<=0){fun()}
         });
 
         //其他组件事件点击触发
@@ -174,9 +168,7 @@ window.validateMethod = function(param,fun){
 
         $(p.submit).on('click',function(){
 
-            v.run();
-
-            fun(str)
+            fun(v.run())
         })
     }
 

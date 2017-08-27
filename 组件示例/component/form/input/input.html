@@ -177,6 +177,8 @@
 
             interest:{require:true},
 
+            message:{require:true}
+
         },
         prompt:{
 
@@ -188,7 +190,9 @@
 
             like:{require:'请选择喜欢水果'},
 
-            interest:{require:'请选择爱好'}
+            interest:{require:'请选择爱好'},
+
+            message:{require:'请填写简介信息'}
         }
     };
 
@@ -219,7 +223,7 @@
     },function(arr){   //prompt参数【true(验证全部通过后的回调函数) false(返回验证失败的内容数组对象)】
 
         console.log(arr)
-        form.submit()
+        ///form.submit()
 
     });
 

@@ -41,3 +41,29 @@ gulp.task('com-watch', function () {
     gulp.watch('组件示例/**/*.less', ['com']);
 
 });
+
+
+
+//data******************************************
+gulp.task('data-style', function () {
+
+    return  gulp.src('base/src/less/**/*.less')
+
+        .pipe(less())
+
+        .pipe(autoprefixer())
+
+        .pipe(minify({}))
+
+        .pipe(gulp.dest('base/src/css'))
+
+        .pipe(notify({ message: 'Css编译完成' }));
+
+});
+
+
+gulp.task('data-watch', function () {
+
+    gulp.watch('base/src/less/**/*.less', ['data-style']);
+
+});

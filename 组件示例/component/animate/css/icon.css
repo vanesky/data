@@ -802,3 +802,53 @@ input::-webkit-inner-spin-button {
 .f24 {
   font-size: 24px;
 }*/
+/*@a:#49a0db;*/
+.wrapper {
+  width: 500px;
+  height: 400px;
+  margin: 30px auto;
+  background: #cd5c5c;
+}
+/**
+ ** 主题按钮颜色样式
+ **/
+/**
+ ** 图片大小/头像主样式
+ **/
+/**
+ ** icon
+ **/
+.arrow-down:after {
+  position: absolute;
+  content: "";
+  border-top: 4px solid #333;
+  border-left: 4px solid transparent ;
+  border-right: 4px solid transparent;
+  right: 7px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.menu-list {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin-right: 3%;
+  float: right;
+  z-index: 10;
+}
+.menu-list li {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  margin-top: 6px;
+  background-color: #f2f2f2;
+}
+.menu-list li:before {
+  position: absolute;
+  left: -6px;
+  content: "";
+  width: 3px;
+  height: 2px;
+  background: #fff;
+}

@@ -7,6 +7,17 @@
   .sel-item{
     position: relative;
     display:block;
+
+    &:after{
+      position: absolute;
+      content:"";
+      border-top:4px solid @c3;
+      border-left:4px solid transparent;
+      border-right:4px solid transparent;
+      right:7px;
+      top:50%;
+      transform: translateY(-50%);
+    }
   }
   .sel-head{
     display:inline-block;

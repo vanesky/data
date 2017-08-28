@@ -852,3 +852,23 @@ input::-webkit-inner-spin-button {
   height: 2px;
   background: #fff;
 }
+.toggle-left:after,
+.toggle-right:after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #f2f2f2;
+  border-right: 2px solid #f2f2f2;
+  top: 0px;
+}
+.toggle-left:after {
+  -webkit-transform: rotateZ(-135deg);
+          transform: rotateZ(-135deg);
+  left: 10px;
+}
+.toggle-right:after {
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  right: 10px;
+}

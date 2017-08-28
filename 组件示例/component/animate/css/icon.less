@@ -57,3 +57,22 @@
     }
   }
 }
+
+//切换图箭头
+.toggle-left:after,.toggle-right:after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid @cf2;
+  border-right: 2px solid @cf2;
+  top:0px;
+}
+.toggle-left:after{
+  transform:rotateZ(-135deg);
+  left:10px;
+}
+.toggle-right:after{
+  transform:rotateZ(45deg);
+  right:10px;
+}

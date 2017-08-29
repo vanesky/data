@@ -31,31 +31,50 @@
 </style>
 </head>
 <body>
+
 <div class="swiper-container">
 	<div class="swiper-wrapper">
 		<div class="swiper-slide blue-slide">slider1</div>
 		<div class="swiper-slide red-slide">slider2</div>
 		<div class="swiper-slide orange-slide">slider3</div>
-		<div class="swiper-slide red-slide">slider2</div>
-		<div class="swiper-slide orange-slide">slider3</div>
+		<div class="swiper-slide red-slide">slider4</div>
+		<div class="swiper-slide orange-slide">slider5</div>
 	</div>
 	<div class="swiper-button-prev"></div>
 	<div class="swiper-button-next"></div>
 </div>
+
 <script src="js/swiper.min.js"></script>
 <script type="text/javascript">
-  var mySwiper = new Swiper('.swiper-container',{
-    //loop: true,
-	//autoplay: 3000,
-	  pagination: '.swiper-pagination',
-	  paginationClickable: true,
-	  //分栏数目
-	  //slidesPerView: 3,
-	  //分栏距离
-	  spaceBetween: 30,
-	  prevButton:'.swiper-button-prev',
-	  nextButton:'.swiper-button-next',
-  });
+	var mySwiper = new Swiper('.swiper-container',{
+		loop: true,
+		autoplay: 1000,
+		speed:300,                        //间隔时间
+		pagination: '.swiper-pagination', //分页
+		paginationClickable: true,        //分页点
+		spaceBetween:20,                  //分栏距离
+		prevButton:'.swiper-button-prev',
+		nextButton:'.swiper-button-next',
+
+		//slidesPerView: 3,				  //分多少页(1)
+		//slidesPerGroup:1,				  //几个为一组
+		//autoHeight: true,               //高度随内容变化
+		//direction : 'vertical',         //方向
+		onInit: function(swiper){
+			//Swiper初始化了
+			//alert(swiper.activeIndex);提示Swiper的当前索引
+		}
+	});
+
+	/*$(".swiper-container ").hover(function() {
+		i.stopAutoplay()
+	}, function() {
+		i.startAutoplay()
+	})
+	$('').click(function(){
+		mySwiper.slideTo(0, 1000, false);//切换到第一个slide，速度为1秒
+	})*/
 </script>
+
 </body>
 </html>

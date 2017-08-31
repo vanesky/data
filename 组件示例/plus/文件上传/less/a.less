@@ -1,0 +1,37 @@
+@import "../lib/common/reset.less";
+@import "../lib/quote/color.less";
+
+.img-upload{
+  padding:5px;
+  .upload-list{
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    border: 1px dashed @c9;
+    cursor: pointer;
+    background-color:@cf2;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .upload-add:before {
+    width: 30px;
+    height: 4px
+  }
+  .upload-add:after {
+    width: 4px;
+    height: 30px
+  }
+  .upload-add:after, .upload-add:before{
+    position: absolute;
+    content: "";
+    border-radius:2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: @c9;
+  }
+
+}

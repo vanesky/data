@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="less/a.css">
+    <script src="lib/jquery.js"></script>
+    <style>
+        .demo{
+            width:600px;
+            height:500px;
+            background-color:#dbdbdb;
+            margin:0 auto;
+        }
+        .btn{
+            display: inline-block;
+            width: 100px;
+            height:30px;
+            border-radius: 5px;
+            background-color: #1fb394;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="demo">
+
+    <ul data-name="a" class="img-upload clearfix">
+        <li class="upload-list upload-add"></li>
+    </ul>
+
+    <ul data-name="b" class="img-upload clearfix">
+        <li class="upload-list upload-add"></li>
+    </ul>
+
+    <div class="mt50">
+        <label>
+            <span class="btn">点击上传</span>
+            <input id="file" name="upFile" type="file" accept="image/jpg,image/jpeg,image/png" class="hide" multiple="multiple">
+        </label>
+        <span></span>
+    </div>
+
+</div>
+
+
+
+<script>
+
+    //选择照片更改后执行
+   /* $("#file").on('change',function(){
+
+        var file = document.getElementById("file").files;
+
+        var mes = readFileRule(file,500)
+
+        if(mes.type){
+
+
+        }else{
+
+            file = ''
+        }
+
+        //upLoadImg(file,{name:'ui'});
+    });*/
+
+
+    //添加图片事件
+    var num = 1;
+
+    $('.upload-add').on('click',function(){
+
+        var _this = $(this);
+
+        var pr = _this.parent('.img-upload');
+
+        if(pr.find("[name='upload[]']").length >= 5){
+
+            alert('The picture should be less than five');return;
+        }
+
+        var param = pr.attr('data-name') + "_" + num;
+
+        //插入input
+        var inputO = $("<input accept='image/jpg,image/jpeg,image/png' class='hide' type='file' name='upload[]' id='"+param+"'>");
+
+            inputO.on('change',function(){
+
+                var that = $(this)
+
+                var mes = readFileRule(that,500);
+
+                if(mes.type){
+
+                    num++;
+
+                    readFileUrl(that,pr);
+
+                }else{
+
+                    that.remove();
+
+                    console.log(mes)
+                }
+            });
+
+            inputO.trigger("click");
+    });
+
+
+    //校验图片格式
+    function readFileRule(file,max){
+
+        var file = file[0].files;
+
+        var mes = {type:true,name:0}
+
+        for(var i = 0;i<file.length;i++){
+
+            if((file[i].size/1000)>max){
+
+                mes.name = 1,mes.type = false;
+
+                break;
+
+            }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
+
+                mes.name = 2,mes.type = false;
+
+                break;
+            }
+        }
+        return mes;
+    }
+
+
+    //读取临时文件
+    function readFileUrl(input,pr){
+
+        pr.append(input);
+
+        var inputObj = $(input);
+
+        //var pr = inputObj.parent('.comment-img');
+
+        /*var template = '<li class="img-list iconfont">' +
+                '<i class="iconfont icon-close"  data-name="'+inputObj.prop('id')+'"></i> ' +
+                '</li>';*/
+
+        var template = '<li class="upload-list" data-name="'+inputObj.prop('id')+'"></li>'
+
+        var str = $(template);
+
+        var reader = new FileReader();
+
+            reader.readAsDataURL(inputObj[0].files[0]);
+
+            reader.onload = function(){
+
+                console.log(reader.result);
+
+                str.css('background-image',"url("+reader.result+")");
+
+                pr.find(".upload-add").before(str);
+            };
+    }
+
+
+</script>
+
+</body>
+</html>
+

@@ -40,6 +40,7 @@
 }
 .form-item .form-content {
   position: relative;
+  margin-left: 80px;
 }
 .form-group {
   display: inline-block;

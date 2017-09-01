@@ -12,18 +12,21 @@
   display: inline-block;
   width: 100%;
   min-height: 32px;
-  padding: 2px 8px;
+  padding: 0px 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   /*line-height: 1.42857143;*/
   background-color: #fff;
   background-image: none;
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
-.form-input:focus {
+input.form-input:focus {
   border: 1px solid #20a0ff;
-  box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
+  -webkit-box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
+          box-shadow: 0 0 1px 1px rgba(32, 160, 255, 0.075);
 }
 .form-item {
   margin-bottom: 23px;

@@ -19,7 +19,8 @@
   border: 1px solid #20a0ff !important;
 }
 .com-check .box-add:after {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   content: "";
   border: 2px solid #fff;
   border-left: 0;

@@ -41,6 +41,10 @@ input.form-input:focus {
   text-align: right;
   vertical-align: middle;
 }
+.form-item .form-title i {
+  margin-right: 5px;
+  color: red;
+}
 .form-item .form-content {
   position: relative;
   margin-left: 80px;

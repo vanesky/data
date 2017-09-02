@@ -19,15 +19,13 @@
         }
 
         .sub{
+            margin-top:100px;
             padding:8px 30px;
             background-color: #14a3a4;
             border-radius: 5px;
             color:#fff;
         }
 
-        form .error{
-            color:red;
-        }
     </style>
 </head>
 <body>
@@ -120,7 +118,7 @@
         <div class="form-item">
             <label class="form-title">留言：</label>
             <div class="form-content">
-                <textarea name="message" id=""></textarea>
+                <textarea name="message"></textarea>
             </div>
         </div>
     </form>
@@ -202,7 +200,7 @@
         //提交按钮dom
         submit:'.sub',
         //是否开起提示
-        prompt:false,
+        prompt:true,
         //提示信息要插入的地方
         promptBox:'',
         //要触发校验的元素

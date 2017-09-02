@@ -63,7 +63,8 @@ tr,
 th,
 td,
 input,
-textarea {
+textarea,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -76,9 +77,8 @@ input[type="button"],
 input[type="submit"] {
   cursor: pointer;
 }
-button[disabled],
-html input[disabled] {
-  cursor: default;
+i {
+  font-style: normal;
 }
 :focus {
   outline: 0;
@@ -761,11 +761,38 @@ input::-webkit-inner-spin-button {
   width: 100px;
   height: 100px;
   margin-right: 15px;
-  border: 1px dashed #999;
   cursor: pointer;
   background-color: #f2f2f2;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.img-upload .upload-list .list-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  opacity: 0;
+  text-align: center;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.img-upload .upload-list .list-layer .icon-remove {
+  position: absolute;
+  font-size: 40px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.img-upload .upload-list:hover .list-layer {
+  opacity: 1;
+}
+.img-upload .upload-add {
+  border: 1px dashed #ccc;
+}
+.img-upload .upload-add:hover {
+  border: 1px dashed #999;
 }
 .img-upload .upload-add:before {
   width: 30px;

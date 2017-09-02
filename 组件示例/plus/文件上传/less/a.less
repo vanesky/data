@@ -9,11 +9,40 @@
     width: 100px;
     height: 100px;
     margin-right: 15px;
-    border: 1px dashed @c9;
     cursor: pointer;
     background-color:@cf2;
     background-repeat: no-repeat;
     background-size: cover;
+
+    .list-layer{
+      position: relative;
+      width:100%;
+      height:100%;
+      background-color: rgba(0,0,0,.4);
+      color:@cf;
+      opacity: 0;
+      text-align: center;
+      transition:opacity .3s;
+      .icon-remove{
+        position: absolute;
+        font-size:40px;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+    &:hover{
+      .list-layer{opacity: 1;}
+    }
+  }
+
+
+  //添加按钮
+  .upload-add{
+    border: 1px dashed @cc;
+    &:hover{
+      border: 1px dashed @c9;
+    }
   }
 
   .upload-add:before {

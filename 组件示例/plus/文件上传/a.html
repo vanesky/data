@@ -31,6 +31,9 @@
 <div class="demo">
 
     <ul data-name="a" class="img-upload clearfix">
+      <!--  <li class="upload-list">
+            <div class="list-layer"><i>&times;</i></div>
+        </li>-->
         <li class="upload-list upload-add"></li>
     </ul>
 
@@ -52,27 +55,16 @@
 
 <script>
 
-    //选择照片更改后执行
-   /* $("#file").on('change',function(){
-
-        var file = document.getElementById("file").files;
-
-        var mes = readFileRule(file,500)
-
-        if(mes.type){
-
-
-        }else{
-
-            file = ''
-        }
-
-        //upLoadImg(file,{name:'ui'});
-    });*/
-
 
     //添加图片事件
     var num = 1;
+
+    /**
+     * 点击添加
+     * 1 首先根据规则是否运行
+     * 2 建立虚拟JQ对象并添加事件(input隐藏域)
+     * 3 模拟点击后根据规则函数确定是否插入到真实dom树
+     * */
 
     $('.upload-add').on('click',function(){
 
@@ -82,7 +74,9 @@
 
         if(pr.find("[name='upload[]']").length >= 5){
 
-            alert('The picture should be less than five');return;
+            alert('The picture should be less than five');
+
+            return;
         }
 
         var param = pr.attr('data-name') + "_" + num;
@@ -92,7 +86,7 @@
 
             inputO.on('change',function(){
 
-                var that = $(this)
+                var that = $(this);
 
                 var mes = readFileRule(that,500);
 
@@ -114,8 +108,21 @@
     });
 
 
+    //删除事件
+    $('body').on('click','.icon-remove',function(){
+
+        var parent = $(this).parents('.upload-list');
+
+        var id = parent.attr('data-name');
+
+        $('#'+id).remove();
+
+        parent.remove();
+    });
+
+
     //校验图片格式
-    function readFileRule(file,max){
+    function readFileRule(file,size){
 
         var file = file[0].files;
 
@@ -123,7 +130,7 @@
 
         for(var i = 0;i<file.length;i++){
 
-            if((file[i].size/1000)>max){
+            if((file[i].size/1000)>size){
 
                 mes.name = 1,mes.type = false;
 
@@ -143,17 +150,13 @@
     //读取临时文件
     function readFileUrl(input,pr){
 
-        pr.append(input);
+        var inputObj = input;
 
-        var inputObj = $(input);
+        pr.append(inputObj);
 
-        //var pr = inputObj.parent('.comment-img');
-
-        /*var template = '<li class="img-list iconfont">' +
-                '<i class="iconfont icon-close"  data-name="'+inputObj.prop('id')+'"></i> ' +
-                '</li>';*/
-
-        var template = '<li class="upload-list" data-name="'+inputObj.prop('id')+'"></li>'
+        var template = '<li class="upload-list" data-name="'+inputObj.prop('id')+'">' +
+                '<div class="list-layer"><i class="icon-remove">&times;</i></div>' +
+                '</li>';
 
         var str = $(template);
 

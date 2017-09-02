@@ -63,7 +63,8 @@ tr,
 th,
 td,
 input,
-textarea {
+textarea,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -76,9 +77,8 @@ input[type="button"],
 input[type="submit"] {
   cursor: pointer;
 }
-button[disabled],
-html input[disabled] {
-  cursor: default;
+i {
+  font-style: normal;
 }
 :focus {
   outline: 0;

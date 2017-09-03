@@ -49,6 +49,10 @@ $.fn.comSelect = function(obj){
 
                 that.parents('.com-select').find('.sel-content').hide()
             }
+        },
+        focus:function(){
+
+            this.blur();
         }
 
     });

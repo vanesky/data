@@ -52,103 +52,128 @@
 
 <script>
 
+    var up = {
+
+        arrImg : [],
+
+        initEvent:function(){
+
+            var _this = this;
+
+            $('#file').on('change',function(){
+
+                var that = $(this);
+
+                var mes = _this.readFileRule(that,500);
+
+                if(mes.type){
+
+                    _this.upLoadImg(that);
+                }
+            });
 
 
-    var inputO = $('#file')
+            //删除事件
+            $('body').on('click','.icon-remove',function(){
 
-        inputO.on('change',function(){
+                var parent = $(this).parents('.upload-list');
 
-            var that = $(this);
+                _this.arrImg.splice(parent.index(),1);
 
-            var mes = readFileRule(that,500);
+                parent.remove();
+            });
 
-            if(mes.type){
+            //提交事件
+            $('.btn').on('click',function(){
 
-                upLoadImg(that);
+                _this.upLoad($("[name='upload[]']"),'')
+            })
+        },
+
+        //校验图片格式
+        readFileRule:function(file,size){
+
+            var file = file[0].files;
+
+            var mes = {type:true,name:0}
+
+            for(var i = 0;i<file.length;i++){
+
+                if((file[i].size/1000)>size){
+
+                    mes.name = 1,mes.type = false;
+
+                    break;
+
+                }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
+
+                    mes.name = 2,mes.type = false;
+
+                    break;
+                }
             }
-        });
+            return mes;
+        },
 
-    //校验图片格式
-    function readFileRule(file,size){
+        upLoadImg:function(input){
 
-        var file = file[0].files;
+            var _this = this;
 
-        var mes = {type:true,name:0}
+            var inputObj = input;
 
-        for(var i = 0;i<file.length;i++){
+            var fd = new FormData();
 
-            if((file[i].size/1000)>size){
+            inputObj.each(function(index,item){
 
-                mes.name = 1,mes.type = false;
+                fd.append('upload[]',item.files[0])
+            })
 
-                break;
+            $.ajax({
+                type : 'post',
+                url : 'http://127.0.0.1/demo2.php',
+                data : fd,
+                cache : false,
+                processData : false,
+                contentType : false,
+                success : function(data){
 
-            }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
+                    _this.saveImgUrl(data,inputObj)
+                },
+                error : function(){
+                    console.log('err')
+                }
+            })
+        },
 
-                mes.name = 2,mes.type = false;
+        saveImgUrl:function(data,input){
 
-                break;
-            }
+            var src = '';
+
+            var pr = input.parents('.upload-add');
+
+            var template = '<li class="upload-list">' +
+                    '<div class="list-layer"><i class="icon-remove">&times;</i></div>' +
+                    '</li>';
+
+            var str = $(template);
+
+            str.css('background-image',"url("+src+")");
+
+            pr.before(str);
+
+            this.arrImg.push(src);
+
+            input.val('')
+
+        },
+
+        upLoad:function(arr){
+
         }
-        return mes;
-    }
-
-
-    //读取临时文件
-    function upLoadImg(input){
-
-        var inputObj = input;
-
-        var fd = new FormData();
-
-        inputObj.each(function(index,item){
-
-            fd.append('upload[]',item.files[0])
-        })
-
-        $.ajax({
-            type : 'post',
-            url : 'http://127.0.0.1/demo2.php',
-            data : fd,
-            cache : false,
-            processData : false,
-            contentType : false,
-            success : function(data){
-
-                saveImgUrl(data)
-            },
-            error : function(){
-                console.log('err')
-            }
-        })
-    }
-
-    function saveImgUrl(){
 
     }
+    up.initEvent();
 
-
-    //删除事件
-    $('body').on('click','.icon-remove',function(){
-
-        var parent = $(this).parents('.upload-list');
-
-        var id = parent.attr('data-name');
-
-        $('#'+id).remove();
-
-        parent.remove();
-    });
-
-    //提交事件
-    $('.btn').on('click',function(){
-
-        upLoad($("[name='upload[]']"),'')
-    })
-
-    function upLoad(arr){
-
-    }
 </script>
 
 </body>

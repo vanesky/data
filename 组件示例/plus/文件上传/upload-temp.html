@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="less/a.css">
+    <link rel="stylesheet" href="less/upload-temp.css">
     <script src="lib/jquery.js"></script>
     <style>
         .demo{
@@ -30,23 +30,21 @@
 
 <div class="demo">
 
-    <ul data-name="a" class="img-upload clearfix">
-      <!--  <li class="upload-list">
-            <div class="list-layer"><i>&times;</i></div>
-        </li>-->
-        <li class="upload-list upload-add"></li>
-    </ul>
+    <form action="http://127.0.0.1/demo2.php" method="post" enctype="multipart/form-data">
+        <ul data-name="a" class="img-upload clearfix">
+            <!--  <li class="upload-list">
+                  <div class="list-layer"><i>&times;</i></div>
+              </li>-->
+            <li class="upload-list upload-add"></li>
+        </ul>
+        <button type="submit">go</button>
+    </form>
 
-    <ul data-name="b" class="img-upload clearfix">
-        <li class="upload-list upload-add"></li>
-    </ul>
+
+
 
     <div class="mt50">
-        <label>
-            <span class="btn">点击上传</span>
-            <input id="file" name="upFile" type="file" accept="image/jpg,image/jpeg,image/png" class="hide" multiple="multiple">
-        </label>
-        <span></span>
+        <span class="btn">点击上传</span>
     </div>
 
 </div>
@@ -174,7 +172,37 @@
             };
     }
 
+    $('.btn').on('click',function(){
 
+        upLoad($("[name='upload[]']"),'')
+    })
+
+    function upLoad(inputObj,para){
+
+        var fd = new FormData();
+
+        inputObj.each(function(index,item){
+
+            fd.append('upload[]',item.files[0])
+        })
+
+        fd.append("para",JSON.stringify(para));
+
+        $.ajax({
+            type : 'post',
+            url : 'http://127.0.0.1/demo2.php',
+            data : fd,
+            cache : false,
+            processData : false,
+            contentType : false,
+            success : function(){
+                console.log('ok')
+            },
+            error : function(){
+                console.log('err')
+            }
+        })
+    }
 </script>
 
 </body>

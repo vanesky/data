@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="less/upload-temp.css">
+    <script src="lib/jquery.js"></script>
+    <style>
+        .demo{
+            width:600px;
+            height:500px;
+            background-color:#dbdbdb;
+            margin:0 auto;
+        }
+        .btn{
+            display: inline-block;
+            width: 100px;
+            height:30px;
+            border-radius: 5px;
+            background-color: #1fb394;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="demo">
+
+    <form action="http://127.0.0.1/demo2.php" method="post" enctype="multipart/form-data">
+        <ul data-name="a" class="img-upload clearfix">
+            <!--  <li class="upload-list">
+                  <div class="list-layer"><i>&times;</i></div>
+              </li>-->
+            <li class="upload-list upload-add"><label><input id="file" type="file" class="hide"></label></li>
+        </ul>
+        <button type="submit">go</button>
+    </form>
+
+
+
+    <div class="mt50">
+        <span class="btn">点击上传</span>
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+
+    var inputO = $('#file')
+
+        inputO.on('change',function(){
+
+            var that = $(this);
+
+            var mes = readFileRule(that,500);
+
+            if(mes.type){
+
+                upLoadImg(that);
+            }
+        });
+
+    //校验图片格式
+    function readFileRule(file,size){
+
+        var file = file[0].files;
+
+        var mes = {type:true,name:0}
+
+        for(var i = 0;i<file.length;i++){
+
+            if((file[i].size/1000)>size){
+
+                mes.name = 1,mes.type = false;
+
+                break;
+
+            }else if(!/(jpeg)|(png)|(jpg)$/.test(file[i].type)){
+
+                mes.name = 2,mes.type = false;
+
+                break;
+            }
+        }
+        return mes;
+    }
+
+
+    //读取临时文件
+    function upLoadImg(input){
+
+        var inputObj = input;
+
+        var fd = new FormData();
+
+        inputObj.each(function(index,item){
+
+            fd.append('upload[]',item.files[0])
+        })
+
+        $.ajax({
+            type : 'post',
+            url : 'http://127.0.0.1/demo2.php',
+            data : fd,
+            cache : false,
+            processData : false,
+            contentType : false,
+            success : function(data){
+
+                saveImgUrl(data)
+            },
+            error : function(){
+                console.log('err')
+            }
+        })
+    }
+
+    function saveImgUrl(){
+
+    }
+
+
+    //删除事件
+    $('body').on('click','.icon-remove',function(){
+
+        var parent = $(this).parents('.upload-list');
+
+        var id = parent.attr('data-name');
+
+        $('#'+id).remove();
+
+        parent.remove();
+    });
+
+    //提交事件
+    $('.btn').on('click',function(){
+
+        upLoad($("[name='upload[]']"),'')
+    })
+
+    function upLoad(arr){
+
+    }
+</script>
+
+</body>
+</html>
+

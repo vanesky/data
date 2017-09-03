@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="lib/jquery.js"></script>
+   <!-- <script src="lib/jquery.ui.widget.js"></script>
+    <script src="lib/jquery.iframe-transport.js"></script>
+    <script src="lib/jquery.fileupload.js"></script>-->
+
+
     <script src="lib/jquery.ui.widget.js"></script>
     <script src="lib/jquery.iframe-transport.js"></script>
     <script src="lib/jquery.fileupload.js"></script>
@@ -16,41 +21,39 @@
 </head>
 <body>
 
-    <input id="fileupload" type="file" name="file" accept="image/jpg" data-url="http://127.0.0.1/demo2.php">
+    <!--<input id="fileupload" type="file" accept="image/jpg,image/jpeg,image/png" data-url="http://127.0.0.1/demo2.php">-->
 
+    <input id="fileupload" type="file" name="file[]" multiple data-url="http://127.0.0.1/demo2.php">
 
     <progress id="progress" class="pro-val" value="0" max="100"></progress>
-    <span class="bar" onclick="send()">点击</span>
+    <span class="bar">点击</span>
 
     <script>
 
+        $(function () {
             $('#fileupload').fileupload({
-                dataType: 'json',
-                formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加
-
-                //当文件被添加到上传组件时被触发
-                /*add:function(e,data){
-                    console.log(e)
-                    console.log(data)
-                },*/
-                done: function (e, data) {
-                    console.log(789)
-                    // 上传完成后的执行逻辑
-                    /*$.each(data.result.files,function (index, file) {
-                        $('<p/>').text(file.name).appendTo(document.body);
-                    });*/
-
-                    /*data.context = $('<button/>').text('Upload')
+                dataType: '',
+                type:'post',
+                /*add: function (e, data) {
+                    /!*data.context = $('<button/>').text('Upload')
                             .appendTo(document.body)
                             .click(function () {
                                 $(this).replaceWith($('<p/>').text('Uploading...'));
                                 data.submit();
-                            });*/
+                            });*!/
 
+                    $('.bar').click(function(){
+
+                        data.submit();
+                    })
+                },*/
+                done: function (e, data) {
+                    alert(111)
+                    data.context.text('Upload finished.');
                 },
                 fail :function(error){
-                    alert(1)
-                  console.log(error)
+
+                    console.log(error)
                 },
                 always:function(error){
                     console.log(error)
@@ -67,6 +70,7 @@
                 },
                 autoUpload:true,
             });
+        });
 
 
 

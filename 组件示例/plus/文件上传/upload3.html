@@ -44,7 +44,7 @@
 
         function ajaxFileUpload() {
             $.ajaxFileUpload({
-                url: 'http://127.0.0.1/demo2.php', //用于文件上传的服务器端请求地址
+                url: 'http://www.featsky.com/demo2.php', //用于文件上传的服务器端请求地址
                 secureuri: false, //是否需要安全协议，一般设置为false
                 fileElementId: 'file', //文件上传域的ID
                 dataType: 'json', //返回值类型 一般设置为json
@@ -52,16 +52,16 @@
                 success: function (data, status){
                     alert(456);
                     //$("#img1").attr("src", data.imgurl);
-                    if (typeof (data.error) != 'undefined') {
+                    /*if (typeof (data.error) != 'undefined') {
                         if (data.error != '') {
                             alert(data.error);
                         } else {
                             alert(data.msg);
                         }
-                    }
+                    }*/
                 },
                 error: function (data, status, e){
-                   alert(1)
+                   alert('errroww')
                     console.log(data)
                 }
             });

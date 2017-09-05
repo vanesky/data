@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="lib/jquery.js"></script>
+    <link rel="stylesheet" href="less/toggle.css">
+
+    <style>
+        .demo{
+            width:600px;
+            height:500px;
+            background-color:#dbdbdb;
+            margin:0 auto;
+        }
+        .btn{
+            display: inline-block;
+            width: 100px;
+            height:30px;
+            border-radius: 5px;
+            background-color: #1fb394;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="demo">
+
+    <div class="img-box">
+        <div class="box-layer"><img src="img/timg.gif" alt=""></div>
+    </div>
+
+    <ul class="color-item">
+        <li class="item-list active"></li>
+        <li class="item-list"></li>
+        <li class="item-list"></li>
+    </ul>
+</div>
+<script>
+
+
+    function changeMainPic() {
+        var e = new Image;
+        $(".color-item").on("click", ".item-list", function() {
+            var t = $(this);
+            t.parents(".demo").find(".img-box").remove(),
+                    e.src = "",
+            t.addClass("active").siblings().removeClass("active");
+            var n = $(this).parents(".list__item").find("img.lazy");
+            e.src = t.attr("data-value"),
+            e.complete || (t.parents(".list__item").find(".list__item-inner").append('<div class="load" style=""><img src="/resources-pc/images/alert-loading.gif" alt=""></div>'),
+            e.onload = function() {
+                t.parents(".list__item").find(".load").remove()
+            }
+            ),
+            n.attr({
+                src: e.src,
+                jqimg: t.attr("data-big")
+            })
+        })
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="lib/jquery.js"></script>
+    <script src="../src/lib/jquery.js"></script>
     <link rel="stylesheet" href="less/toggle.css">
 
     <style>
@@ -30,36 +30,54 @@
 <div class="demo">
 
     <div class="img-box">
-        <div class="box-layer"><img src="img/timg.gif" alt=""></div>
+        <img class="box-img" src="../src/img/01.jpg" alt="">
+        <!--<div class="box-layer"><img src="img/timg.gif" alt=""></div>-->
     </div>
 
     <ul class="color-item">
-        <li class="item-list active"></li>
-        <li class="item-list"></li>
-        <li class="item-list"></li>
+        <li data-val="../src/img/01.jpg" class="item-list active"></li>
+        <li data-val="https://img.alicdn.com/tps/i4/TB1fbhiawoQMeJjy0FnSuv8gFXa.jpg_490x490q100.jpg_.webp" class="item-list"></li>
+        <li data-val="//pr.aopcdn.com//banner/1504170427917.jpg?ver=15041704" class="item-list"></li>
     </ul>
 </div>
 <script>
 
 
-    function changeMainPic() {
-        var e = new Image;
-        $(".color-item").on("click", ".item-list", function() {
-            var t = $(this);
-            t.parents(".demo").find(".img-box").remove(),
-                    e.src = "",
-            t.addClass("active").siblings().removeClass("active");
-            var n = $(this).parents(".list__item").find("img.lazy");
-            e.src = t.attr("data-value"),
-            e.complete || (t.parents(".list__item").find(".list__item-inner").append('<div class="load" style=""><img src="/resources-pc/images/alert-loading.gif" alt=""></div>'),
-            e.onload = function() {
-                t.parents(".list__item").find(".load").remove()
-            }
-            ),
-            n.attr({
-                src: e.src,
-                jqimg: t.attr("data-big")
-            })
+    var mid = new Image();
+    //图片切换
+    $("body").on("click", ".item-list", function(){
+
+        changeMainPic($(this))
+    })
+
+
+    function changeMainPic(that) {
+
+        var _this = that;
+
+        var imgObj =  _this.parents('.demo').find('img');
+
+        _this.parents('.demo').find('.box-layer').remove();
+
+        _this.addClass("active").siblings().removeClass("active");
+
+        mid.src = '';
+
+        mid.src =  _this.attr('data-val');
+
+        if(!mid.complete){
+
+            _this.parents('.demo').find('.img-box').append('<div class="box-layer"><img src="img/timg.gif" alt=""></div>');
+
+            mid.onload = function(){
+
+                _this.parents('.demo').find('.box-layer').remove();
+            };
+        }
+
+        imgObj.attr({
+
+            "src":mid.src
         })
     }
 

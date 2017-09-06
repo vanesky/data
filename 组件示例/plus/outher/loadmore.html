@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/lib/common/reset.css">
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+
+
+<script>
+
+    var ajaxLoad = {
+        //请求参数
+        page: 1,
+        //再次发送请求
+        interval: true,
+        //结构所要插入的容器
+        context: '.content-box',
+        //状态
+        status: '',
+
+        request: function () {
+
+            var _this = this;
+            //没有数据
+            if (!this.page || !this.interval) {return;}
+
+            $.ajax({
+
+                type: 'get',
+
+                data: {
+                    p: _this.page,
+
+                    status:_this.status
+                },
+
+                url: '/customer/myorder.html?t='+Date.parse(new Date()),
+
+                beforeSend: function () {
+
+                    _this.interval = false;
+
+                    $('.load').removeClass('hidden');
+                },
+                success: function (res) {
+
+                    _this.callback(res);
+                },
+
+                complete:function(){
+
+                    $('.load').addClass('hidden');
+
+                    setTimeout(function () {_this.interval = true;},500)
+                },
+
+                error: function (res) {
+
+                    console.log(res)
+                }
+            });
+        },
+        callback:function(res){
+
+            var data = res.data;
+
+            if(!data || data.length < 1){ this.page = null;return;}
+        }
+
+    }
+
+
+    ajaxLoad.request();
+
+    $(window).scroll(function () {
+
+        var isBottom = $('.main-page').height();
+
+        if (isBottom < $(document).scrollTop() + $(window).height()) {
+
+            ajaxLoad.request()
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
